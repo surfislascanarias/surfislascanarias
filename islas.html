@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islas Canarias · Surf Islas Canarias</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --azul-oceano: #046994;
+  --accent: #FF6B35;
+  --texto: #0f172a;
+  --fondo-oscuro: #0f172a;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #fdfdfd;
+  color: var(--texto);
+}
+
+/* ================= HEADER ================= */
+header.header {
+  background: linear-gradient(180deg, rgba(4,105,148,0.9), rgba(4,105,148,0.6));
+  color: white;
+  text-align: center;
+  padding: 42px 16px;
+}
+
+nav.nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+nav.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  font-weight: 500;
+}
+
+/* ================= CONTENIDO ================= */
+.container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.container h2 {
+  margin-bottom: 8px;
+}
+
+.container p {
+  color: #475569;
+  margin-bottom: 30px;
+}
+
+/* ================= MAPA ================= */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 520px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+/* ================= ISLAS ================= */
+.isla {
+  position: absolute;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  transform-origin: center;
+}
+
+.isla img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Hover tipo Google Maps */
+.isla:hover {
+  transform: scale(1.12);
+  z-index: 10;
+  filter: drop-shadow(0 6px 14px rgb(255, 204, 0));
+}
+
+/* ================= TAMAÑOS Y POSICIONES INDIVIDUALES ================= */
+/* Ajusta cada isla según su icono y proporción original */
+.lanzarote {
+  width: 100px; top: 80px; left: 680px;
+}
+.fuerteventura {
+  width: 130px; top: 160px; left: 600px;
+}
+.gran-canaria {
+  width: 140px; top: 240px; left: 500px;
+}
+.tenerife {
+  width: 160px; top: 200px; left: 380px;
+}
+.la-gomera {
+  width: 30px; top: 260px; left: 360px;
+}
+.la-palma {
+  width: 140px; top: 150px; left: 280px;
+}
+.el-hierro {
+  width: 60px; top: 290px; left: 280px;
+}
+
+/* ================= FOOTER ================= */
+footer.footer {
+  background: var(--fondo-oscuro);
+  color: white;
+  padding: 26px 16px;
+  margin-top: 60px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .map-wrapper {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <h1>Surf Islas Canarias</h1>
+  <nav class="nav">
+    <a href="/index.html">Inicio</a>
+    <a href="/blog.html">Noticias</a>
+    <a href="/spots.html">Spots</a>
+    <a href="/campeonatos.html">Campeonatos</a>
+    <a href="/modalidades.html">Modalidades</a>
+    <a href="/about.html">Sobre Surf Islas Canarias</a>
+    <a href="/contact.html">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>Islas Canarias</h2>
+  <p>Explora cada isla y descubre sus mejores spots de surf</p>
+
+  <div class="map-wrapper">
+    <a href="/assets/islas/lanzarote.html" class="isla lanzarote">
+      <img src="/assets/img/lanzarotesin-removebg-preview.png" alt="Lanzarote">
+    </a>
+    <a href="/assets/islas/fuerteventura.html" class="isla fuerteventura">
+      <img src="/assets/img/fuerteventurasinn-removebg-preview.png" alt="Fuerteventura">
+    </a>
+    <a href="/assets/islas/gran-canaria.html" class="isla gran-canaria">
+      <img src="/assets/img/grancanariasin-removebg-preview.png" alt="Gran Canaria">
+    </a>
+    <a href="/assets/islas/tenerife.html" class="isla tenerife">
+      <img src="/assets/img/tenerifesin-removebg-preview.png" alt="Tenerife">
+    </a>
+    <a href="/assets/islas/la-gomera.html" class="isla la-gomera">
+      <img src="/assets/img/lagomerasin-removebg-preview.png" alt="La Gomera">
+    </a>
+    <a href="/assets/islas/la-palma.html" class="isla la-palma">
+      <img src="/assets/img/lapalmasin-removebg-preview.png" alt="La Palma">
+    </a>
+    <a href="/assets/islas/el-hierro.html" class="isla el-hierro">
+      <img src="/assets/img/elhierrosin-removebg-preview.png" alt="El Hierro">
+    </a>
+  </div>
+</main>
+
+<footer class="footer">
+  © 2026 Surf Islas Canarias
+</footer>
+
+</body>
+</html>

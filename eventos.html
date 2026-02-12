@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventos - Surf Islas Canarias</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --azul-oceano: #046994;
+    --accent: #FF6B35;
+    --gradient1: linear-gradient(135deg, #046994, #00BCD4);
+    --gradient2: linear-gradient(135deg, #FF6B35, #FF844F);
+    --gradient3: linear-gradient(135deg, #E91E63, #FF6B35);
+    --gradient4: linear-gradient(135deg, #32CD32, #46f14e);
+    --fondo: #fdfdfd;
+    --texto: #0f172a;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+}
+
+/* =================================
+   HEADER Y NAVEGACIÓN
+================================= */
+.header {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 105, 148, 0.9),
+    rgba(4, 105, 148, 0.6)
+  );
+  color: white;
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 1rem;
+  color: #f4f4f4;
+  margin-bottom: 20px;
+}
+
+/* Navegación */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav a:hover {
+  background: white;
+  color: var(--accent);
+}
+
+
+
+
+/* =================================
+   CONTENEDOR Y GRID
+================================= */
+.container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+/* CARD PREMIUM */
+.card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.4s, box-shadow 0.4s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gradient1);
+    opacity: 0.08;
+    z-index: 0;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ICONOS */
+.card .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    color: var(--accent);
+    position: relative;
+    z-index: 1;
+}
+
+/* BOTON PREMIUM */
+.card a {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s, background 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.card a:hover {
+    background: #ff844f;
+    transform: scale(1.05);
+}
+
+/* Gradientes por tarjeta */
+.card:nth-child(1)::before { background: var(--gradient1); }
+.card:nth-child(2)::before { background: var(--gradient2); }
+.card:nth-child(3)::before { background: var(--gradient3); }
+.card:nth-child(4)::before { background: var(--gradient4); }
+
+@media (max-width: 600px) {
+    .card { padding: 28px 16px; }
+}
+
+footer.footer {
+    text-align: center;
+    padding: 28px 16px;
+    background: var(--azul-oceano);
+    color: white;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+</style>
+</head>
+<body>
+
+
+<header class="header">
+  <h1>Surf Islas Canarias</h1>
+  <p>La comunidad del surf canario, desde dentro</p>
+
+  <nav class="nav">
+      <a href="/index.html">Inicio</a>
+      <a href="/blog.html">Noticias</a>
+      <a href="/spots.html">Islas</a>
+      <a href="/campeonatos.html">Campeonatos</a>
+      <a href="/modalidades.html">Modalidades</a>
+      <a href="/about.html">Sobre Surf Islas Canarias</a>
+      <a href="/contact.html">Contacto</a>
+    </nav>
+</header>
+
+<main class="container">
+    <div class="grid">
+        <!-- CALENDARIO 2025 -->
+        <div class="card">
+            <div class="icon">📅</div>
+            <h2>Calendario 2025</h2>
+            <p>Todos los eventos y competiciones de surf de 2025 en las Islas Canarias.</p>
+            <a href="calendario2025.html">Ver Calendario 2025</a>
+        </div>
+
+        <!-- CALENDARIO 2026 -->
+        <div class="card">
+            <div class="icon">🗓️</div>
+            <h2>Calendario 2026</h2>
+            <p>Prepárate para los eventos de 2026 y descubre las fechas importantes.</p>
+            <a href="calendario2026.html">Ver Calendario 2026</a>
+        </div>
+
+        <!-- EVENTOS ESPECIALES -->
+        <div class="card">
+            <div class="icon">🎉</div>
+            <h2>Eventos Especiales</h2>
+            <p>Competiciones únicas, festivales y actividades destacadas del surf en Canarias.</p>
+            <a href="eventos-especiales.html">Ver Eventos Especiales</a>
+        </div>
+
+        <!-- OTRAS ACTIVIDADES -->
+        <div class="card">
+            <div class="icon">🏄‍♂️</div>
+            <h2>Otras Actividades</h2>
+            <p>Talleres, clases, quedadas y actividades complementarias para surfistas.</p>
+            <a href="otras-actividades.html">Ver Otras Actividades</a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    © 2026 Surf Islas Canarias
+</footer>
+
+</body>
+</html>

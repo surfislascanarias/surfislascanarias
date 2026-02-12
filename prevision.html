@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Previsión de Olas - Canarias 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul-oceano:#046994;
+    --accent:#FF6B35;
+    --texto:#0f172a;
+    --fondo:#fdfdfd;
+    --card-bg:#ffffff;
+    --card-shadow:0 6px 20px rgba(0,0,0,0.08);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif;}
+  body{background:var(--fondo);color:var(--texto);line-height:1.5;}
+  h1,h2,h3{margin-bottom:12px;}
+  
+  header.header{
+    background: linear-gradient(180deg, rgba(4,105,148,0.9), rgba(4,105,148,0.6));
+    color:white; text-align:center; padding:32px 16px;
+  }
+  header.header nav{
+    display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:16px;
+  }
+  header.header nav a{
+    color:white; text-decoration:none; padding:8px 14px; border-radius:8px;
+    background: rgba(255,255,255,0.06); font-weight:500; transition:0.3s;
+  }
+  header.header nav a:hover{ background:white;color:var(--accent); }
+
+  .container{ max-width:1200px; margin:28px auto; padding:0 16px; }
+  #searchContainer{ margin-bottom:24px; text-align:center; }
+  #searchInput{ width:300px; padding:10px 14px; border-radius:8px; border:1px solid #ccc; font-size:0.95rem; }
+
+  #spotsGrid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+  }
+
+  .spot-card{
+    background:var(--card-bg);
+    border-radius:12px;
+    box-shadow:var(--card-shadow);
+    overflow:hidden;
+    transition: transform 0.3s;
+  }
+  .spot-card:hover{ transform: translateY(-4px); }
+
+  .spot-card h3{ padding:16px; font-size:1.2rem; color:var(--azul-oceano); }
+  .slider-container{ position:relative; }
+
+  .slider-container iframe{
+    width:100%; height:320px; border:none;
+  }
+
+  .slider-buttons{
+    display:flex; justify-content:center; gap:8px; padding:12px;
+    flex-wrap:wrap; background:#f4f4f4;
+  }
+  .slider-buttons button{
+    padding:8px 14px; border:none; border-radius:8px; cursor:pointer; background:var(--accent); color:white; font-weight:600;
+    transition:0.3s;
+  }
+  .slider-buttons button:hover{ background:#ff844f; }
+
+  footer.footer{ background:var(--azul-oceano); color:white; padding:28px 16px; text-align:center; font-size:0.9rem; margin-top:36px; }
+
+  @media(max-width:700px){
+    #searchInput{ width:100%; }
+    .slider-container iframe{ height:240px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Previsión de Olas - Canarias 2026</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="blog.html">Noticias</a>
+    <a href="spots.html">Spots</a>
+    <a href="eventos.html">Eventos & Calendario</a>
+    <a href="about.html">Sobre Surf Islas Canarias</a>
+    <a href="contact.html">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Buscar spot o isla...">
+  </div>
+
+  <div id="spotsGrid"></div>
+</main>
+
+<footer class="footer">© 2026 Surf Islas Canarias</footer>
+
+<script>
+// ======= SPOTS CANARIAS
+const spots = [
+  {
+    name:"Punta Blanca",
+    island:"Tenerife",
+    windy:"https://embed.windy.com/embed2.html?lat=28.256&lon=-16.761&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
+    surfforecast:"https://www.surf-forecast.com/breaks/Punta-Blanca/forecasts/latest",
+    surfline:"https://www.surfline.com/surf-report/punta-blanca/5842041f4e65fad6a7708b6b"
+  },
+  {
+    name:"El Socorro",
+    island:"Tenerife",
+    windy:"https://embed.windy.com/embed2.html?lat=28.437&lon=-16.573&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
+    surfforecast:"https://www.surf-forecast.com/breaks/El-Socorro/forecasts/latest",
+    surfline:"https://www.surfline.com/surf-report/el-socorro/5842041f4e65fad6a7708b6b"
+  },
+  {
+    name:"Almáciga",
+    island:"Tenerife",
+    windy:"https://embed.windy.com/embed2.html?lat=28.527&lon=-16.451&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
+    surfforecast:"https://www.surf-forecast.com/breaks/Almaciga/forecasts/latest",
+    surfline:"https://www.surfline.com/surf-report/almaciga/5842041f4e65fad6a7708b6b"
+  },
+  {
+    name:"LPA Surf City",
+    island:"Gran Canaria",
+    windy:"https://embed.windy.com/embed2.html?lat=28.115&lon=-15.422&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
+    surfforecast:"https://www.surf-forecast.com/breaks/Las-Palmas/forecasts/latest",
+    surfline:"https://www.surfline.com/surf-report/las-palmas/5842041f4e65fad6a7708b6b"
+  },
+  {
+    name:"Arona",
+    island:"Tenerife",
+    windy:"https://embed.windy.com/embed2.html?lat=28.107&lon=-16.734&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
+    surfforecast:"https://www.surf-forecast.com/breaks/Arona/forecasts/latest",
+    surfline:"https://www.surfline.com/surf-report/arona/5842041f4e65fad6a7708b6b"
+  }
+];
+
+// ======= RENDER SPOTS
+const spotsGrid = document.getElementById("spotsGrid");
+const searchInput = document.getElementById("searchInput");
+
+function renderSpots(){
+  const term = searchInput.value.toLowerCase();
+  spotsGrid.innerHTML = "";
+  const filtered = spots.filter(s => s.name.toLowerCase().includes(term) || s.island.toLowerCase().includes(term));
+
+  filtered.forEach(spot=>{
+    const div = document.createElement("div");
+    div.className="spot-card";
+    div.innerHTML=`
+      <h3>${spot.name} - ${spot.island}</h3>
+      <div class="slider-container">
+        <iframe src="${spot.windy}"></iframe>
+        <iframe src="${spot.surfforecast}" style="display:none;"></iframe>
+        <iframe src="${spot.surfline}" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    `;
+    spotsGrid.appendChild(div);
+  });
+}
+
+function showSlide(card,index){
+  const iframes = card.querySelectorAll('iframe');
+  iframes.forEach((f,i)=> f.style.display=(i===index)?'block':'none');
+}
+
+searchInput.addEventListener("input", renderSpots);
+renderSpots();
+</script>
+
+</body>
+</html>
