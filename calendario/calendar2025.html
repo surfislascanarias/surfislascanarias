@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Surf Islas Canarias 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* =================================
+            SURFISLASCANARIAS - ESTILO MODERNO
+        ================================= */
+        :root {
+            --azul-oceano: #046994;
+            --arena: #F4E9D8;
+            --texto: #0f172a;
+            --accent: #FF6B35;
+            --fondo-oscuro: #0f172a;
+        }
+
+        /* Reset y box-sizing */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+            background: #fdfdfd;
+            color: var(--texto);
+            line-height: 1.5;
+        }
+
+        /* HEADER */
+        header.header {
+            background: linear-gradient(180deg, rgba(4,105,148,0.9), rgba(4,105,148,0.6));
+            color: white;
+            text-align: center;
+            padding: 48px 16px;
+        }
+
+        header.header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        nav.nav {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        nav.nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav.nav a:hover {
+            background: white;
+            color: var(--accent);
+        }
+
+        /* BOTONES Y INPUT */
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff844f;
+        }
+
+        .btn-outline {
+            border: 2px solid rgb(241,240,240);
+            color: rgb(247,245,245);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: rgb(238,231,231);
+        }
+
+        input, select {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1100px;
+            margin: 28px auto;
+            padding: 0 16px;
+        }
+
+        /* BUSCADOR */
+        #searchContainer {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #searchInput {
+            width: 260px;
+        }
+
+        /* CALENDARIO Y LEYENDA */
+        #calendarContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #calendarNav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        #calendarNav button {
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #calendarNav button:hover {
+            background: #ff844f;
+        }
+
+        #calendarAndLegend {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        /* TABLA DEL CALENDARIO */
+        table.calendar {
+            width: 650px;
+            border-collapse: collapse;
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+        }
+
+        table.calendar th {
+            background: var(--azul-oceano);
+            color: white;
+            padding: 10px;
+        }
+
+        table.calendar td {
+            height: 90px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+            position: relative;
+            padding: 4px;
+            transition: transform 0.2s;
+        }
+
+        table.calendar td:hover {
+            transform: scale(1.03);
+            cursor: pointer;
+        }
+
+        .day-number {
+            position: absolute;
+            top: 4px;
+            left: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        td.event {
+            color: white;
+            border-radius: 8px;
+        }
+
+        /* LEYENDA */
+        #legend {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 0 0 200px;
+        }
+
+        #legend div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        #legend div div {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        #legend div:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        #legend div.active {
+            border-color: var(--accent);
+            box-shadow: 0 2px 8px rgba(255,107,53,0.4);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 400px;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+
+        .modal-content li {
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        footer.footer {
+            background: var(--fondo-oscuro);
+            color: white;
+            padding: 28px 16px;
+            margin-top: 36px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width:700px) {
+            #calendarAndLegend {
+                flex-direction: column;
+                align-items: center;
+            }
+            table.calendar {
+                width: 100%;
+            }
+            #legend {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>Surf Islas Canarias</h1>
+ 
+  <nav class="nav">
+      <a href="/index.html">Inicio</a>
+      <a href="/blog.html">Noticias</a>
+      <a href="/spots.html">Islas</a>
+      <a href="/campeonatos.html">Campeonatos</a>
+      <a href="/modalidades.html">Modalidades</a>
+      <a href="/about.html">Sobre Surf Islas Canarias</a>
+      <a href="/contact.html">Contacto</a>
+    </nav>
+</header>
+
+<main class="container">
+    <!-- BUSCADOR -->
+    <div id="searchContainer">
+        <input type="text" id="searchInput" placeholder="Buscar evento...">
+    </div>
+
+    <!-- CALENDARIO + LEYENDA -->
+    <div id="calendarContainer">
+        <div id="calendarNav">
+            <button id="prevMonth">◀</button>
+            <h2 id="monthYear"></h2>
+            <button id="nextMonth">▶</button>
+        </div>
+
+        <div id="calendarAndLegend">
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        <th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th>
+                        <th>Vie</th><th>Sáb</th><th>Dom</th>
+                    </tr>
+                </thead>
+                <tbody id="calendarBody"></tbody>
+            </table>
+
+            <div id="legend">
+                <div data-category="ELITE / PRO SURF"><div style="background:#FF6B35;"></div>Elite / Pro Surf</div>
+                <div data-category="CAMPEONATOS ESPAÑA"><div style="background:#0c58a3;"></div>Campeonatos España</div>
+                <div data-category="JUNIOR"><div style="background:#32CD32;"></div>Junior</div>
+                <div data-category="KIDS"><div style="background:#FFD700;"></div>Kids</div>
+                <div data-category="BODYBOARD"><div style="background:#9C27B0;"></div>Bodyboard</div>
+                <div data-category="LONGBOARD"><div style="background:#03A9F4;"></div>Longboard</div>
+                <div data-category="SUP"><div style="background:#00BCD4;"></div>SUP</div>
+                <div data-category="EVENTOS ESPECIALES"><div style="background:#E91E63;"></div>Eventos Especiales</div>
+                <div data-category="ESPERA"><div style="background:#000;"></div>Espera</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- MODAL -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <h3>Eventos</h3>
+        <ul id="modalEvents"></ul>
+        <button class="btn btn-primary" onclick="closeModal()">Cerrar</button>
+    </div>
+</div>
+
+<footer class="footer">
+    © 2026 Surf Islas Canarias
+</footer>
+
+<script>
+    // ================= EVENTOS SOLO ISLAS CANARIAS =================
+    const eventsCanarias2025 = [
+        { title:"GOANNA PRO", start:"2025-04-12", end:"2025-04-14", color:"#FF6B35" },
+        { title:"KING & QUEEN OF THE BAY", start:"2025-10-10", end:"2025-10-12", color:"#FF6B35" },
+        { title:"LPA SURF CITY", start:"2025-11-20", end:"2025-11-23", color:"#FF6B35" },
+        { title:"LAS AMERICAS PRO", start:"2025-11-24", end:"2025-11-28", color:"#FF6B35" },
+        { title:"GRAN CANARIA PRO SUP", start:"2025-06-06", end:"2025-06-08", color:"#00BCD4" }
+    ];
+
+    function cloneTo2026(events) {
+        return events.map(ev => ({...ev, start: ev.start.replace("2025","2026"), end: ev.end.replace("2025","2026")}));
+    }
+
+    const events = [...eventsCanarias2025, ...cloneTo2026(eventsCanarias2025)];
+
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    const calendarBody = document.getElementById("calendarBody");
+    const monthYear = document.getElementById("monthYear");
+    const searchInput = document.getElementById("searchInput");
+    let activeCategory = "";
+
+    function getCategory(title){
+        if(title.includes("PRO") || title.includes("ELITE")) return "ELITE / PRO SURF";
+        return "OTRO";
+    }
+
+    function getFilteredEvents(){
+        const searchTerm = searchInput.value.toLowerCase();
+        return events.filter(ev=>{
+            const matchesSearch = ev.title.toLowerCase().includes(searchTerm);
+            const matchesCategory = activeCategory === "" || getCategory(ev.title) === activeCategory;
+            return matchesSearch && matchesCategory;
+        });
+    }
+
+    function renderCalendar(month, year){
+        const filteredEvents = getFilteredEvents();
+        const months = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+        monthYear.textContent = `${months[month]} ${year}`;
+        calendarBody.innerHTML="";
+
+        const firstDay = (new Date(year,month,1).getDay()+6)%7;
+        const daysInMonth = new Date(year,month+1,0).getDate();
+        let date=1;
+
+        for(let i=0;i<6;i++){
+            const row=document.createElement("tr");
+            for(let j=0;j<7;j++){
+                const cell=document.createElement("td");
+                if(i===0 && j<firstDay || date>daysInMonth){
+                    cell.innerHTML="";
+                } else {
+                    cell.innerHTML=`<div class="day-number">${date}</div>`;
+                    const cellDate=new Date(year,month,date);
+                    const dayEvents = filteredEvents.filter(ev=>{
+                        const start=new Date(ev.start);
+                        const end=new Date(ev.end);
+                        return cellDate>=start && cellDate<=end;
+                    });
+                    if(dayEvents.length){
+                        cell.classList.add("event");
+                        cell.style.background=dayEvents[0].color;
+                        cell.onclick = ()=>showModal(dayEvents);
+                    }
+                    date++;
+                }
+                row.appendChild(cell);
+            }
+            calendarBody.appendChild(row);
+            if(date>daysInMonth) break;
+        }
+    }
+
+    function showModal(dayEvents){
+        const modal=document.getElementById("eventModal");
+        const list=document.getElementById("modalEvents");
+        list.innerHTML="";
+        dayEvents.forEach(ev=>{
+            const li=document.createElement("li");
+            li.textContent=ev.title;
+            li.style.color=ev.color;
+            list.appendChild(li);
+        });
+        modal.style.display="flex";
+    }
+
+    function closeModal(){
+        document.getElementById("eventModal").style.display="none";
+    }
+
+    window.onclick=e=>{
+        if(e.target===document.getElementById("eventModal")) closeModal();
+    }
+
+    document.getElementById("prevMonth").onclick=()=>{
+        currentMonth--;
+        if(currentMonth<0){ currentMonth=11; currentYear--; }
+        renderCalendar(currentMonth,currentYear);
+    };
+
+    document.getElementById("nextMonth").onclick=()=>{
+        currentMonth++;
+        if(currentMonth>11){ currentMonth=0; currentYear++; }
+        renderCalendar(currentMonth,currentYear);
+    };
+
+    searchInput.addEventListener("input", ()=>renderCalendar(currentMonth,currentYear));
+
+    document.querySelectorAll("#legend div").forEach(el=>{
+        el.addEventListener("click", ()=>{
+            const cat = el.getAttribute("data-category");
+            activeCategory = (activeCategory === cat) ? "" : cat;
+            document.querySelectorAll("#legend div").forEach(d=>d.classList.remove("active"));
+            if(activeCategory) el.classList.add("active");
+            renderCalendar(currentMonth,currentYear);
+        });
+    });
+
+    renderCalendar(currentMonth,currentYear);
+</script>
+
+</body>
+</html>
