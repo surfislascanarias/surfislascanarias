@@ -1,0 +1,404 @@
+/* =================================
+   SURFISLASCANARIAS – ESTILO GLOBAL
+================================= */
+
+/* ===================== VARIABLES ===================== */
+:root {
+  --azul-oceano: #046994;
+  --arena: #F4E9D8;
+  --texto: #0f172a;
+  --accent: #FF6B35;
+  --fondo-oscuro: #0f172a;
+}
+
+/* ===================== RESET ===================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  background: #fdfdfd;
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+/* =================================
+   HEADER Y NAVEGACIÓN
+================================= */
+.header {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 105, 148, 0.9),
+    rgba(4, 105, 148, 0.6)
+  );
+  color: white;
+  text-align: center;
+  padding: 48px 16px;
+}
+
+.header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  font-size: 1rem;
+  color: #f4f4f4;
+  margin-bottom: 20px;
+}
+
+/* Navegación */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav a:hover {
+  background: white;
+  color: var(--accent);
+}
+
+/* =================================
+   BOTONES / CTA
+================================= */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #ff844f;
+}
+
+.btn-outline {
+  border: 2px solid rgba(255,255,255,0.9);
+  color: white;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* =================================
+   CONTENEDOR Y GRID
+================================= */
+.container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+/* Cards genéricas */
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.card .pad {
+  padding: 14px;
+}
+
+/* =================================
+   MODAL
+================================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: var(--fondo-oscuro);
+  color: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+}
+
+.modal-content h2 {
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.modal-content p {
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.modal .btn {
+  margin-top: 10px;
+}
+
+/* =================================
+   FULLCALENDAR
+================================= */
+#calendar {
+  max-width: 1000px;
+  margin: 28px auto;
+  min-height: 500px;
+  padding: 15px;
+  background: linear-gradient(180deg, #376db9, #e2e4e9);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+/* Toolbar */
+.fc-toolbar-title {
+  color: var(--arena) !important;
+  font-weight: 600;
+}
+
+.fc-button {
+  background: var(--azul-oceano) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+}
+
+.fc-button:hover {
+  background: #034f6f !important;
+}
+
+/* Eventos */
+.fc-event {
+  background-color: var(--accent) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem;
+}
+
+/* =================================
+   CATEGORÍAS
+================================= */
+.categories {
+  margin-top: 40px;
+}
+
+.categories h2 {
+  margin-bottom: 20px;
+}
+
+.categories-grid {
+  gap: 20px;
+}
+
+/* Card categoría */
+.category-card {
+  display: block;
+  background: white;
+  border-radius: 14px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none
+  
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.category-icon img {
+  width: 100px;      /* Ajusta tamaño */
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+
+.category-card h3 {
+  margin-bottom: 8px;
+  color: var(--texto);
+}
+
+.category-card p {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.category-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+ 
+}
+
+.category-card:hover .category-btn {
+  background: #ff844f;
+  transform: translateY(-2px);
+}
+
+/* =================================
+   FOOTER
+================================= */
+.footer {
+  background: var(--fondo-oscuro);
+  color: white;
+  padding: 28px 16px;
+  margin-top: 36px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+
+
+.lightwidget-widget {
+  border-radius: 5px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  margin-top: 12px;
+  height: 500px; /* Ajusta según la altura que quieras mostrar */
+}
+
+
+
+
+
+/* HOME MAGAZINE */
+
+.home-hero {
+  max-width: 900px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.home-hero h2 {
+  font-size: 2rem;
+}
+
+.home-sections {
+  margin-top: 50px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.home-card {
+  position: relative;
+  min-height: 220px;
+  border-radius: 14px;
+  padding: 24px;
+  background: linear-gradient(135deg, #0b3c5d, #0f6c8d);
+  color: white;
+  transition: transform .25s ease;
+}
+
+.home-card:hover {
+  transform: translateY(-4px);
+}
+
+.home-card a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+.home-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.home-card span {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
