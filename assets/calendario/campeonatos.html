@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendario Surf Islas Canarias 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-oceano: #046994;
+  --arena: #F4E9D8;
+  --texto: #0f172a;
+  --accent: #FF6B35;
+  --fondo-card: #fdfdfd;
+  --highlight: #FFD700;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; font-family:'Inter',sans-serif; }
+
+body { background:#fdfdfd; color:var(--texto); line-height:1.5; }
+
+header.header {
+  background: linear-gradient(180deg, rgba(4,105,148,0.95), rgba(4,105,148,0.7));
+  color:white; text-align:center; padding:30px 16px;
+  position: sticky; top:0; z-index:1000;
+}
+header.header h1 { font-size:2.2rem; margin-bottom:8px; }
+nav.navbar { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; position:relative; }
+
+.navbar a {
+  color:white; text-decoration:none; padding:10px 14px; border-radius:8px;
+  background: rgba(255,255,255,0.06); font-weight:500; transition:0.3s; position:relative;
+}
+.navbar a:hover { background:white; color:var(--accent); }
+
+/* Dropdown */
+.dropdown { position:relative; }
+.dropdown-content {
+  display:none; position:absolute; background:white; color:var(--texto);
+  min-width:180px; box-shadow:0 8px 16px rgba(0,0,0,0.2); border-radius:8px;
+  top:calc(100% + 4px); left:0; z-index:999; overflow:hidden;
+}
+.dropdown-content a {
+  display:block; padding:10px 14px; text-decoration:none; color:var(--texto); transition:0.2s;
+}
+.dropdown-content a:hover { background:var(--accent); color:white; }
+.dropdown:hover .dropdown-content { display:block; }
+
+.container { max-width:1200px; margin:28px auto; padding:0 16px; }
+
+/* Buscador */
+#searchContainer { margin-bottom:24px; text-align:center; }
+#searchInput { width:300px; padding:12px 16px; border-radius:8px; border:1px solid #ccc; font-size:1rem; }
+
+/* Filtros */
+#filters { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:24px; }
+.filter-btn { padding:8px 14px; border-radius:8px; border:none; background:var(--azul-oceano); color:white; cursor:pointer; font-weight:500; transition:0.3s; }
+.filter-btn.active, .filter-btn:hover { background:var(--accent); }
+
+/* Carrusel destacado */
+#featuredCarousel { position:relative; width:100%; max-width:1200px; height:280px; margin:0 auto 32px; overflow:hidden; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
+#featuredCarousel img { width:100%; height:100%; object-fit:cover; position:absolute; opacity:0; transition:opacity 1s ease-in-out;}
+#featuredCarousel img.active { opacity:1; }
+.carousel-controls { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%); padding:0 16px; }
+.carousel-controls button { background:rgba(0,0,0,0.4); border:none; color:white; font-size:1.5rem; padding:8px 12px; border-radius:50%; cursor:pointer; transition:0.3s;}
+.carousel-controls button:hover { background:var(--accent); }
+
+/* Grid eventos */
+#eventsGrid { display:grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
+
+/* Card evento */
+.event-card { background: var(--fondo-card); border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.1); overflow:hidden; position:relative; cursor:pointer; transition: transform 0.3s;}
+.event-card:hover { transform: translateY(-6px); }
+.slider { position:relative; width:100%; height:200px; overflow:hidden; border-bottom:4px solid var(--accent); }
+.slide { position:absolute; width:100%; height:100%; opacity:0; transition:opacity 1s ease-in-out; }
+.slide.active { opacity:1; }
+.event-content { padding:18px; }
+.event-content h3 { font-size:1.2rem; margin-bottom:6px; }
+.event-content p { font-size:0.95rem; margin-bottom:6px; color:#555; }
+.event-content .date { font-weight:600; color:var(--accent); }
+.event-content .highlight { font-size:0.8rem; font-weight:600; color:var(--highlight); text-transform:uppercase; margin-bottom:4px; }
+
+/* Categorías */
+.event-ABSOLUTO { border-left:6px solid #FF6B35; }
+.event-JUNIOR { border-left:6px solid #32CD32; }
+.event-KIDS { border-left:6px solid #46f14e; }
+.event-INTERNACIONAL { border-left:6px solid #0c58a3; }
+.event-ESPECIAL { border-left:6px solid #FFD700; }
+
+/* Modal */
+.modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); justify-content:center; align-items:center; z-index:999; padding:16px; }
+.modal-content { background:white; padding:28px; border-radius:16px; max-width:600px; width:100%; }
+.modal-content h3 { margin-bottom:12px; }
+.modal-content p { margin-bottom:8px; }
+.modal-content button { margin-top:16px; padding:12px 20px; border:none; border-radius:10px; background:var(--accent); color:white; cursor:pointer; }
+
+/* Footer */
+footer.footer { background:var(--azul-oceano); color:white; padding:28px 16px; text-align:center; font-size:0.9rem; margin-top:36px; }
+
+@media(max-width:700px){
+  #searchInput, .filter-btn { width:100%; }
+  .carousel-controls { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Calendario Surf Islas Canarias 2026</h1>
+  <nav class="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="blog.html">Noticias</a>
+    <a href="spots.html">Spots</a>
+    <a href="eventos.html">Eventos & Calendario </a>
+    <a href="about.html">Sobre Surf Islas Canarias</a>
+    <a href="contact.html">Contacto</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Carrusel destacado -->
+  <div id="featuredCarousel"></div>
+  <div class="carousel-controls">
+    <button id="prev">&#10094;</button>
+    <button id="next">&#10095;</button>
+  </div>
+
+  <!-- Buscador y filtros -->
+  <div id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Buscar evento...">
+  </div>
+  <div id="filters">
+    <button class="filter-btn active" data-category="ALL">Todos</button>
+    <button class="filter-btn" data-category="ABSOLUTO">Absoluto</button>
+    <button class="filter-btn" data-category="JUNIOR">Junior</button>
+    <button class="filter-btn" data-category="KIDS">Kids</button>
+    <button class="filter-btn" data-category="INTERNACIONAL">Internacional</button>
+    <button class="filter-btn" data-category="ESPECIAL">Especial</button>
+  </div>
+
+  <!-- Grid de eventos -->
+  <div id="eventsGrid"></div>
+</main>
+
+<div id="eventModal" class="modal">
+  <div class="modal-content">
+    <h3>Detalles del Evento</h3>
+    <p id="modalTitle"></p>
+    <p id="modalDates"></p>
+    <p id="modalLocation"></p>
+    <p id="modalCategory"></p>
+    <button onclick="closeModal()">Cerrar</button>
+  </div>
+</div>
+
+<footer class="footer">© 2026 Surf Islas Canarias - Hyper Pro Ultra Premium</footer>
+
+<script>
+// Datos de eventos con múltiples imágenes
+const eventsCanarias = [
+  { title:"Punta Blanca Pro", start:"Febrero – Mayo 2026", location:"Guía de Isora, Tenerife", category:"ABSOLUTO", images:["assets/img/spot2.jpg","assets/img/spot2-2.jpg","assets/img/spot2-3.jpg"] },
+  { title:"El Socorro Classic", start:"Septiembre – Octubre 2026", location:"Los Realejos, Tenerife", category:"JUNIOR", images:["assets/img/spot6.jpg","assets/img/spot6-2.jpg"] },
+  { title:"Junior Series & Kids", start:"Octubre 2026", location:"Almáciga, Tenerife", category:"JUNIOR", images:["assets/img/spot5.jpg","assets/img/spot5-2.jpg"] },
+  { title:"Gran Canaria LPA Surf City", start:"Noviembre 2026", location:"Las Palmas de Gran Canaria", category:"ABSOLUTO", images:["assets/img/spot3.jpg","assets/img/spot3-2.jpg"] },
+  { title:"Las Américas Pro – ET", start:"Noviembre – Diciembre 2026", location:"Arona, Tenerife", category:"INTERNACIONAL", images:["assets/img/spot4.jpg","assets/img/spot4-2.jpg"] },
+  
+  {title:"Américas Pro - Euro Kids",start:"Diciembre 2026", location:"Arona, Tenerife", category:"KIDS",
+    images:["assets/img/spot4.jpg","assets/img/spot4-2.jpg"] 
+  },
+   { 
+    title:"El Quemao Class", start:"Sin confirmar 2026", location:"El Quemao, Lanzarote", category:"INTERNACIONAL", 
+    images:["assets/img/spot2.jpg","assets/img/spot2-2.jpg","assets/img/spot2-3.jpg"] 
+  },
+    { 
+    title:"Punta Blanca Young Series", start:"Sin confirmar 2026", location:"Guía de Isora, Tenerife", category:"ABSOLUTO", 
+    images:["assets/img/spot2.jpg","assets/img/spot2-2.jpg","assets/img/spot2-3.jpg"] 
+  },
+    {  title:"Circuito Canario de Surf", start:"Sin confirmar 2026", location:"Canarias", category:"ESPECIAL", 
+    images:["assets/img/spot2.jpg","assets/img/spot2-2.jpg","assets/img/spot2-3.jpg"] 
+  },
+
+];
+
+// Carrusel destacado
+const featuredCarousel = document.getElementById("featuredCarousel");
+eventsCanarias.forEach((ev,i)=>{
+  const img = document.createElement("img");
+  img.src = ev.images[0];
+  img.alt = ev.title;
+  if(i===0) img.classList.add("active");
+  featuredCarousel.appendChild(img);
+});
+let currentFeatured = 0;
+const featuredImgs = featuredCarousel.querySelectorAll("img");
+function showFeatured(n){
+  featuredImgs.forEach(img=>img.classList.remove("active"));
+  currentFeatured = (n+featuredImgs.length)%featuredImgs.length;
+  featuredImgs[currentFeatured].classList.add("active");
+}
+setInterval(()=>showFeatured(currentFeatured+1),4000);
+document.getElementById("prev").onclick = ()=>showFeatured(currentFeatured-1);
+document.getElementById("next").onclick = ()=>showFeatured(currentFeatured+1);
+
+// Renderizar eventos
+const eventsGrid = document.getElementById("eventsGrid");
+const searchInput = document.getElementById("searchInput");
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+function renderEvents(filter="ALL"){
+  const searchTerm = searchInput.value.toLowerCase();
+  eventsGrid.innerHTML = "";
+  const filtered = eventsCanarias.filter(ev=>{
+    return (filter==="ALL" || ev.category===filter) && ev.title.toLowerCase().includes(searchTerm);
+  });
+
+  filtered.forEach((ev, idx)=>{
+    const div = document.createElement("div");
+    div.className = `event-card event-${ev.category}`;
+
+    let slidesHTML = ev.images.map((img,i)=>`<img src="${img}" class="slide ${i===0?'active':''}" alt="${ev.title} imagen ${i+1}">`).join("");
+    
+    div.innerHTML = `
+      <div class="slider">${slidesHTML}</div>
+      <div class="event-content">
+        <span class="highlight">${ev.category}</span>
+        <h3>${ev.title}</h3>
+        <p class="date">${ev.start}</p>
+        <p>${ev.location}</p>
+      </div>
+    `;
+    div.onclick = ()=>showModal(ev);
+    eventsGrid.appendChild(div);
+
+    // Auto-slide interno
+    let current = 0;
+    const slides = div.querySelectorAll(".slide");
+    setInterval(()=> {
+      slides[current].classList.remove("active");
+      current = (current+1) % slides.length;
+      slides[current].classList.add("active");
+    },3000);
+  });
+}
+
+// Modal
+function showModal(ev){
+  document.getElementById("modalTitle").textContent = ev.title;
+  document.getElementById("modalDates").textContent = ev.start;
+  document.getElementById("modalLocation").textContent = ev.location;
+  document.getElementById("modalCategory").textContent = `Categoría: ${ev.category}`;
+  document.getElementById("eventModal").style.display="flex";
+}
+function closeModal(){ document.getElementById("eventModal").style.display="none"; }
+
+searchInput.addEventListener("input", ()=>renderEvents(getActiveFilter()));
+filterButtons.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    filterButtons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    renderEvents(btn.dataset.category);
+  });
+});
+
+function getActiveFilter(){
+  const active = document.querySelector(".filter-btn.active");
+  return active? active.dataset.category : "ALL";
+}
+
+renderEvents();
+</script>
+
+</body>
+</html>
