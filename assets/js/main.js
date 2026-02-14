@@ -1,4 +1,3 @@
-
 /* global FullCalendar */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -53,3 +52,9 @@ window.addEventListener('click', function(event) {
   const modal = document.getElementById('eventModal');
   if(modal && event.target === modal) modal.style.display = 'none';
 });
+
+
+
+
+
+console.log("Surf Islas Canarias cargado correctamente");
