@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tenerife — Surf Islas Canarias</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* =================================
+   SURFISLASCANARIAS - ESTILO MODERNO
+================================= */
+
+/* Colores base */
+:root {
+  --azul-oceano: #046994;
+  --arena: #F4E9D8;
+  --texto: #0f172a;
+  --accent: #FF6B35;
+  --fondo-oscuro: #0f172a;
+}
+
+/* Reset y box-sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  background: #fdfdfd;
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+/* =================================
+   HEADER Y NAVEGACIÓN
+================================= */
+header.header {
+  background: linear-gradient(180deg, rgba(4,105,148,0.9), rgba(4,105,148,0.6));
+  color: white;
+  text-align: center;
+  padding: 48px 16px;
+}
+
+header.header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+header.header p {
+  font-size: 1rem;
+  color: #f4f4f4;
+  margin-bottom: 20px;
+}
+
+nav.nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+nav.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav.nav a:hover {
+  background: rgb(255, 255, 255);
+  color: var(--accent);
+}
+
+/* Hero CTA */
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #ff844f;
+}
+
+.btn-outline {
+  border: 2px solid rgb(241, 240, 240);
+  color: rgb(247, 245, 245);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: rgb(238, 231, 231);
+}
+
+/* =================================
+   CONTENEDOR PRINCIPAL Y GRIDS
+================================= */
+.container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+}
+
+.card .carousel {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.card .carousel img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  position: absolute;
+  top:0; left:0;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.card .carousel img.active {
+  opacity: 1;
+}
+
+.card .carousel .prev,
+.card .carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.card .carousel .prev { left: 8px; }
+.card .carousel .next { right: 8px; }
+
+.card .carousel .dots {
+  text-align: center;
+  padding: 6px;
+  position: absolute;
+  bottom: 6px;
+  width: 100%;
+  z-index: 2;
+}
+
+.card .carousel .dot {
+  width: 8px;
+  height: 8px;
+  background: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+.card .carousel .dot.active {
+  background: var(--accent);
+}
+
+.pad {
+  padding: 14px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover .pad .btn-primary {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.pad h3 {
+  margin-bottom: 8px;
+}
+
+.pad p {
+  font-size: 0.95rem;
+  color: var(--texto);
+}
+
+/* =================================
+   FOOTER
+================================= */
+footer.footer {
+  background: var(--fondo-oscuro);
+  color: white;
+  padding: 28px 16px;
+  margin-top: 36px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer.footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+@media (max-width: 600px) {
+  header.header h1 { font-size: 1.6rem; }
+  .hero-cta { flex-direction: column; }
+  nav.nav { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Surf Islas Canarias</h1>
+  <p>La comunidad canaria de surf: spots, noticias y buen rollo. ¡Al agua, mi niño!</p>
+ <nav class="nav">
+  <a href="/index.html">Inicio</a>
+  <a href="/blog.html">Noticias</a>
+  <a href="/spots.html">Spots</a>
+  <a href="/campeonatos.html">Campeonatos</a>
+  <a href="/shop.html">Tienda</a>
+  <a href="/about.html">Sobre Surf Islas Canarias</a>
+  <a href="/contact.html">Contacto</a>
+</nav>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="spots.html">Explora spots</a>
+      <a class="btn btn-outline" href="https://instagram.com/surfislascanarias" target="_blank">Síguenos en Instagram</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Surf en Tenerife</h1>
+    <p>Explora los spots más destacados de Tenerife: playas volcánicas, reef breaks y el mejor clima todo el año.</p>
+  </div>
+</section>
+
+<!-- SPOTS -->
+<section class="container">
+  <h2>Spots destacados · Tenerife</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="carousel">
+        <img src="assets/img/playa-de-las-americas.jpg" class="active">
+        <img src="assets/img/playa-de-las-americas-2.jpg">
+        <img src="assets/img/playa-de-las-americas-3.jpg">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      <div class="pad">
+        <h3>Playa de las Américas</h3>
+        <p>Nivel: Todos. Zona accesible con varios picos y escuelas.</p>
+        <a class="btn btn-primary" href="#">Ver spot →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="carousel">
+        <img src="assets/img/el-medano.jpg" class="active">
+        <img src="assets/img/el-medano-2.jpg">
+        <img src="assets/img/el-medano-3.jpg">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      <div class="pad">
+        <h3>El Médano</h3>
+        <p>Nivel: Principiante‑Intermedio. Buen lugar para olas y viento, amplio espacio para entrenar.</p>
+        <a class="btn btn-primary" href="#">Ver spot →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="carousel">
+        <img src="assets/img/playa-del-socorro.jpg" class="active">
+        <img src="assets/img/playa-del-socorro-2.jpg">
+        <img src="assets/img/playa-del-socorro-3.jpg">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      <div class="pad">
+        <h3>Playa del Socorro</h3>
+        <p>Nivel: Intermedio‑Avanzado. Playa de arena negra, olas potentes y entorno salvaje.</p>
+        <a class="btn btn-primary" href="#">Ver spot →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="carousel">
+        <img src="assets/img/la-tejita.jpg" class="active">
+        <img src="assets/img/la-tejita-2.jpg">
+        <img src="assets/img/la-tejita-3.jpg">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+        <div class="dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      <div class="pad">
+        <h3>La Tejita</h3>
+        <p>Nivel: Principiante. Playa protegida ideal para iniciarse.</p>
+        <a class="btn btn-primary" href="#">Ver spot →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAPA -->
+<section class="map container">
+  <h2>Mapa de spots</h2>
+  <iframe src="https://www.google.com/maps/d/u/2/embed?mid=1jrqobLVFV5K3bx2uSnN87vfc2L2EWPE&ehbc=2E312F" loading="lazy" style="width:100%;height:450px;border-radius:10px;"></iframe>
+</section>
+
+<footer class="footer">
+  © 2025 Surf Islas Canarias
+</footer>
+
+<script>
+document.querySelectorAll('.carousel').forEach(carousel=>{
+  const slides=carousel.querySelectorAll('img');
+  const dots=carousel.querySelectorAll('.dot');
+  const prev=carousel.querySelector('.prev');
+  const next=carousel.querySelector('.next');
+  let current=0;
+
+  function showSlide(index){
+    slides.forEach((img,i)=>{
+      img.classList.toggle('active',i===index);
+    });
+    dots.forEach((dot,i)=>{
+      dot.classList.toggle('active',i===index);
+    });
+    current=index;
+  }
+
+  prev.addEventListener('click',()=>showSlide((current-1+slides.length)%slides.length));
+  next.addEventListener('click',()=>showSlide((current+1)%slides.length));
+  dots.forEach((dot,i)=>dot.addEventListener('click',()=>showSlide(i)));
+
+  setInterval(()=>showSlide((current+1)%slides.length),4000);
+});
+</script>
+
+</body>
+</html>
