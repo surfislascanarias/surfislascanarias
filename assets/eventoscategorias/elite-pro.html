@@ -5,20 +5,111 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Elite / Pro Surf | Surf Islas Canarias</title>
+<title>Elite / Pro Surf - Surf Islas Canarias</title>
 
-<meta name="description" content="Calendario profesional Elite / Pro Surf en Canarias.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/calendario.css">
+<link rel="stylesheet" href="styleeventos.css">
+
+<style>
+
+.calendar-container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+.calendar-header{
+text-align:center;
+margin-bottom:30px;
+}
+
+.calendar-header h1{
+font-size:32px;
+}
+
+.month-selector{
+text-align:center;
+margin-bottom:30px;
+}
+
+.month-selector select{
+padding:10px;
+font-size:16px;
+border-radius:6px;
+}
+
+.event-list{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.event{
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+display:flex;
+justify-content:space-between;
+align-items:center;
+transition:0.3s;
+}
+
+.event:hover{
+transform:scale(1.02);
+}
+
+.event-date{
+font-weight:700;
+color:#0077ff;
+font-size:18px;
+}
+
+.event-info{
+flex:1;
+margin-left:20px;
+}
+
+.event-name{
+font-weight:600;
+font-size:18px;
+}
+
+.event-location{
+color:#666;
+}
+
+.event-status{
+padding:6px 12px;
+border-radius:6px;
+font-size:14px;
+}
+
+.status-confirmed{
+background:#28a745;
+color:white;
+}
+
+.status-waiting{
+background:#ffc107;
+color:black;
+}
+
+.status-finished{
+background:#6c757d;
+color:white;
+}
+
+</style>
 
 </head>
-
 <body>
 
 <header class="header">
 
 <h1>Surf Islas Canarias</h1>
+<p>Calendario Elite / Pro Surf</p>
 
 <nav class="nav">
 
@@ -29,28 +120,119 @@
 
 </header>
 
-
 <main class="calendar-container">
 
-<div class="calendar-top">
-
+<div class="calendar-header">
 <h1>Elite / Pro Surf</h1>
+<p>Competiciones oficiales categoría profesional</p>
+</div>
 
-<select id="yearFilter">
+<div class="month-selector">
 
-<option value="2026">2026</option>
+<select id="monthFilter">
+
+<option value="all">Todos los meses</option>
+
+<option value="enero">Enero</option>
+<option value="febrero">Febrero</option>
+<option value="marzo">Marzo</option>
+<option value="abril">Abril</option>
+<option value="mayo">Mayo</option>
+<option value="junio">Junio</option>
+<option value="julio">Julio</option>
+<option value="agosto">Agosto</option>
+<option value="septiembre">Septiembre</option>
+<option value="octubre">Octubre</option>
+<option value="noviembre">Noviembre</option>
+<option value="diciembre">Diciembre</option>
 
 </select>
 
 </div>
 
+<div class="event-list" id="eventList">
 
-<div id="calendar"></div>
+<!-- EVENTO -->
+<div class="event" data-month="marzo">
 
-<div id="eventList"></div>
+<div class="event-date">
+15 MAR 2026
+</div>
+
+<div class="event-info">
+
+<div class="event-name">
+Canarias Pro Surf Championship
+</div>
+
+<div class="event-location">
+El Confital, Gran Canaria
+</div>
+
+</div>
+
+<div class="event-status status-confirmed">
+Confirmado
+</div>
+
+</div>
+
+
+<!-- EVENTO -->
+<div class="event" data-month="junio">
+
+<div class="event-date">
+10 JUN 2026
+</div>
+
+<div class="event-info">
+
+<div class="event-name">
+Open Pro Surf España
+</div>
+
+<div class="event-location">
+Mundaka, País Vasco
+</div>
+
+</div>
+
+<div class="event-status status-waiting">
+En espera
+</div>
+
+</div>
+
+
+<!-- EVENTO -->
+<div class="event" data-month="septiembre">
+
+<div class="event-date">
+5 SEP 2026
+</div>
+
+<div class="event-info">
+
+<div class="event-name">
+Liga Iberdrola Elite Pro
+</div>
+
+<div class="event-location">
+Lanzarote, Canarias
+</div>
+
+</div>
+
+<div class="event-status status-confirmed">
+Confirmado
+</div>
+
+</div>
+
+
+</div>
 
 </main>
-
 
 <footer class="footer">
 
@@ -58,8 +240,40 @@
 
 </footer>
 
+<script>
 
-<script src="assets/js/calendario.js"></script>
+const filter = document.getElementById("monthFilter");
+const events = document.querySelectorAll(".event");
+
+filter.addEventListener("change", () => {
+
+const value = filter.value;
+
+events.forEach(event => {
+
+if(value === "all"){
+
+event.style.display = "flex";
+
+}else{
+
+if(event.dataset.month === value){
+
+event.style.display = "flex";
+
+}else{
+
+event.style.display = "none";
+
+}
+
+}
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
