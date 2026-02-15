@@ -3,193 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eventos y Campeonatos | Surf Islas Canarias</title>
+<title>Calendario Elite / Pro - Surf Islas Canarias</title>
+<meta name="description" content="Calendario completo de competiciones Elite / Pro Surf en Canarias, con campeonatos actuales y anteriores.">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-/* Reset básico */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f8fafc;
-  color: #0f172a;
-}
-
-/* Header y Footer */
-.header, .footer {
-  background: #046994;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-.nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: 600;
-}
-
-/* Contenedor principal */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* ============================
-   CATEGORÍAS DE EVENTOS
-============================ */
-.grid-categorias {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  margin-bottom: 50px;
-}
-
-.categoria-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  padding: 24px 16px;
-  text-align: center;
-  text-decoration: none;
-  color: #0f172a;
-  transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.categoria-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.2);
-}
-
-.categoria-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-}
-
-.categoria-card h2 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.categoria-card p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 12px;
-}
-
-.categoria-btn {
-  background: #FF6B35;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* ============================
-   CALENDARIO ELITE / PRO
-============================ */
-.calendar-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.calendar-header h1 {
-  font-size: 28px;
-  margin-bottom: 6px;
-}
-
-.calendar-header p {
-  color: #555;
-}
-
-.month-selector {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.month-selector select {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.event-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.event {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.3s;
-}
-
-.event:hover {
-  transform: scale(1.02);
-}
-
-.event-date {
-  font-weight: 700;
-  color: #0077ff;
-  font-size: 18px;
-}
-
-.event-info {
-  flex: 1;
-  margin-left: 20px;
-}
-
-.event-name {
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.event-location {
-  color: #666;
-}
-
-.event-status {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.status-confirmed { background:#28a745; color:white; }
-.status-waiting   { background:#ffc107; color:black; }
-.status-finished  { background:#6c757d; color:white; }
-
-/* Responsive */
-@media (max-width:600px){
-  .grid-categorias {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/styleeventos.css">
 </head>
 <body>
 
 <header class="header">
 <h1>Surf Islas Canarias</h1>
-<p>Eventos y competiciones del surf canario</p>
+<p>Calendario Elite / Pro</p>
 <nav class="nav">
 <a href="index.html">Inicio</a>
 <a href="blog.html">Noticias</a>
@@ -203,132 +28,96 @@ body {
 
 <main class="container">
 
-<!-- HERO DE CATEGORÍAS -->
-<section class="hero-eventos">
-<h1>Categorías de Eventos</h1>
-<p>Explora todos los campeonatos y eventos de surf en Canarias organizados por categoría.</p>
-</section>
-
-<!-- GRID DE CATEGORÍAS -->
-<section class="grid-categorias">
-<a href="assets/eventoscategorias/elite-pro.html" class="categoria-card elite">
-<div class="categoria-icon">🏆</div>
-<h2>Elite / Pro Surf</h2>
-<p>Eventos profesionales y competiciones internacionales.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="campeonatos-espana.html" class="categoria-card espana">
-<div class="categoria-icon">🇪🇸</div>
-<h2>Campeonatos España</h2>
-<p>Circuitos oficiales nacionales y federados.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="junior.html" class="categoria-card junior">
-<div class="categoria-icon">🧑‍🎓</div>
-<h2>Junior</h2>
-<p>Competiciones sub-18 y jóvenes promesas.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="kids.html" class="categoria-card kids">
-<div class="categoria-icon">🧒</div>
-<h2>Kids</h2>
-<p>Eventos infantiles y nuevas generaciones.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="bodyboard.html" class="categoria-card bodyboard">
-<div class="categoria-icon">🌊</div>
-<h2>Bodyboard</h2>
-<p>Eventos regionales e internacionales.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="longboard.html" class="categoria-card longboard">
-<div class="categoria-icon">🏄</div>
-<h2>Longboard</h2>
-<p>Festivales y competiciones longboard.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="sup.html" class="categoria-card sup">
-<div class="categoria-icon">🚣</div>
-<h2>SUP</h2>
-<p>Eventos y carreras Stand Up Paddle.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="eventos-especiales.html" class="categoria-card especiales">
-<div class="categoria-icon">🎉</div>
-<h2>Eventos Especiales</h2>
-<p>Festivales y competiciones únicas.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-
-<a href="espera.html" class="categoria-card espera">
-<div class="categoria-icon">⏳</div>
-<h2>Eventos en Espera</h2>
-<p>Waiting period y fechas por confirmar.</p>
-<span class="categoria-btn">Entrar</span>
-</a>
-</section>
-
 <!-- CALENDARIO ELITE / PRO -->
-<div class="calendar-header">
-<h1>Calendario Elite / Pro</h1>
-<p>Competiciones oficiales categoría profesional</p>
-</div>
+<section class="calendar-section">
+  <div class="calendar-header">
+    <h1>Calendario Elite / Pro</h1>
+    <p>Competiciones oficiales categoría profesional</p>
+  </div>
 
-<div class="month-selector">
-<select id="monthFilter">
-<option value="all">Todos los meses</option>
-<option value="enero">Enero</option>
-<option value="febrero">Febrero</option>
-<option value="marzo">Marzo</option>
-<option value="abril">Abril</option>
-<option value="mayo">Mayo</option>
-<option value="junio">Junio</option>
-<option value="julio">Julio</option>
-<option value="agosto">Agosto</option>
-<option value="septiembre">Septiembre</option>
-<option value="octubre">Octubre</option>
-<option value="noviembre">Noviembre</option>
-<option value="diciembre">Diciembre</option>
-</select>
-</div>
+  <!-- Selector de mes -->
+  <div class="month-selector">
+    <select id="monthFilter">
+      <option value="all">Todos los meses</option>
+      <option value="enero">Enero</option>
+      <option value="febrero">Febrero</option>
+      <option value="marzo">Marzo</option>
+      <option value="abril">Abril</option>
+      <option value="mayo">Mayo</option>
+      <option value="junio">Junio</option>
+      <option value="julio">Julio</option>
+      <option value="agosto">Agosto</option>
+      <option value="septiembre">Septiembre</option>
+      <option value="octubre">Octubre</option>
+      <option value="noviembre">Noviembre</option>
+      <option value="diciembre">Diciembre</option>
+    </select>
+  </div>
 
-<div class="event-list" id="eventList">
+  <!-- Lista de eventos -->
+  <div class="event-list" id="eventList">
 
-<div class="event" data-month="marzo">
-<div class="event-date">15 MAR 2026</div>
-<div class="event-info">
-<div class="event-name">Canarias Pro Surf Championship</div>
-<div class="event-location">El Confital, Gran Canaria</div>
-</div>
-<div class="event-status status-confirmed">Confirmado</div>
-</div>
+    <div class="event" data-month="marzo">
+      <div class="event-date">15 MAR 2026</div>
+      <div class="event-info">
+        <div class="event-name">Canarias Pro Surf Championship</div>
+        <div class="event-location">El Confital, Gran Canaria</div>
+      </div>
+      <div class="event-status status-confirmed">Confirmado</div>
+    </div>
 
-<div class="event" data-month="junio">
-<div class="event-date">10 JUN 2026</div>
-<div class="event-info">
-<div class="event-name">Open Pro Surf España</div>
-<div class="event-location">Mundaka, País Vasco</div>
-</div>
-<div class="event-status status-waiting">En espera</div>
-</div>
+    <div class="event" data-month="junio">
+      <div class="event-date">10 JUN 2026</div>
+      <div class="event-info">
+        <div class="event-name">Open Pro Surf España</div>
+        <div class="event-location">Mundaka, País Vasco</div>
+      </div>
+      <div class="event-status status-waiting">En espera</div>
+    </div>
 
-<div class="event" data-month="septiembre">
-<div class="event-date">5 SEP 2026</div>
-<div class="event-info">
-<div class="event-name">Liga Iberdrola Elite Pro</div>
-<div class="event-location">Lanzarote, Canarias</div>
-</div>
-<div class="event-status status-confirmed">Confirmado</div>
-</div>
+    <div class="event" data-month="septiembre">
+      <div class="event-date">5 SEP 2026</div>
+      <div class="event-info">
+        <div class="event-name">Liga Iberdrola Elite Pro</div>
+        <div class="event-location">Lanzarote, Canarias</div>
+      </div>
+      <div class="event-status status-confirmed">Confirmado</div>
+    </div>
 
-</div>
+    <!-- Puedes añadir aquí todos los demás eventos actuales -->
+  </div>
+</section>
+
+<!-- CAMPEONATOS ANTERIORES -->
+<section class="previous-championships">
+  <div class="calendar-header">
+    <h1>Campeonatos Anteriores</h1>
+    <p>Accede a los calendarios y resultados de años anteriores</p>
+  </div>
+
+  <div class="grid-categorias">
+    <a href="pdfs/calendario-2025.pdf" class="categoria-card previous">
+      <div class="categoria-icon">📄</div>
+      <h2>2025</h2>
+      <p>Descarga el calendario y resultados del año 2025.</p>
+      <span class="categoria-btn">Ver PDF</span>
+    </a>
+
+    <a href="pdfs/calendario-2024.pdf" class="categoria-card previous">
+      <div class="categoria-icon">📄</div>
+      <h2>2024</h2>
+      <p>Descarga el calendario y resultados del año 2024.</p>
+      <span class="categoria-btn">Ver PDF</span>
+    </a>
+
+    <a href="pdfs/calendario-2023.pdf" class="categoria-card previous">
+      <div class="categoria-icon">📄</div>
+      <h2>2023</h2>
+      <p>Descarga el calendario y resultados del año 2023.</p>
+      <span class="categoria-btn">Ver PDF</span>
+    </a>
+  </div>
+</section>
 
 </main>
 
