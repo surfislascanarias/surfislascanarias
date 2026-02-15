@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite / Pro Surf - Surf Islas Canarias</title>
+<title>Eventos y Campeonatos | Surf Islas Canarias</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -20,6 +20,7 @@ body {
   color: #0f172a;
 }
 
+/* Header y Footer */
 .header, .footer {
   background: #046994;
   color: white;
@@ -34,19 +35,82 @@ body {
   font-weight: 600;
 }
 
+/* Contenedor principal */
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
   padding: 40px 20px;
 }
 
+/* ============================
+   CATEGORÍAS DE EVENTOS
+============================ */
+.grid-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.categoria-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 24px 16px;
+  text-align: center;
+  text-decoration: none;
+  color: #0f172a;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.categoria-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+}
+
+.categoria-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.categoria-card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.categoria-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.categoria-btn {
+  background: #FF6B35;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ============================
+   CALENDARIO ELITE / PRO
+============================ */
 .calendar-header {
   text-align: center;
   margin-bottom: 30px;
 }
 
 .calendar-header h1 {
-  font-size: 32px;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.calendar-header p {
+  color: #555;
 }
 
 .month-selector {
@@ -109,37 +173,111 @@ body {
   font-weight: 600;
 }
 
-.status-confirmed {
-  background: #28a745;
-  color: white;
-}
+.status-confirmed { background:#28a745; color:white; }
+.status-waiting   { background:#ffc107; color:black; }
+.status-finished  { background:#6c757d; color:white; }
 
-.status-waiting {
-  background: #ffc107;
-  color: black;
-}
-
-.status-finished {
-  background: #6c757d;
-  color: white;
+/* Responsive */
+@media (max-width:600px){
+  .grid-categorias {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
-
 </head>
 <body>
 
 <header class="header">
 <h1>Surf Islas Canarias</h1>
-<p>Calendario Elite / Pro Surf</p>
+<p>Eventos y competiciones del surf canario</p>
 <nav class="nav">
 <a href="index.html">Inicio</a>
-<a href="eventos.html">Eventos</a>
+<a href="blog.html">Noticias</a>
+<a href="spots.html">Islas</a>
+<a href="eventos.html">Eventos & Calendario</a>
+<a href="modalidades.html">Modalidades</a>
+<a href="about.html">Sobre Surf Islas Canarias</a>
+<a href="contact.html">Contacto</a>
 </nav>
 </header>
 
 <main class="container">
+
+<!-- HERO DE CATEGORÍAS -->
+<section class="hero-eventos">
+<h1>Categorías de Eventos</h1>
+<p>Explora todos los campeonatos y eventos de surf en Canarias organizados por categoría.</p>
+</section>
+
+<!-- GRID DE CATEGORÍAS -->
+<section class="grid-categorias">
+<a href="assets/eventoscategorias/elite-pro.html" class="categoria-card elite">
+<div class="categoria-icon">🏆</div>
+<h2>Elite / Pro Surf</h2>
+<p>Eventos profesionales y competiciones internacionales.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="campeonatos-espana.html" class="categoria-card espana">
+<div class="categoria-icon">🇪🇸</div>
+<h2>Campeonatos España</h2>
+<p>Circuitos oficiales nacionales y federados.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="junior.html" class="categoria-card junior">
+<div class="categoria-icon">🧑‍🎓</div>
+<h2>Junior</h2>
+<p>Competiciones sub-18 y jóvenes promesas.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="kids.html" class="categoria-card kids">
+<div class="categoria-icon">🧒</div>
+<h2>Kids</h2>
+<p>Eventos infantiles y nuevas generaciones.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="bodyboard.html" class="categoria-card bodyboard">
+<div class="categoria-icon">🌊</div>
+<h2>Bodyboard</h2>
+<p>Eventos regionales e internacionales.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="longboard.html" class="categoria-card longboard">
+<div class="categoria-icon">🏄</div>
+<h2>Longboard</h2>
+<p>Festivales y competiciones longboard.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="sup.html" class="categoria-card sup">
+<div class="categoria-icon">🚣</div>
+<h2>SUP</h2>
+<p>Eventos y carreras Stand Up Paddle.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="eventos-especiales.html" class="categoria-card especiales">
+<div class="categoria-icon">🎉</div>
+<h2>Eventos Especiales</h2>
+<p>Festivales y competiciones únicas.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+
+<a href="espera.html" class="categoria-card espera">
+<div class="categoria-icon">⏳</div>
+<h2>Eventos en Espera</h2>
+<p>Waiting period y fechas por confirmar.</p>
+<span class="categoria-btn">Entrar</span>
+</a>
+</section>
+
+<!-- CALENDARIO ELITE / PRO -->
 <div class="calendar-header">
-<h1>Elite / Pro Surf</h1>
+<h1>Calendario Elite / Pro</h1>
 <p>Competiciones oficiales categoría profesional</p>
 </div>
 
@@ -191,6 +329,7 @@ body {
 </div>
 
 </div>
+
 </main>
 
 <footer class="footer">
