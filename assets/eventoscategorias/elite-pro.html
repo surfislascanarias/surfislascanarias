@@ -1,138 +1,151 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Elite / Pro Surf - Surf Islas Canarias</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styleeventos.css">
-
 <style>
-
-.calendar-container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.calendar-header{
-text-align:center;
-margin-bottom:30px;
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
 }
 
-.calendar-header h1{
-font-size:32px;
+.header, .footer {
+  background: #046994;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
-.month-selector{
-text-align:center;
-margin-bottom:30px;
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
 }
 
-.month-selector select{
-padding:10px;
-font-size:16px;
-border-radius:6px;
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
 }
 
-.event-list{
-display:flex;
-flex-direction:column;
-gap:15px;
+.calendar-header {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.event{
-background:#fff;
-padding:20px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:0.3s;
+.calendar-header h1 {
+  font-size: 32px;
 }
 
-.event:hover{
-transform:scale(1.02);
+.month-selector {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.event-date{
-font-weight:700;
-color:#0077ff;
-font-size:18px;
+.month-selector select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-.event-info{
-flex:1;
-margin-left:20px;
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.event-name{
-font-weight:600;
-font-size:18px;
+.event {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
 }
 
-.event-location{
-color:#666;
+.event:hover {
+  transform: scale(1.02);
 }
 
-.event-status{
-padding:6px 12px;
-border-radius:6px;
-font-size:14px;
+.event-date {
+  font-weight: 700;
+  color: #0077ff;
+  font-size: 18px;
 }
 
-.status-confirmed{
-background:#28a745;
-color:white;
+.event-info {
+  flex: 1;
+  margin-left: 20px;
 }
 
-.status-waiting{
-background:#ffc107;
-color:black;
+.event-name {
+  font-weight: 600;
+  font-size: 18px;
 }
 
-.status-finished{
-background:#6c757d;
-color:white;
+.event-location {
+  color: #666;
 }
 
+.event-status {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status-confirmed {
+  background: #28a745;
+  color: white;
+}
+
+.status-waiting {
+  background: #ffc107;
+  color: black;
+}
+
+.status-finished {
+  background: #6c757d;
+  color: white;
+}
 </style>
 
 </head>
 <body>
 
 <header class="header">
-
 <h1>Surf Islas Canarias</h1>
 <p>Calendario Elite / Pro Surf</p>
-
 <nav class="nav">
-
 <a href="index.html">Inicio</a>
 <a href="eventos.html">Eventos</a>
-
 </nav>
-
 </header>
 
-<main class="calendar-container">
-
+<main class="container">
 <div class="calendar-header">
 <h1>Elite / Pro Surf</h1>
 <p>Competiciones oficiales categoría profesional</p>
 </div>
 
 <div class="month-selector">
-
 <select id="monthFilter">
-
 <option value="all">Todos los meses</option>
-
 <option value="enero">Enero</option>
 <option value="febrero">Febrero</option>
 <option value="marzo">Marzo</option>
@@ -145,134 +158,59 @@ color:white;
 <option value="octubre">Octubre</option>
 <option value="noviembre">Noviembre</option>
 <option value="diciembre">Diciembre</option>
-
 </select>
-
 </div>
 
 <div class="event-list" id="eventList">
 
-<!-- EVENTO -->
 <div class="event" data-month="marzo">
-
-<div class="event-date">
-15 MAR 2026
-</div>
-
+<div class="event-date">15 MAR 2026</div>
 <div class="event-info">
-
-<div class="event-name">
-Canarias Pro Surf Championship
+<div class="event-name">Canarias Pro Surf Championship</div>
+<div class="event-location">El Confital, Gran Canaria</div>
+</div>
+<div class="event-status status-confirmed">Confirmado</div>
 </div>
 
-<div class="event-location">
-El Confital, Gran Canaria
-</div>
-
-</div>
-
-<div class="event-status status-confirmed">
-Confirmado
-</div>
-
-</div>
-
-
-<!-- EVENTO -->
 <div class="event" data-month="junio">
-
-<div class="event-date">
-10 JUN 2026
-</div>
-
+<div class="event-date">10 JUN 2026</div>
 <div class="event-info">
-
-<div class="event-name">
-Open Pro Surf España
+<div class="event-name">Open Pro Surf España</div>
+<div class="event-location">Mundaka, País Vasco</div>
+</div>
+<div class="event-status status-waiting">En espera</div>
 </div>
 
-<div class="event-location">
-Mundaka, País Vasco
-</div>
-
-</div>
-
-<div class="event-status status-waiting">
-En espera
-</div>
-
-</div>
-
-
-<!-- EVENTO -->
 <div class="event" data-month="septiembre">
-
-<div class="event-date">
-5 SEP 2026
-</div>
-
+<div class="event-date">5 SEP 2026</div>
 <div class="event-info">
-
-<div class="event-name">
-Liga Iberdrola Elite Pro
+<div class="event-name">Liga Iberdrola Elite Pro</div>
+<div class="event-location">Lanzarote, Canarias</div>
 </div>
-
-<div class="event-location">
-Lanzarote, Canarias
+<div class="event-status status-confirmed">Confirmado</div>
 </div>
 
 </div>
-
-<div class="event-status status-confirmed">
-Confirmado
-</div>
-
-</div>
-
-
-</div>
-
 </main>
 
 <footer class="footer">
-
 © 2026 Surf Islas Canarias
-
 </footer>
 
 <script>
-
 const filter = document.getElementById("monthFilter");
 const events = document.querySelectorAll(".event");
 
 filter.addEventListener("change", () => {
-
-const value = filter.value;
-
-events.forEach(event => {
-
-if(value === "all"){
-
-event.style.display = "flex";
-
-}else{
-
-if(event.dataset.month === value){
-
-event.style.display = "flex";
-
-}else{
-
-event.style.display = "none";
-
-}
-
-}
-
+  const value = filter.value;
+  events.forEach(event => {
+    if (value === "all" || event.dataset.month === value) {
+      event.style.display = "flex";
+    } else {
+      event.style.display = "none";
+    }
+  });
 });
-
-});
-
 </script>
 
 </body>
