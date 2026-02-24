@@ -665,3 +665,117 @@ margin-top:40px;
 
 }
 
+
+
+/* =================================
+   ADAPTADOR SOLO MOVIL (NO afecta PC)
+================================= */
+
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .header {
+    padding: 28px 12px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  /* NAV */
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav a {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  /* HERO */
+  .home-hero {
+    margin: 24px auto;
+    padding: 0 12px;
+  }
+
+  .home-hero h2 {
+    font-size: 1.4rem;
+  }
+
+  .home-hero p {
+    font-size: 0.95rem;
+  }
+
+  /* GRID HOME */
+  .home-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  .home-card {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .home-card h3 {
+    font-size: 1.2rem;
+  }
+
+  /* CONTAINER */
+  .container {
+    padding: 0 12px;
+    margin: 20px auto;
+  }
+
+  /* GRID GENERAL */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* CARD */
+  .card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .card h2,
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+  }
+
+  /* IFRAME (Windy mapas) */
+  iframe {
+    width: 100% !important;
+    height: 220px !important;
+    border-radius: 12px;
+  }
+
+  /* CALENDAR */
+  #calendar {
+    padding: 8px;
+    min-height: 400px;
+  }
+
+  /* FOOTER */
+  .footer {
+    font-size: 0.8rem;
+    padding: 20px 12px;
+  }
+
+}
+
