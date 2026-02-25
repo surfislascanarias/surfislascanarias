@@ -1,40 +1,312 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Eventos - Surf Islas Canarias</title>
+  <title>Eventos - Surf Islas Canarias</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
 
-
 <body>
 
-<header class="header">
-  <h1>Surf Islas Canarias</h1>
-  <p>La comunidad del surf canario, desde dentro</p>
-  <!-- BOTON HAMBURGUESA -->
-  <div class="menu-toggle" id="menuToggle">
-    ☰
-  </div>
-  <nav class="nav">
-      <a href="index.html">Inicio</a>
-      <a href="blog.html">Noticias</a>
-      <a href="spots.html">Islas</a>
-      <a href="eventos.html">Campeonatos</a>
-      <a href="modalidades.html">Modalidades</a>
-      <a href="about.html">Sobre Surf Islas Canarias</a>
-      <a href="contact.html">Contacto</a>
-    </nav>
-</header>
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="header-container">
+
+      <!-- LOGO -->
+      <div class="logo">
+        <h1>Surf Islas Canarias</h1>
+        <p>La comunidad del surf canario, desde dentro</p>
+      </div>
+
+
+      <!-- BOTÓN MENÚ MÓVIL -->
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Abrir menú">
+        ☰
+      </button>
+
+
+      <!-- NAVEGACIÓN -->
+      <nav
+        class="nav"
+        id="navMenu">
+
+        <a href="/">Inicio</a>
+
+        <a href="/blog.html">Noticias</a>
+
+        <a href="/islas.html">Islas</a>
+
+        <a href="/campeonatos.html">Campeonatos</a>
+
+        <a href="/modalidades.html">Modalidades</a>
+
+        <a href="/about.html">Sobre nosotros</a>
+
+        <a href="/contact.html">Contacto</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- MAIN -->
+  <main>
+
+
+
+    <!-- HERO -->
+    <section class="home-hero">
+
+      <h2>
+        Surf Islas Canarias, contado desde dentro
+      </h2>
+
+      <p>
+        Spots, modalidades, cultura surf y actualidad del océano en las Islas Canarias.
+        Una comunidad hecha por y para surfers.
+      </p>
+
+    </section>
+
+
+
+    <!-- GRID PRINCIPAL -->
+    <section class="home-sections">
+
+      <div class="home-grid">
+
+
+        <!-- SPOTS -->
+        <article class="home-card spots">
+
+          <a href="/islas.html">
+
+            <h3>Spots por Islas</h3>
+
+            <p>
+              Guías locales de surf en todas las islas.
+            </p>
+
+            <span>Explorar →</span>
+
+          </a>
+
+        </article>
+
+
+
+        <!-- MODALIDADES -->
+        <article class="home-card modalidades">
+
+          <a href="/modalidades.html">
+
+            <h3>Modalidades</h3>
+
+            <p>
+              Surf, bodyboard, longboard, SUP y más.
+            </p>
+
+            <span>Descubrir →</span>
+
+          </a>
+
+        </article>
+
+
+
+        <!-- NOTICIAS -->
+        <article class="home-card noticias">
+
+          <a href="/blog.html">
+
+            <h3>Noticias & Cultura</h3>
+
+            <p>
+              Actualidad, riders y cultura surf canaria.
+            </p>
+
+            <span>Leer →</span>
+
+          </a>
+
+        </article>
+
+
+
+        <!-- EVENTOS -->
+        <article class="home-card eventos">
+
+          <a href="/campeonatos.html">
+
+            <h3>Eventos & Campeonatos</h3>
+
+            <p>
+              Competiciones oficiales y eventos locales.
+            </p>
+
+            <span>Ver eventos →</span>
+
+          </a>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- PREVISIÓN -->
+    <section class="home-forecast container">
+
+      <h2>Previsión de olas</h2>
+
+
+      <div class="grid">
+
+
+        <!-- EL CONFITAL -->
+        <div class="card reveal">
+
+          <iframe
+            src="https://embed.windy.com/embed2.html?lat=28.1442&lon=-15.4395&zoom=10&level=surface&overlay=waves"
+            loading="lazy"
+            title="Previsión El Confital"
+            style="width:100%; height:280px; border:none; border-radius:10px;">
+          </iframe>
+
+
+          <div class="pad">
+
+            <h3>El Confital</h3>
+
+            <p>
+              Olas potentes, nivel avanzado. Swell del norte y viento offshore.
+            </p>
+
+            <a href="/spots/confital.html" class="btn btn-primary">
+              Ver spot
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PLAYA DEL INGLES -->
+        <div class="card reveal">
+
+          <iframe
+            src="https://embed.windy.com/embed2.html?lat=27.7524&lon=-15.5835&zoom=10&level=surface&overlay=waves"
+            loading="lazy"
+            title="Previsión Playa del Inglés"
+            style="width:100%; height:280px; border:none; border-radius:10px;">
+          </iframe>
+
+
+          <div class="pad">
+
+            <h3>Playa del Inglés</h3>
+
+            <p>
+              Olas largas y suaves, nivel intermedio.
+              Ideal para maniobras.
+            </p>
+
+            <a href="/spots/playa-del-ingles.html" class="btn btn-primary">
+              Ver spot
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- MASPALOMAS -->
+        <div class="card reveal">
+
+          <iframe
+            src="https://embed.windy.com/embed2.html?lat=27.7447&lon=-15.5980&zoom=10&level=surface&overlay=waves"
+            loading="lazy"
+            title="Previsión Maspalomas"
+            style="width:100%; height:280px; border:none; border-radius:10px;">
+          </iframe>
+
+
+          <div class="pad">
+
+            <h3>Maspalomas</h3>
+
+            <p>
+              Olas suaves, perfecto para principiantes.
+            </p>
+
+            <a href="/spots/maspalomas.html" class="btn btn-primary">
+              Ver spot
+            </a>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </section>
+
+
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    © 2026 Surf Islas Canarias · Hecho desde el Atlántico 🌊
+
+  </footer>
+
+
+
+  <!-- SCRIPT MENÚ -->
+  <script>
+
+    const toggle = document.getElementById("menuToggle");
+    const nav = document.getElementById("navMenu");
+
+    toggle.addEventListener("click", function () {
+      nav.classList.toggle("active");
+    });
+
+  </script>
+
+
+
+</body>
+</html></header>
 
 <main>
 
