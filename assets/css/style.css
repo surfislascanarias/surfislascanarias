@@ -851,3 +851,52 @@ transform:translateY(0);
 }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menu-toggle {
+
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 30px;
+  height: 22px;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+}
+
+.menu-toggle span {
+
+  display: block;
+  height: 2px;
+  width: 100%;
+
+  background: white;
+
+  border-radius: 2px;
+
+}
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: flex;
+  }
+
+}
