@@ -65,74 +65,73 @@ nav.nav a {
   margin-bottom: 30px;
 }
 
-/* ================= MAPA ================= */
-.map-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  height: 520px;
-  margin: 0 auto;
-  background: transparent;
+/* ================= GRID ISLAS ================= */
+.islas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 30px;
 }
 
-/* ================= ISLAS ================= */
-.isla {
-  position: absolute;
-  transition: transform 0.25s ease, filter 0.25s ease;
-  transform-origin: center;
-}
-
-.isla img {
-  display: block;
-  max-width: 100%;
-}
-
-/* Hover tipo Google Maps */
-.isla:hover {
-  transform: scale(1.12);
-  z-index: 10;
-  filter: drop-shadow(0 6px 14px rgb(255, 204, 0));
-}
-
-/* ================= TAMAÑOS Y POSICIONES INDIVIDUALES ================= */
-/* Ajusta cada isla según su icono y proporción original */
-.lanzarote {
-  width: 100px; top: 80px; left: 680px;
-}
-.fuerteventura {
-  width: 130px; top: 160px; left: 600px;
-}
-.gran-canaria {
-  width: 140px; top: 240px; left: 500px;
-}
-.tenerife {
-  width: 160px; top: 200px; left: 380px;
-}
-.la-gomera {
-  width: 30px; top: 260px; left: 360px;
-}
-.la-palma {
-  width: 140px; top: 150px; left: 280px;
-}
-.el-hierro {
-  width: 60px; top: 290px; left: 280px;
-}
-
-/* ================= FOOTER ================= */
-footer.footer {
-  background: var(--fondo-oscuro);
-  color: white;
-  padding: 26px 16px;
-  margin-top: 60px;
+/* CARD */
+.isla-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  padding: 16px;
+}
+
+.isla-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+}
+
+.isla-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.isla-card h3 {
+  margin-bottom: 8px;
+}
+
+.isla-card p {
   font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: #475569;
+}
+
+.isla-card .btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.isla-card .btn:hover {
+  background: #ff844f;
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-  .map-wrapper {
-    transform: scale(0.8);
-    transform-origin: top center;
+@media (max-width: 1024px) {
+  .islas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .islas-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -157,28 +156,70 @@ footer.footer {
   <h2>Islas Canarias</h2>
   <p>Explora cada isla y descubre sus mejores spots de surf</p>
 
-  <div class="map-wrapper">
-    <a href="/assets/islas/lanzarote.html" class="isla lanzarote">
+  <div class="islas-grid">
+    <!-- Lanzarote -->
+    <div class="isla-card">
       <img src="/assets/img/lanzarotesin-removebg-preview.png" alt="Lanzarote">
-    </a>
-    <a href="/assets/islas/fuerteventura.html" class="isla fuerteventura">
+      <h3>Lanzarote</h3>
+      <p>Descubre los mejores spots de surf en Lanzarote.</p>
+      <a href="/assets/islas/lanzarote.html" class="btn">Ver isla</a>
+    </div>
+
+    <!-- Fuerteventura -->
+    <div class="isla-card">
       <img src="/assets/img/fuerteventurasinn-removebg-preview.png" alt="Fuerteventura">
-    </a>
-    <a href="/assets/islas/gran-canaria.html" class="isla gran-canaria">
+      <h3>Fuerteventura</h3>
+      <p>Olas y viento para surfistas de todos los niveles.</p>
+      <a href="/assets/islas/fuerteventura.html" class="btn">Ver isla</a>
+    </div>
+
+    <!-- Gran Canaria -->
+    <div class="isla-card">
       <img src="/assets/img/grancanariasin-removebg-preview.png" alt="Gran Canaria">
-    </a>
-    <a href="/assets/islas/tenerife.html" class="isla tenerife">
+      <h3>Gran Canaria</h3>
+      <p>Playas y spots emblemáticos para todos los surfers.</p>
+      <a href="/assets/islas/gran-canaria.html" class="btn">Ver isla</a>
+    </div>
+
+    <!-- Tenerife -->
+    <div class="isla-card">
       <img src="/assets/img/tenerifesin-removebg-preview.png" alt="Tenerife">
-    </a>
-    <a href="/assets/islas/la-gomera.html" class="isla la-gomera">
+      <h3>Tenerife</h3>
+      <p>Surf clásico y aventuras en la isla más grande.</p>
+      <a href="/assets/islas/tenerife.html" class="btn">Ver isla</a>
+    </div>
+
+    <!-- La Gomera -->
+    <div class="isla-card">
       <img src="/assets/img/lagomerasin-removebg-preview.png" alt="La Gomera">
-    </a>
-    <a href="/assets/islas/la-palma.html" class="isla la-palma">
+      <h3>La Gomera</h3>
+      <p>Tranquilidad y olas escondidas para surfistas.</p>
+      <a href="/assets/islas/la-gomera.html" class="btn">Ver isla</a>
+    </div>
+
+    <!-- La Palma -->
+    <div class="isla-card">
       <img src="/assets/img/lapalmasin-removebg-preview.png" alt="La Palma">
-    </a>
-    <a href="/assets/islas/el-hierro.html" class="isla el-hierro">
+      <h3>La Palma</h3>
+      <p>Isla verde con spots secretos y naturaleza única.</p>
+      <a href="/assets/islas/la-palma.html" class="btn">Ver isla</a>
+    </div>
+
+    <!-- El Hierro -->
+    <div class="isla-card">
       <img src="/assets/img/elhierrosin-removebg-preview.png" alt="El Hierro">
-    </a>
+      <h3>El Hierro</h3>
+      <p>Surf remoto y paisajes espectaculares.</p>
+      <a href="/assets/islas/el-hierro.html" class="btn">Ver isla</a>
+    </div>
+
+    <!-- La última isla (Ej: La última de tu lista si falta) -->
+    <div class="isla-card">
+      <img src="/assets/img/isla8.png" alt="Isla 8">
+      <h3>Isla 8</h3>
+      <p>Explora los spots y playas de esta isla.</p>
+      <a href="/assets/islas/isla8.html" class="btn">Ver isla</a>
+    </div>
   </div>
 </main>
 
