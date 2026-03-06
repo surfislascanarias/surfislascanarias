@@ -2,184 +2,176 @@
 <html lang="es">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Surf Islas Canarias</title>
 
 <!-- Fuente -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- CSS -->
+<!-- CSS externo -->
 <link rel="stylesheet" href="/assets/css/style.css">
+
+<!-- CSS interno para Previsión -->
+<style>
+/* ================= FORECAST ================= */
+.forecast-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  font-weight: 700;
+  color: var(--azul-oceano);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.forecast-title a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.forecast-title a:hover {
+  color: var(--accent);
+}
+
+.forecast-title::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 4px;
+  background: var(--accent);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+</style>
 
 </head>
 
 <body>
 
-<!-- =================================
-HEADER
-================================= -->
+<!-- ================================= HEADER ================================= -->
 <header class="header">
+  <div class="header-container">
 
-<div class="header-container">
+    <!-- Logo -->
+    <div class="logo">
+      <h1>Surf Islas Canarias</h1>
+      <p>La comunidad del surf canario, desde dentro</p>
+    </div>
 
-<!-- Logo -->
-<div class="logo">
-<h1>Surf Islas Canarias</h1>
-<p>La comunidad del surf canario, desde dentro</p>
-</div>
+    <!-- Botón menú hamburguesa -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-<!-- Botón menú hamburguesa -->
-<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
-<span></span>
-<span></span>
-<span></span>
-</button>
+    <!-- Navegación -->
+    <nav class="nav" id="navMenu">
+      <a href="/">Inicio</a>
+      <a href="/blog.html">Noticias</a>
+      <a href="/islas.html">Islas</a>
+      <a href="/campeonatos.html">Campeonatos</a>
+      <a href="/modalidades.html">Modalidades</a>
+      <a href="/about.html">Sobre nosotros</a>
+      <a href="/contact.html">Contacto</a>
+    </nav>
 
-<!-- Navegación -->
-<nav class="nav" id="navMenu">
-
-<a href="/">Inicio</a>
-<a href="/blog.html">Noticias</a>
-<a href="/islas.html">Islas</a>
-<a href="/campeonatos.html">Campeonatos</a>
-<a href="/modalidades.html">Modalidades</a>
-<a href="/about.html">Sobre nosotros</a>
-<a href="/contact.html">Contacto</a>
-
-</nav>
-
-</div>
-
+  </div>
 </header>
 
-
-<!-- =================================
-MAIN
-================================= -->
+<!-- ================================= MAIN ================================= -->
 <main>
 
+  <!-- HERO -->
+  <section class="home-hero">
+    <h2>Surf Islas Canarias, contado desde dentro</h2>
+    <p>
+      Spots, modalidades, cultura surf y actualidad del océano en las Islas Canarias.
+      Una comunidad hecha por y para surfers.
+    </p>
+  </section>
 
-<!-- HERO -->
-<section class="home-hero">
+  <!-- SECCIONES -->
+  <section class="home-sections">
+    <div class="home-grid">
+      <article class="home-card spots">
+        <a href="/islas.html">
+          <h3>Spots por Islas</h3>
+          <p>Guías locales de surf en todas las islas.</p>
+        </a>
+      </article>
 
-<h2>Surf Islas Canarias, contado desde dentro</h2>
+      <article class="home-card modalidades">
+        <a href="/modalidades.html">
+          <h3>Modalidades</h3>
+          <p>Surf, bodyboard, longboard, SUP y más.</p>
+        </a>
+      </article>
 
-<p>
-Spots, modalidades, cultura surf y actualidad del océano en las Islas Canarias.
-Una comunidad hecha por y para surfers.
-</p>
+      <article class="home-card noticias">
+        <a href="/blog.html">
+          <h3>Noticias & Cultura</h3>
+          <p>Actualidad, riders y cultura surf canaria.</p>
+        </a>
+      </article>
 
-</section>
+      <article class="home-card eventos">
+        <a href="/campeonatos.html">
+          <h3>Eventos & Campeonatos</h3>
+          <p>Competiciones oficiales y eventos locales.</p>
+        </a>
+      </article>
+    </div>
+  </section>
 
+  <!-- PREVISIÓN -->
+  <section class="home-forecast container">
+    <h2 class="forecast-title">
+      <a href="prevision.html">Previsión de olas</a>
+    </h2>
 
-<!-- SECCIONES -->
-<section class="home-sections">
+    <div class="grid">
+      <!-- CANARIAS NORTE -->
+      <div class="card">
+        <iframe
+          src="https://embed.windy.com/embed2.html?lat=28.4&lon=-16.1&zoom=7&level=surface&overlay=waves"
+          loading="lazy"
+          style="width:100%; height:360px; border:none;">
+        </iframe>
+      </div>
 
-<div class="home-grid">
-
-<article class="home-card spots">
-<a href="/islas.html">
-<h3>Spots por Islas</h3>
-<p>Guías locales de surf en todas las islas.</p>
-</a>
-</article>
-
-<article class="home-card modalidades">
-<a href="/modalidades.html">
-<h3>Modalidades</h3>
-<p>Surf, bodyboard, longboard, SUP y más.</p>
-</a>
-</article>
-
-<article class="home-card noticias">
-<a href="/blog.html">
-<h3>Noticias & Cultura</h3>
-<p>Actualidad, riders y cultura surf canaria.</p>
-</a>
-</article>
-
-<article class="home-card eventos">
-<a href="/campeonatos.html">
-<h3>Eventos & Campeonatos</h3>
-<p>Competiciones oficiales y eventos locales.</p>
-</a>
-</article>
-
-</div>
-
-</section>
-
-
-<!-- PREVISIÓN -->
-<section class="home-forecast container">
-
-<h2>
-  <a href="prevision.html" style="text-decoration:none; color:inherit;">Previsión de olas</a>
-</h2>
-
-<div class="grid">
-
-<!-- CANARIAS NORTE -->
-<div class="card">
-
-<iframe
-src="https://embed.windy.com/embed2.html?lat=28.4&lon=-16.1&zoom=7&level=surface&overlay=waves"
-loading="lazy"
-style="width:100%; height:360px; border:none;">
-</iframe>
-</div>
-
-
-<!-- CANARIAS SUR -->
-<div class="card">
-
-<iframe
-src="https://embed.windy.com/embed2.html?lat=27.9&lon=-15.7&zoom=7&level=surface&overlay=windy"
-loading="lazy"
-style="width:100%; height:360px; border:none;">
-</iframe>
-</div>
-
-
-</div>
-
-</section>
-
+      <!-- CANARIAS SUR -->
+      <div class="card">
+        <iframe
+          src="https://embed.windy.com/embed2.html?lat=27.9&lon=-15.7&zoom=7&level=surface&overlay=windy"
+          loading="lazy"
+          style="width:100%; height:360px; border:none;">
+        </iframe>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-
-<!-- =================================
-FOOTER
-================================= -->
+<!-- ================================= FOOTER ================================= -->
 <footer class="footer">
-
-© 2026 Surf Islas Canarias
-
+  © 2026 Surf Islas Canarias
 </footer>
 
-
-<!-- =================================
-SCRIPT MENU HAMBURGUESA
-================================= -->
+<!-- ================================= SCRIPT MENU HAMBURGUESA ================================= -->
 <script>
-
 document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("navMenu");
 
-const toggle = document.getElementById("menuToggle");
-const nav = document.getElementById("navMenu");
-
-toggle.addEventListener("click", function () {
-nav.classList.toggle("active");
+  toggle.addEventListener("click", function () {
+    nav.classList.toggle("active");
+  });
 });
-
-});
-
 </script>
-
 
 </body>
 </html>
