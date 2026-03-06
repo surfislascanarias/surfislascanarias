@@ -285,6 +285,26 @@ body {
 }
 
 /* =================================
+   TARJETAS DE MODALIDADES - IMÁGENES CORREGIDAS
+================================= */
+.category-icon{
+  width:100%;
+  height:140px; /* altura uniforme para todas las cards */
+  border-radius:8px;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.category-icon img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* =================================
    RESPONSIVE
 ================================= */
 @media (max-width: 768px) {
@@ -334,154 +354,6 @@ body {
   font-size: 1rem;
   margin-bottom: 20px;
   color: #f4f4f4;
-}
-
-/* =================================
-   NAV
-================================= */
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 12px;
-}
-
-.nav a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav a:hover {
-  background: white;
-  color: var(--accent);
-}
-
-/* =================================
-   MENÚ HAMBURGUESA
-================================= */
-.menu-toggle {
-  display: none; /* solo móvil */
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 24px;
-  right: 16px;
-  z-index: 1001;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 100%;
-  height: 3px;
-  background: white;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* animación toggle (opcional) */
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* =================================
-   BOTONES
-================================= */
-.btn {
-  display: inline-block;
-  padding: 10px 16px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: #ff844f;
-}
-
-.btn-outline {
-  border: 2px solid rgba(255,255,255,0.9);
-  color: white;
-  background: transparent;
-}
-
-.btn-outline:hover {
-  background: var(--accent);
-  color: white;
-}
-
-/* =================================
-   CONTENEDOR Y GRID
-================================= */
-.container {
-  max-width: 1100px;
-  margin: 28px auto;
-  padding: 0 16px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 18px;
-}
-
-/* =================================
-   RESPONSIVE
-================================= */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-
-  .nav {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background: rgba(4,105,148,0.98);
-    padding: 12px;
-    border-radius: 12px;
-    margin-top: 15px;
-    animation: slideDown 0.25s ease;
-  }
-
-  .nav.active {
-    display: flex;
-  }
-
-  .nav a {
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
-  }
-
-  .home-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* =================================
