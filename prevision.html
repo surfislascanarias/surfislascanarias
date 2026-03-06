@@ -18,7 +18,7 @@
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif;}
   body{background:var(--fondo);color:var(--texto);line-height:1.5;}
   h1,h2,h3{margin-bottom:12px;}
-  
+
   header.header{
     background: linear-gradient(180deg, rgba(4,105,148,0.9), rgba(4,105,148,0.6));
     color:white; text-align:center; padding:32px 16px;
@@ -33,6 +33,7 @@
   header.header nav a:hover{ background:white;color:var(--accent); }
 
   .container{ max-width:1200px; margin:28px auto; padding:0 16px; }
+
   #searchContainer{ margin-bottom:24px; text-align:center; }
   #searchInput{ width:300px; padding:10px 14px; border-radius:8px; border:1px solid #ccc; font-size:0.95rem; }
 
@@ -52,12 +53,9 @@
   .spot-card:hover{ transform: translateY(-4px); }
 
   .spot-card h3{ padding:16px; font-size:1.2rem; color:var(--azul-oceano); }
+
   .slider-container{ position:relative; }
-
-  .slider-container iframe{
-    width:100%; height:320px; border:none;
-  }
-
+  .slider-container iframe{ width:100%; height:320px; border:none; display:block; }
   .slider-buttons{
     display:flex; justify-content:center; gap:8px; padding:12px;
     flex-wrap:wrap; background:#f4f4f4;
@@ -91,11 +89,132 @@
 </header>
 
 <main class="container">
+
   <div id="searchContainer">
     <input type="text" id="searchInput" placeholder="Buscar spot o isla...">
   </div>
 
+  <!-- GRID DE SPOTS -->
   <div id="spotsGrid"></div>
+
+  <!-- ================== 4x4 ISLAS ================== -->
+  <h2 style="text-align:center; margin:40px 0; color:var(--azul-oceano);">Explora las Islas Canarias</h2>
+  <div id="islasGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
+
+    <!-- Cada isla con carrusel de 3 iframes -->
+    <div class="spot-card">
+      <h3>Lanzarote</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=29.045&lon=-13.589&zoom=7&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/Lanzarote/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/lanzarote/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-card">
+      <h3>Fuerteventura</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=28.358&lon=-14.053&zoom=7&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/Fuerteventura/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/fuerteventura/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-card">
+      <h3>Gran Canaria</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=28.119&lon=-15.431&zoom=7&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/Gran-Canaria/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/gran-canaria/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-card">
+      <h3>Tenerife</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=28.291&lon=-16.629&zoom=7&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/Tenerife/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/tenerife/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-card">
+      <h3>La Gomera</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=28.094&lon=-17.115&zoom=7&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/La-Gomera/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/la-gomera/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-card">
+      <h3>La Palma</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=28.662&lon=-17.774&zoom=7&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/La-Palma/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/la-palma/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-card">
+      <h3>El Hierro</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=27.743&lon=-17.888&zoom=7&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/El-Hierro/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/el-hierro/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="spot-card">
+      <h3>La Graciosa</h3>
+      <div class="slider-container">
+        <iframe src="https://embed.windy.com/embed2.html?lat=28.655&lon=-13.918&zoom=8&level=surface&overlay=wind"></iframe>
+        <iframe src="https://www.surf-forecast.com/breaks/La-Graciosa/forecasts/latest" style="display:none;"></iframe>
+        <iframe src="https://www.surfline.com/surf-report/la-graciosa/5842041f4e65fad6a7708b6b" style="display:none;"></iframe>
+        <div class="slider-buttons">
+          <button onclick="showSlide(this.parentElement.parentElement,0)">Viento</button>
+          <button onclick="showSlide(this.parentElement.parentElement,1)">Olas</button>
+          <button onclick="showSlide(this.parentElement.parentElement,2)">Cámara</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </main>
 
 <footer class="footer">© 2026 Surf Islas Canarias</footer>
@@ -103,41 +222,11 @@
 <script>
 // ======= SPOTS CANARIAS
 const spots = [
-  {
-    name:"Punta Blanca",
-    island:"Tenerife",
-    windy:"https://embed.windy.com/embed2.html?lat=28.256&lon=-16.761&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
-    surfforecast:"https://www.surf-forecast.com/breaks/Punta-Blanca/forecasts/latest",
-    surfline:"https://www.surfline.com/surf-report/punta-blanca/5842041f4e65fad6a7708b6b"
-  },
-  {
-    name:"El Socorro",
-    island:"Tenerife",
-    windy:"https://embed.windy.com/embed2.html?lat=28.437&lon=-16.573&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
-    surfforecast:"https://www.surf-forecast.com/breaks/El-Socorro/forecasts/latest",
-    surfline:"https://www.surfline.com/surf-report/el-socorro/5842041f4e65fad6a7708b6b"
-  },
-  {
-    name:"Almáciga",
-    island:"Tenerife",
-    windy:"https://embed.windy.com/embed2.html?lat=28.527&lon=-16.451&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
-    surfforecast:"https://www.surf-forecast.com/breaks/Almaciga/forecasts/latest",
-    surfline:"https://www.surfline.com/surf-report/almaciga/5842041f4e65fad6a7708b6b"
-  },
-  {
-    name:"LPA Surf City",
-    island:"Gran Canaria",
-    windy:"https://embed.windy.com/embed2.html?lat=28.115&lon=-15.422&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
-    surfforecast:"https://www.surf-forecast.com/breaks/Las-Palmas/forecasts/latest",
-    surfline:"https://www.surfline.com/surf-report/las-palmas/5842041f4e65fad6a7708b6b"
-  },
-  {
-    name:"Arona",
-    island:"Tenerife",
-    windy:"https://embed.windy.com/embed2.html?lat=28.107&lon=-16.734&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map",
-    surfforecast:"https://www.surf-forecast.com/breaks/Arona/forecasts/latest",
-    surfline:"https://www.surfline.com/surf-report/arona/5842041f4e65fad6a7708b6b"
-  }
+  {name:"Punta Blanca", island:"Tenerife", windy:"https://embed.windy.com/embed2.html?lat=28.256&lon=-16.761&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map", surfforecast:"https://www.surf-forecast.com/breaks/Punta-Blanca/forecasts/latest", surfline:"https://www.surfline.com/surf-report/punta-blanca/5842041f4e65fad6a7708b6b"},
+  {name:"El Socorro", island:"Tenerife", windy:"https://embed.windy.com/embed2.html?lat=28.437&lon=-16.573&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map", surfforecast:"https://www.surf-forecast.com/breaks/El-Socorro/forecasts/latest", surfline:"https://www.surfline.com/surf-report/el-socorro/5842041f4e65fad6a7708b6b"},
+  {name:"Almáciga", island:"Tenerife", windy:"https://embed.windy.com/embed2.html?lat=28.527&lon=-16.451&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map", surfforecast:"https://www.surf-forecast.com/breaks/Almaciga/forecasts/latest", surfline:"https://www.surfline.com/surf-report/almaciga/5842041f4e65fad6a7708b6b"},
+  {name:"LPA Surf City", island:"Gran Canaria", windy:"https://embed.windy.com/embed2.html?lat=28.115&lon=-15.422&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map", surfforecast:"https://www.surf-forecast.com/breaks/Las-Palmas/forecasts/latest", surfline:"https://www.surfline.com/surf-report/las-palmas/5842041f4e65fad6a7708b6b"},
+  {name:"Arona", island:"Tenerife", windy:"https://embed.windy.com/embed2.html?lat=28.107&lon=-16.734&zoom=7&level=surface&overlay=wind&menu=&message=true&marker=&calendar=now&pressure=&type=map", surfforecast:"https://www.surf-forecast.com/breaks/Arona/forecasts/latest", surfline:"https://www.surfline.com/surf-report/arona/5842041f4e65fad6a7708b6b"}
 ];
 
 // ======= RENDER SPOTS
