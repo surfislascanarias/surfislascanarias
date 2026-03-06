@@ -3,249 +3,218 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Islas Canarias · Surf Islas Canarias</title>
+<title>Islas Canarias · Carrusel · Surf Islas Canarias</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --azul-oceano: #046994;
   --accent: #FF6B35;
   --texto: #0f172a;
-  --fondo-oscuro: #0f172a;
+  --fondo: #fdfdfd;
 }
-
-* { box-sizing: border-box; margin:0; padding:0; }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: #fdfdfd;
+  font-family: 'Inter', sans-serif;
+  background: var(--fondo);
   color: var(--texto);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ================= HEADER ================= */
-header.header {
+header {
   background: linear-gradient(180deg, rgba(4,105,148,0.9), rgba(4,105,148,0.6));
   color: white;
-  text-align: center;
-  padding: 42px 16px;
-}
-
-nav.nav {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 16px;
-}
-
-nav.nav a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  font-weight: 500;
-}
-
-/* ================= CONTENIDO ================= */
-.container {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 16px;
-  text-align: center;
-}
-
-.container h2 {
-  margin-bottom: 8px;
-}
-
-.container p {
-  color: #475569;
-  margin-bottom: 30px;
-}
-
-/* ================= GRID ISLAS ================= */
-.islas-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 30px;
-}
-
-/* CARD SILUETA */
-.isla-card {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-  padding: 16px;
-}
-
-.isla-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.2);
-}
-
-/* SILUETA IMAGEN */
-.isla-card .silueta {
   width: 100%;
-  aspect-ratio: 1/1;
-  margin-bottom: 12px;
-  background-color: var(--azul-oceano);
-  mask-image: url('/assets/img/lanzarotesilhouette.png'); /* cambiar por cada isla */
-  -webkit-mask-image: url('/assets/img/lanzarotesilhouette.png');
-  mask-size: cover;
-  -webkit-mask-size: cover;
-  mask-repeat: no-repeat;
-  -webkit-mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-position: center;
-  background-size: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  text-align: center;
+  padding: 30px 16px;
+  margin-bottom: 20px;
 }
 
-.isla-card .silueta:hover {
-  transform: scale(1.08);
-  filter: drop-shadow(0 6px 14px rgb(255,204,0));
+header h1 { margin: 0; font-size: 2rem; }
+
+.carousel-container {
+  width: 90%;
+  max-width: 900px;
+  position: relative;
+  overflow: hidden;
 }
 
-.isla-card h3 {
-  margin-bottom: 8px;
+.slide {
+  display: none;
+  width: 100%;
+  text-align: center;
 }
 
-.isla-card p {
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-  color: #475569;
+.slide img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
-.isla-card .btn {
-  display: inline-block;
-  padding: 8px 16px;
+.slide h2 {
+  margin: 10px 0 6px;
+  font-size: 1.5rem;
+}
+
+.slide p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.slide .btn {
+  padding: 10px 18px;
   background: var(--accent);
   color: white;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
-.isla-card .btn:hover {
-  background: #ff844f;
+.slide .btn:hover {
+  background: #e85a28;
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 1024px) {
-  .islas-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* Dots */
+.dots {
+  text-align: center;
+  margin-top: 12px;
+}
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.dot.active {
+  background: var(--accent);
 }
 
-@media (max-width: 600px) {
-  .islas-grid {
-    grid-template-columns: 1fr;
-  }
+/* Responsive */
+@media(max-width: 600px){
+  .slide h2 { font-size: 1.2rem; }
+  .slide p { font-size: 0.9rem; }
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-  <h1>Surf Islas Canarias</h1>
-  <nav class="nav">
-    <a href="/index.html">Inicio</a>
-    <a href="/blog.html">Noticias</a>
-    <a href="/spots.html">Spots</a>
-    <a href="/campeonatos.html">Campeonatos</a>
-    <a href="/modalidades.html">Modalidades</a>
-    <a href="/about.html">Sobre Surf Islas Canarias</a>
-    <a href="/contact.html">Contacto</a>
-  </nav>
+<header>
+  <h1>Islas Canarias</h1>
+  <p>Descubre cada isla y sus spots de surf más increíbles</p>
 </header>
 
-<main class="container">
-  <h2>Islas Canarias</h2>
-  <p>Explora cada isla y descubre sus mejores spots de surf</p>
+<div class="carousel-container">
 
-  <div class="islas-grid">
-    <!-- Lanzarote -->
-    <div class="isla-card">
-      <div class="silueta" style="mask-image:url('/assets/img/lanzarotesilhouette.png'); -webkit-mask-image:url('/assets/img/lanzarotesilhouette.png');"></div>
-      <h3>Lanzarote</h3>
-      <p>Descubre los mejores spots de surf en Lanzarote.</p>
-      <a href="/assets/islas/lanzarote.html" class="btn">Ver isla</a>
-    </div>
-
-    <!-- Fuerteventura -->
-    <div class="isla-card">
-<div class="category-icon">
-<img src="/assets/img/lanzasiluet.png" alt="Bodyboard en Canarias">
-  <h3>Fuerteventura</h3>
-      <p>Olas y viento para surfistas de todos los niveles.</p>
-      <a href="/assets/islas/fuerteventura.html" class="btn">Ver isla</a>
-    </div>
-
-    <!-- Gran Canaria -->
-    <div class="isla-card">
-      <div class="silueta" style="mask-image:url('/assets/img/grancanariasilhouette.png'); -webkit-mask-image:url('/assets/img/grancanariasilhouette.png');"></div>
-      <h3>Gran Canaria</h3>
-      <p>Playas y spots emblemáticos para todos los surfers.</p>
-      <a href="/assets/islas/gran-canaria.html" class="btn">Ver isla</a>
-    </div>
-
-    <!-- Tenerife -->
-    <div class="isla-card">
-      <div class="silueta" style="mask-image:url('/assets/img/tenerifesilhouette.png'); -webkit-mask-image:url('/assets/img/tenerifesilhouette.png');"></div>
-      <h3>Tenerife</h3>
-      <p>Surf clásico y aventuras en la isla más grande.</p>
-      <a href="/assets/islas/tenerife.html" class="btn">Ver isla</a>
-    </div>
-
-    <!-- La Gomera -->
-    <div class="isla-card">
-      <div class="silueta" style="mask-image:url('/assets/img/lagomerasilhouette.png'); -webkit-mask-image:url('/assets/img/lagomerasilhouette.png');"></div>
-      <h3>La Gomera</h3>
-      <p>Tranquilidad y olas escondidas para surfistas.</p>
-      <a href="/assets/islas/la-gomera.html" class="btn">Ver isla</a>
-    </div>
-
-    <!-- La Palma -->
-    <div class="isla-card">
-      <div class="silueta" style="mask-image:url('/assets/img/lapalmasilhouette.png'); -webkit-mask-image:url('/assets/img/lapalmasilhouette.png');"></div>
-      <h3>La Palma</h3>
-      <p>Isla verde con spots secretos y naturaleza única.</p>
-      <a href="/assets/islas/la-palma.html" class="btn">Ver isla</a>
-    </div>
-
-    <!-- El Hierro -->
-    <div class="isla-card">
-      <div class="silueta" style="mask-image:url('/assets/img/elhierrosilhouette.png'); -webkit-mask-image:url('/assets/img/elhierrosilhouette.png');"></div>
-      <h3>El Hierro</h3>
-      <p>Surf remoto y paisajes espectaculares.</p>
-      <a href="/assets/islas/el-hierro.html" class="btn">Ver isla</a>
-    </div>
-
-    <!-- La última isla (ejemplo Isla 8) -->
-    <div class="isla-card">
-      <div class="silueta" style="mask-image:url('/assets/img/isla8silhouette.png'); -webkit-mask-image:url('/assets/img/isla8silhouette.png');"></div>
-      <h3>Isla 8</h3>
-      <p>Explora los spots y playas de esta isla.</p>
-      <a href="/assets/islas/isla8.html" class="btn">Ver isla</a>
-    </div>
+  <!-- Lanzarote -->
+  <div class="slide">
+    <img src="/assets/img/lanzarotesin-removebg-preview.png" alt="Lanzarote">
+    <h2>Lanzarote</h2>
+    <p>Descubre los mejores spots de surf en Lanzarote.</p>
+    <a href="/assets/islas/lanzarote.html" class="btn">Ver isla</a>
   </div>
-</main>
 
-<footer class="footer">
-  © 2026 Surf Islas Canarias
-</footer>
+  <!-- Fuerteventura -->
+  <div class="slide">
+    <img src="/assets/img/fuerteventurasinn-removebg-preview.png" alt="Fuerteventura">
+    <h2>Fuerteventura</h2>
+    <p>Playas y viento perfectos para surfear.</p>
+    <a href="/assets/islas/fuerteventura.html" class="btn">Ver isla</a>
+  </div>
+
+  <!-- Gran Canaria -->
+  <div class="slide">
+    <img src="/assets/img/grancanariasin-removebg-preview.png" alt="Gran Canaria">
+    <h2>Gran Canaria</h2>
+    <p>Una isla continente llena de olas.</p>
+    <a href="/assets/islas/gran-canaria.html" class="btn">Ver isla</a>
+  </div>
+
+  <!-- Tenerife -->
+  <div class="slide">
+    <img src="/assets/img/tenerifesin-removebg-preview.png" alt="Tenerife">
+    <h2>Tenerife</h2>
+    <p>Surf clásico y naturaleza volcánica.</p>
+    <a href="/assets/islas/tenerife.html" class="btn">Ver isla</a>
+  </div>
+
+  <!-- La Palma -->
+  <div class="slide">
+    <img src="/assets/img/lapalmasin-removebg-preview.png" alt="La Palma">
+    <h2>La Palma</h2>
+    <p>La Isla Bonita con spots escondidos.</p>
+    <a href="/assets/islas/la-palma.html" class="btn">Ver isla</a>
+  </div>
+
+  <!-- La Gomera -->
+  <div class="slide">
+    <img src="/assets/img/lagomerasin-removebg-preview.png" alt="La Gomera">
+    <h2>La Gomera</h2>
+    <p>Tranquilidad y surf en un entorno verde.</p>
+    <a href="/assets/islas/la-gomera.html" class="btn">Ver isla</a>
+  </div>
+
+  <!-- El Hierro -->
+  <div class="slide">
+    <img src="/assets/img/elhierrosin-removebg-preview.png" alt="El Hierro">
+    <h2>El Hierro</h2>
+    <p>La isla más remota y auténtica para surfear.</p>
+    <a href="/assets/islas/el-hierro.html" class="btn">Ver isla</a>
+  </div>
+
+  <!-- La Graciosa (octava isla) -->
+  <div class="slide">
+    <img src="/assets/img/lagraciosasin-removebg-preview.png" alt="La Graciosa">
+    <h2>La Graciosa</h2>
+    <p>La isla más pequeña y paradisíaca del archipiélago.</p>
+    <a href="/assets/islas/la-graciosa.html" class="btn">Ver isla</a>
+  </div>
+
+</div>
+
+<!-- Navigation dots -->
+<div class="dots"></div>
+
+<script>
+// Carrusel automático
+let slides = document.querySelectorAll('.slide');
+let dots = document.querySelector('.dots');
+let currentSlide = 0;
+
+// Generar puntos
+slides.forEach((_, i) => {
+  let dot = document.createElement('span');
+  dot.classList.add('dot');
+  dot.addEventListener('click', () => showSlide(i));
+  dots.appendChild(dot);
+});
+
+// Función para mostrar slide
+function showSlide(index) {
+  slides[currentSlide].style.display = 'none';
+  dots.children[currentSlide].classList.remove('active');
+  currentSlide = index;
+  slides[currentSlide].style.display = 'block';
+  dots.children[currentSlide].classList.add('active');
+}
+
+// Iniciar carrusel
+showSlide(0);
+setInterval(() => {
+  let next = (currentSlide + 1) % slides.length;
+  showSlide(next);
+}, 4500); // cambia cada 4.5s
+</script>
 
 </body>
 </html>
-
