@@ -73,9 +73,9 @@ nav.nav a {
   margin-top: 30px;
 }
 
-/* CARD */
+/* CARD SILUETA */
 .isla-card {
-  background: white;
+  background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
@@ -89,12 +89,30 @@ nav.nav a {
   box-shadow: 0 14px 30px rgba(0,0,0,0.2);
 }
 
-.isla-card img {
+/* SILUETA IMAGEN */
+.isla-card .silueta {
   width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
+  aspect-ratio: 1/1;
   margin-bottom: 12px;
+  background-color: var(--azul-oceano);
+  mask-image: url('/assets/img/lanzarotesilhouette.png'); /* cambiar por cada isla */
+  -webkit-mask-image: url('/assets/img/lanzarotesilhouette.png');
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  background-size: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.isla-card .silueta:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 6px 14px rgb(255,204,0));
 }
 
 .isla-card h3 {
@@ -159,7 +177,7 @@ nav.nav a {
   <div class="islas-grid">
     <!-- Lanzarote -->
     <div class="isla-card">
-      <img src="/assets/img/lanzarotesin-removebg-preview.png" alt="Lanzarote">
+      <div class="silueta" style="mask-image:url('/assets/img/lanzarotesilhouette.png'); -webkit-mask-image:url('/assets/img/lanzarotesilhouette.png');"></div>
       <h3>Lanzarote</h3>
       <p>Descubre los mejores spots de surf en Lanzarote.</p>
       <a href="/assets/islas/lanzarote.html" class="btn">Ver isla</a>
@@ -167,7 +185,7 @@ nav.nav a {
 
     <!-- Fuerteventura -->
     <div class="isla-card">
-      <img src="/assets/img/fuerteventurasinn-removebg-preview.png" alt="Fuerteventura">
+      <div class="silueta" style="mask-image:url('/assets/img/fuerteventurasilhouette.png'); -webkit-mask-image:url('/assets/img/fuerteventurasilhouette.png');"></div>
       <h3>Fuerteventura</h3>
       <p>Olas y viento para surfistas de todos los niveles.</p>
       <a href="/assets/islas/fuerteventura.html" class="btn">Ver isla</a>
@@ -175,7 +193,7 @@ nav.nav a {
 
     <!-- Gran Canaria -->
     <div class="isla-card">
-      <img src="/assets/img/grancanariasin-removebg-preview.png" alt="Gran Canaria">
+      <div class="silueta" style="mask-image:url('/assets/img/grancanariasilhouette.png'); -webkit-mask-image:url('/assets/img/grancanariasilhouette.png');"></div>
       <h3>Gran Canaria</h3>
       <p>Playas y spots emblemáticos para todos los surfers.</p>
       <a href="/assets/islas/gran-canaria.html" class="btn">Ver isla</a>
@@ -183,7 +201,7 @@ nav.nav a {
 
     <!-- Tenerife -->
     <div class="isla-card">
-      <img src="/assets/img/tenerifesin-removebg-preview.png" alt="Tenerife">
+      <div class="silueta" style="mask-image:url('/assets/img/tenerifesilhouette.png'); -webkit-mask-image:url('/assets/img/tenerifesilhouette.png');"></div>
       <h3>Tenerife</h3>
       <p>Surf clásico y aventuras en la isla más grande.</p>
       <a href="/assets/islas/tenerife.html" class="btn">Ver isla</a>
@@ -191,7 +209,7 @@ nav.nav a {
 
     <!-- La Gomera -->
     <div class="isla-card">
-      <img src="/assets/img/lagomerasin-removebg-preview.png" alt="La Gomera">
+      <div class="silueta" style="mask-image:url('/assets/img/lagomerasilhouette.png'); -webkit-mask-image:url('/assets/img/lagomerasilhouette.png');"></div>
       <h3>La Gomera</h3>
       <p>Tranquilidad y olas escondidas para surfistas.</p>
       <a href="/assets/islas/la-gomera.html" class="btn">Ver isla</a>
@@ -199,7 +217,7 @@ nav.nav a {
 
     <!-- La Palma -->
     <div class="isla-card">
-      <img src="/assets/img/lapalmasin-removebg-preview.png" alt="La Palma">
+      <div class="silueta" style="mask-image:url('/assets/img/lapalmasilhouette.png'); -webkit-mask-image:url('/assets/img/lapalmasilhouette.png');"></div>
       <h3>La Palma</h3>
       <p>Isla verde con spots secretos y naturaleza única.</p>
       <a href="/assets/islas/la-palma.html" class="btn">Ver isla</a>
@@ -207,15 +225,15 @@ nav.nav a {
 
     <!-- El Hierro -->
     <div class="isla-card">
-      <img src="/assets/img/elhierrosin-removebg-preview.png" alt="El Hierro">
+      <div class="silueta" style="mask-image:url('/assets/img/elhierrosilhouette.png'); -webkit-mask-image:url('/assets/img/elhierrosilhouette.png');"></div>
       <h3>El Hierro</h3>
       <p>Surf remoto y paisajes espectaculares.</p>
       <a href="/assets/islas/el-hierro.html" class="btn">Ver isla</a>
     </div>
 
-    <!-- La última isla (Ej: La última de tu lista si falta) -->
+    <!-- La última isla (ejemplo Isla 8) -->
     <div class="isla-card">
-      <img src="/assets/img/isla8.png" alt="Isla 8">
+      <div class="silueta" style="mask-image:url('/assets/img/isla8silhouette.png'); -webkit-mask-image:url('/assets/img/isla8silhouette.png');"></div>
       <h3>Isla 8</h3>
       <p>Explora los spots y playas de esta isla.</p>
       <a href="/assets/islas/isla8.html" class="btn">Ver isla</a>
