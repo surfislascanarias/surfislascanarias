@@ -15,17 +15,54 @@
 
 <style>
 
-/* Imágenes categorías */
+/* CARD */
+
+.category-card{
+text-align:center;
+padding:15px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+/* IMÁGENES */
 
 .category-icon{
 width:100%;
+height:150px;
+overflow:hidden;
+border-radius:8px;
+margin-bottom:10px;
 }
 
 .category-icon img{
 width:100%;
-height:auto;
+height:100%;
+object-fit:cover;
 display:block;
-border-radius:8px;
+}
+
+/* TEXTO */
+
+.category-card h3{
+margin:8px 0;
+}
+
+.category-card p{
+font-size:14px;
+margin-bottom:12px;
+}
+
+/* BOTÓN */
+
+.category-btn{
+display:inline-block;
+padding:8px 16px;
+background:#0a2540;
+color:white;
+border-radius:6px;
+text-decoration:none;
+margin:auto;
 }
 
 </style>
@@ -58,6 +95,7 @@ border-radius:8px;
 <section class="categories">
 <div class="grid categories-grid">
 
+
 <div class="category-card">
 
 <a href="surf.html">
@@ -66,11 +104,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="surf.html">Surf</a></h3>
+<h3>Surf</h3>
 
-<p>
-<a href="surf.html">Actualidad, spots y campeonatos de surf en Canarias.</a>
-</p>
+<p>Actualidad, spots y campeonatos de surf en Canarias.</p>
+
+<a href="surf.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -83,11 +121,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="bodyboard.html">Bodyboard</a></h3>
+<h3>Bodyboard</h3>
 
-<p>
-<a href="bodyboard.html">La fuerza del bodyboard canario y sus riders.</a>
-</p>
+<p>La fuerza del bodyboard canario y sus riders.</p>
+
+<a href="bodyboard.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -100,11 +138,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="sup.html">SUP</a></h3>
+<h3>SUP</h3>
 
-<p>
-<a href="sup.html">Race, olas y travesías en las islas.</a>
-</p>
+<p>Race, olas y travesías en las islas.</p>
+
+<a href="sup.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -117,11 +155,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="longboard.html">Longboard</a></h3>
+<h3>Longboard</h3>
 
-<p>
-<a href="longboard.html">Estilo clásico y tradición del surf.</a>
-</p>
+<p>Estilo clásico y tradición del surf.</p>
+
+<a href="longboard.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -134,11 +172,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="windsurf.html">Windsurf</a></h3>
+<h3>Windsurf</h3>
 
-<p>
-<a href="windsurf.html">Velocidad, viento y acción en Canarias.</a>
-</p>
+<p>Velocidad, viento y acción en Canarias.</p>
+
+<a href="windsurf.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -151,11 +189,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="kitesurf.html">Kitesurf</a></h3>
+<h3>Kitesurf</h3>
 
-<p>
-<a href="kitesurf.html">El poder del viento y el mar.</a>
-</p>
+<p>El poder del viento y el mar.</p>
+
+<a href="kitesurf.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -168,11 +206,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="skimboard.html">Skimboard</a></h3>
+<h3>Skimboard</h3>
 
-<p>
-<a href="skimboard.html">Velocidad y técnica en la orilla.</a>
-</p>
+<p>Velocidad y técnica en la orilla.</p>
+
+<a href="skimboard.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -185,11 +223,11 @@ border-radius:8px;
 </div>
 </a>
 
-<h3><a href="foilsurf.html">Foil Surf</a></h3>
+<h3>Foil Surf</h3>
 
-<p>
-<a href="foilsurf.html">Surf del futuro sobre el agua.</a>
-</p>
+<p>Surf del futuro sobre el agua.</p>
+
+<a href="foilsurf.html" class="category-btn">Ver modalidad</a>
 
 </div>
 
@@ -212,4 +250,3 @@ border-radius:8px;
 
 </body>
 </html>
-
