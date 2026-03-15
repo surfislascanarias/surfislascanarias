@@ -5,17 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Noticias Surf | Surf Islas Canarias</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Noticias | Surf Islas Canarias</title>
 
 <link rel="stylesheet" href="assets/css/style.css">
 
 <style>
-
-body{
-font-family:Inter;
-}
 
 .news-section{
 margin:60px 0;
@@ -23,31 +17,28 @@ margin:60px 0;
 
 .news-section h2{
 font-size:28px;
-color:#046994;
-border-left:6px solid #ff6b35;
+margin-bottom:20px;
+border-left:5px solid #ff6b35;
 padding-left:10px;
-margin-bottom:25px;
 }
 
-/* CAROUSEL */
+/* GRID */
 
-.carousel{
-overflow:hidden;
-position:relative;
+.federaciones-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
 }
 
-.carousel-track{
-display:flex;
-gap:20px;
-transition:transform .5s ease;
-}
+/* CARD */
 
 .news-card{
-min-width:280px;
+
 background:white;
-border-radius:12px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+border-radius:10px;
 overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
 }
 
 .news-card img{
@@ -62,9 +53,9 @@ padding:15px;
 
 .news-source{
 font-size:12px;
-font-weight:700;
+font-weight:bold;
 color:#ff6b35;
-margin-bottom:6px;
+margin-bottom:5px;
 }
 
 .news-title{
@@ -77,11 +68,6 @@ margin-bottom:10px;
 text-decoration:none;
 color:#046994;
 font-weight:600;
-font-size:14px;
-}
-
-.news-link:hover{
-text-decoration:underline;
 }
 
 </style>
@@ -93,23 +79,20 @@ text-decoration:underline;
 <header class="header">
 
 <h1>Surf Islas Canarias</h1>
-<p>Noticias del surf en Canarias y el mundo</p>
 
 <nav class="nav">
-
 <a href="index.html">Inicio</a>
 <a href="noticias.html">Noticias</a>
 <a href="spots.html">Islas</a>
 <a href="eventos.html">Eventos & Calendario</a>
 <a href="modalidades.html">Modalidades</a>
-<a href="about.html">Sobre Surf Islas Canarias</a>
-<a href="contact.html">Contacto</a>
-
 </nav>
 
 </header>
 
+
 <main class="container">
+
 
 <!-- FESURF -->
 
@@ -117,9 +100,7 @@ text-decoration:underline;
 
 <h2>FESURF</h2>
 
-<div class="carousel">
-<div class="carousel-track" id="fesurf-news"></div>
-</div>
+<div class="news-card" id="fesurf-card"></div>
 
 </section>
 
@@ -130,9 +111,7 @@ text-decoration:underline;
 
 <h2>World Surf League</h2>
 
-<div class="carousel">
-<div class="carousel-track" id="wsl-news"></div>
-</div>
+<div class="news-card" id="wsl-card"></div>
 
 </section>
 
@@ -143,8 +122,16 @@ text-decoration:underline;
 
 <h2>Federaciones Autonómicas</h2>
 
-<div class="carousel">
-<div class="carousel-track" id="federaciones-news"></div>
+<div class="federaciones-grid">
+
+<div class="news-card" id="fcs-card"></div>
+
+<div class="news-card" id="fgs-card"></div>
+
+<div class="news-card" id="fms-card"></div>
+
+<div class="news-card" id="ectc-card"></div>
+
 </div>
 
 </section>
@@ -157,30 +144,29 @@ text-decoration:underline;
 </footer>
 
 
+
 <script>
 
-/* FUNCION CREAR CARD */
+/* CREAR CARD */
 
-function createCard(article,source){
+function renderNews(container,news,source){
 
-return `
-<div class="news-card">
+container.innerHTML=`
 
-<img src="${article.thumbnail || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'}">
+<img src="${news.thumbnail || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'}">
 
 <div class="news-content">
 
 <div class="news-source">${source}</div>
 
-<div class="news-title">${article.title}</div>
+<div class="news-title">${news.title}</div>
 
-<a href="${article.link}" target="_blank" class="news-link">
+<a href="${news.link}" target="_blank" class="news-link">
 Leer noticia →
 </a>
 
 </div>
 
-</div>
 `
 
 }
@@ -188,7 +174,7 @@ Leer noticia →
 
 /* CARGAR RSS */
 
-async function loadRSS(rss,id,source){
+async function loadNews(rss,containerId,source){
 
 const url=`https://api.rss2json.com/v1/api.json?rss_url=${rss}`
 
@@ -196,58 +182,65 @@ const res=await fetch(url)
 
 const data=await res.json()
 
-const container=document.getElementById(id)
+const container=document.getElementById(containerId)
 
-data.items.slice(0,8).forEach(article=>{
+const articles=data.items.slice(0,4)
 
-container.innerHTML+=createCard(article,source)
+let index=0
 
-})
-
-startCarousel(container)
-
-}
-
-
-/* CAROUSEL AUTO */
-
-function startCarousel(track){
-
-let position=0
+renderNews(container,articles[index],source)
 
 setInterval(()=>{
 
-position+=300
+index++
 
-if(position>track.scrollWidth/2){
-position=0
+if(index>=articles.length){
+index=0
 }
 
-track.style.transform=`translateX(-${position}px)`
+renderNews(container,articles[index],source)
 
 },4000)
 
 }
 
 
-/* CARGAR SECCIONES */
+/* FUENTES */
 
-loadRSS(
+loadNews(
 "https://www.fesurf.es/feed",
-"fesurf-news",
+"fesurf-card",
 "FESURF"
 )
 
-loadRSS(
+loadNews(
 "https://www.worldsurfleague.com/rss/news",
-"wsl-news",
+"wsl-card",
 "WSL"
 )
 
-loadRSS(
+loadNews(
 "https://www.fcsurf.es/feed",
-"federaciones-news",
-"FCF"
+"fcs-card",
+"FCS"
+)
+
+loadNews(
+"https://federaciongallegasurf.gal/feed",
+"fgs-card",
+"FGS"
+)
+
+loadNews(
+"https://fmsurf.org/feed",
+"fms-card",
+"FMS"
+)
+
+loadNews(
+"https://federacioncantabrasurf.com/feed",
+"ectc-card",
+"ECTC"
 )
 
 </script>
