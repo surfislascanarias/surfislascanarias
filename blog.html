@@ -5,9 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Noticias | Surf Islas Canarias</title>
-
-<meta name="description" content="Noticias del surf en Canarias, España y el mundo. WSL, FESURF y federaciones autonómicas.">
+<title>Noticias Surf | Surf Islas Canarias</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -15,124 +13,75 @@
 
 <style>
 
-/* HEADER NOTICIAS */
-
-.news-header{
-
-text-align:center;
-margin-bottom:50px;
-
+body{
+font-family:Inter;
 }
-
-.news-header h1{
-
-font-size:32px;
-margin-bottom:10px;
-color:#046994;
-
-}
-
-
-/* SECCIONES */
 
 .news-section{
-
-margin-bottom:60px;
-
+margin:60px 0;
 }
 
 .news-section h2{
-
-font-size:26px;
-margin-bottom:20px;
+font-size:28px;
 color:#046994;
-border-left:5px solid #ff6b35;
-padding-left:12px;
-
+border-left:6px solid #ff6b35;
+padding-left:10px;
+margin-bottom:25px;
 }
 
+/* CAROUSEL */
 
-/* GRID */
-
-.news-grid{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:25px;
-
+.carousel{
+overflow:hidden;
+position:relative;
 }
 
-
-/* CARD */
+.carousel-track{
+display:flex;
+gap:20px;
+transition:transform .5s ease;
+}
 
 .news-card{
-
+min-width:280px;
 background:white;
 border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-transition:0.3s;
-
-}
-
-.news-card:hover{
-
-transform:translateY(-6px);
-
 }
 
 .news-card img{
-
 width:100%;
-height:200px;
+height:180px;
 object-fit:cover;
-
 }
 
 .news-content{
-
-padding:20px;
-
+padding:15px;
 }
 
 .news-source{
-
 font-size:12px;
 font-weight:700;
 color:#ff6b35;
-margin-bottom:8px;
-
+margin-bottom:6px;
 }
 
 .news-title{
-
-font-size:18px;
+font-size:16px;
 font-weight:700;
 margin-bottom:10px;
-
-}
-
-.news-text{
-
-font-size:14px;
-color:#555;
-margin-bottom:15px;
-
 }
 
 .news-link{
-
 text-decoration:none;
-font-weight:600;
 color:#046994;
-
+font-weight:600;
+font-size:14px;
 }
 
 .news-link:hover{
-
 text-decoration:underline;
-
 }
 
 </style>
@@ -144,7 +93,6 @@ text-decoration:underline;
 <header class="header">
 
 <h1>Surf Islas Canarias</h1>
-
 <p>Noticias del surf en Canarias y el mundo</p>
 
 <nav class="nav">
@@ -161,51 +109,16 @@ text-decoration:underline;
 
 </header>
 
-
 <main class="container">
-
-
-<section class="news-header">
-
-<h1>Noticias de Surf</h1>
-
-<p>Actualidad del surf en Canarias, España y el circuito internacional.</p>
-
-</section>
-
 
 <!-- FESURF -->
 
 <section class="news-section">
 
-<h2>Federación Española de Surfing (FESURF)</h2>
+<h2>FESURF</h2>
 
-<div class="news-grid">
-
-<article class="news-card">
-
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
-
-<div class="news-content">
-
-<div class="news-source">FESURF</div>
-
-<div class="news-title">
-Resultados del Campeonato de España de Surf
-</div>
-
-<div class="news-text">
-La Federación Española publica los resultados de la última prueba del circuito nacional.
-</div>
-
-<a href="https://www.fesurf.es" target="_blank" class="news-link">
-Leer noticia →
-</a>
-
-</div>
-
-</article>
-
+<div class="carousel">
+<div class="carousel-track" id="fesurf-news"></div>
 </div>
 
 </section>
@@ -217,170 +130,127 @@ Leer noticia →
 
 <h2>World Surf League</h2>
 
-<div class="news-grid">
-
-<article class="news-card">
-
-<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
-
-<div class="news-content">
-
-<div class="news-source">WSL</div>
-
-<div class="news-title">
-La WSL anuncia nuevas paradas del Championship Tour
-</div>
-
-<div class="news-text">
-El circuito mundial de surf confirma su calendario para la nueva temporada.
-</div>
-
-<a href="https://www.worldsurfleague.com" target="_blank" class="news-link">
-Leer noticia →
-</a>
-
-</div>
-
-</article>
-
+<div class="carousel">
+<div class="carousel-track" id="wsl-news"></div>
 </div>
 
 </section>
 
 
-<!-- FEDERACIONES AUTONOMICAS -->
+<!-- FEDERACIONES -->
 
 <section class="news-section">
 
 <h2>Federaciones Autonómicas</h2>
 
-<div class="news-grid">
-
-<article class="news-card">
-
-<img src="https://images.unsplash.com/photo-1501959915551-4e8d30928317">
-
-<div class="news-content">
-
-<div class="news-source">FCF</div>
-
-<div class="news-title">
-Nuevo calendario de la Federación Canaria de Surf
-</div>
-
-<div class="news-text">
-La federación anuncia nuevas pruebas para el circuito regional.
-</div>
-
-<a href="#" class="news-link">
-Leer noticia →
-</a>
-
-</div>
-
-</article>
-
-
-<article class="news-card">
-
-<img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d">
-
-<div class="news-content">
-
-<div class="news-source">FMS</div>
-
-<div class="news-title">
-Eventos de la Federación Madrileña de Surf
-</div>
-
-<div class="news-text">
-Madrid continúa desarrollando competiciones y actividades surf.
-</div>
-
-<a href="#" class="news-link">
-Leer noticia →
-</a>
-
-</div>
-
-</article>
-
-
-<article class="news-card">
-
-<img src="https://images.unsplash.com/photo-1527261834078-9b37d35a4a32">
-
-<div class="news-content">
-
-<div class="news-source">FGS</div>
-
-<div class="news-title">
-Campeonato gallego de surf 2026
-</div>
-
-<div class="news-text">
-La federación gallega confirma nuevas fechas para su circuito.
-</div>
-
-<a href="#" class="news-link">
-Leer noticia →
-</a>
-
-</div>
-
-</article>
-
+<div class="carousel">
+<div class="carousel-track" id="federaciones-news"></div>
 </div>
 
 </section>
-
-
-<!-- OTRAS ORGANIZACIONES -->
-
-<section class="news-section">
-
-<h2>Otras Organizaciones de Surf</h2>
-
-<div class="news-grid">
-
-<article class="news-card">
-
-<img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f">
-
-<div class="news-content">
-
-<div class="news-source">Surf Canarias</div>
-
-<div class="news-title">
-Surfistas canarios destacan en competiciones europeas
-</div>
-
-<div class="news-text">
-Las nuevas generaciones del surf canario continúan creciendo.
-</div>
-
-<a href="#" class="news-link">
-Leer noticia →
-</a>
-
-</div>
-
-</article>
-
-</div>
-
-</section>
-
 
 </main>
 
 
 <footer class="footer">
-
 © 2026 Surf Islas Canarias
-
 </footer>
 
+
+<script>
+
+/* FUNCION CREAR CARD */
+
+function createCard(article,source){
+
+return `
+<div class="news-card">
+
+<img src="${article.thumbnail || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'}">
+
+<div class="news-content">
+
+<div class="news-source">${source}</div>
+
+<div class="news-title">${article.title}</div>
+
+<a href="${article.link}" target="_blank" class="news-link">
+Leer noticia →
+</a>
+
+</div>
+
+</div>
+`
+
+}
+
+
+/* CARGAR RSS */
+
+async function loadRSS(rss,id,source){
+
+const url=`https://api.rss2json.com/v1/api.json?rss_url=${rss}`
+
+const res=await fetch(url)
+
+const data=await res.json()
+
+const container=document.getElementById(id)
+
+data.items.slice(0,8).forEach(article=>{
+
+container.innerHTML+=createCard(article,source)
+
+})
+
+startCarousel(container)
+
+}
+
+
+/* CAROUSEL AUTO */
+
+function startCarousel(track){
+
+let position=0
+
+setInterval(()=>{
+
+position+=300
+
+if(position>track.scrollWidth/2){
+position=0
+}
+
+track.style.transform=`translateX(-${position}px)`
+
+},4000)
+
+}
+
+
+/* CARGAR SECCIONES */
+
+loadRSS(
+"https://www.fesurf.es/feed",
+"fesurf-news",
+"FESURF"
+)
+
+loadRSS(
+"https://www.worldsurfleague.com/rss/news",
+"wsl-news",
+"WSL"
+)
+
+loadRSS(
+"https://www.fcsurf.es/feed",
+"federaciones-news",
+"FCF"
+)
+
+</script>
 
 </body>
 </html>
