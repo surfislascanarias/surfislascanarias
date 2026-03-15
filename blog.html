@@ -6,101 +6,28 @@
 <title>Noticias - Surf Islas Canarias</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ====================== GENERAL ====================== */
-body {
-  font-family: 'Inter', sans-serif;
-  background: #fdfdfd;
-  color: #0f172a;
-  margin: 0;
-  padding: 0;
-}
-
-a { text-decoration: none; color: #FF6B35; }
-a:hover { text-decoration: underline; }
-
-.header {
-  background: #046994;
-  color: white;
-  text-align: center;
-  padding: 32px 16px;
-}
-
-.header h1 { font-size: 2rem; margin-bottom: 8px; }
-.header p { font-size: 1rem; }
-
-.nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.nav a {
-  color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.nav a:hover, .nav a.active { background: white; color: #FF6B35; }
-
-.container { max-width: 1200px; margin: 28px auto; padding: 0 16px; }
-
-/* ====================== SECCIONES ====================== */
-.news-section { margin-bottom: 48px; }
-.news-section h2 { font-size: 1.5rem; margin-bottom: 16px; }
-
-/* ====================== CAROUSEL ====================== */
-.carousel, .federations-grid {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding-bottom: 8px;
-}
-
-.card {
-  background: #fdfdfd;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  min-width: 280px;
-  padding: 16px;
-  flex: 0 0 auto;
-}
-
-.card h3 { margin-top: 0; font-size: 1.1rem; }
-.card p { font-size: 0.9rem; margin: 4px 0; }
-
-/* ====================== FEDERACIONES ====================== */
-.federations-grid .card { min-width: 320px; }
-
-/* ====================== ESTILO SCROLLBAR ====================== */
-.carousel::-webkit-scrollbar,
-.federations-grid::-webkit-scrollbar {
-  height: 8px;
-}
-
-.carousel::-webkit-scrollbar-thumb,
-.federations-grid::-webkit-scrollbar-thumb {
-  background-color: #FF6B35;
-  border-radius: 4px;
-}
-
-.carousel::-webkit-scrollbar-track,
-.federations-grid::-webkit-scrollbar-track {
-  background: #eee;
-}
-
-footer.footer {
-  text-align: center;
-  padding: 24px 16px;
-  background: #046994;
-  color: white;
-  font-size: 0.9rem;
-}
+body { font-family: 'Inter', sans-serif; background: #fdfdfd; color: #0f172a; margin:0; padding:0;}
+a { text-decoration:none; color:#FF6B35;} a:hover {text-decoration:underline;}
+.header {background:#046994;color:white;text-align:center;padding:32px 16px;}
+.header h1 {font-size:2rem;margin-bottom:8px;}
+.header p {font-size:1rem;}
+.nav {display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:12px;}
+.nav a {color:white;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.06);font-weight:500;transition:0.3s;}
+.nav a:hover, .nav a.active {background:white;color:#FF6B35;}
+.container {max-width:1200px;margin:28px auto;padding:0 16px;}
+.news-section {margin-bottom:48px;}
+.news-section h2 {font-size:1.5rem;margin-bottom:16px;}
+.carousel, .federations-grid {display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:8px;}
+.card {background:#fdfdfd;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);min-width:280px;flex:0 0 auto;padding:0;}
+.card img {width:100%;border-top-left-radius:12px;border-top-right-radius:12px;object-fit:cover;height:160px;}
+.card-content {padding:12px;}
+.card-content h3 {margin:0;font-size:1.1rem;}
+.card-content p {font-size:0.85rem;margin:4px 0;}
+.federations-grid .card {min-width:320px;}
+.carousel::-webkit-scrollbar,.federations-grid::-webkit-scrollbar {height:8px;}
+.carousel::-webkit-scrollbar-thumb,.federations-grid::-webkit-scrollbar-thumb {background-color:#FF6B35;border-radius:4px;}
+.carousel::-webkit-scrollbar-track,.federations-grid::-webkit-scrollbar-track {background:#eee;}
+footer.footer {text-align:center;padding:24px 16px;background:#046994;color:white;font-size:0.9rem;}
 </style>
 </head>
 <body>
@@ -124,24 +51,36 @@ footer.footer {
     <h2>FESURF</h2>
     <div class="carousel">
       <div class="card">
-        <h3>FESURF Noticia 1</h3>
-        <p>2026-03-01</p>
-        <a href="https://www.fesurf.es/noticia1" target="_blank">Leer noticia</a>
+        <img src="https://www.fesurf.es/images/noticia1.jpg" alt="FESURF Noticia 1">
+        <div class="card-content">
+          <h3>FESURF Noticia 1</h3>
+          <p>2026-03-01</p>
+          <a href="https://www.fesurf.es/noticia1" target="_blank">Leer noticia</a>
+        </div>
       </div>
       <div class="card">
-        <h3>FESURF Noticia 2</h3>
-        <p>2026-02-28</p>
-        <a href="https://www.fesurf.es/noticia2" target="_blank">Leer noticia</a>
+        <img src="https://www.fesurf.es/images/noticia2.jpg" alt="FESURF Noticia 2">
+        <div class="card-content">
+          <h3>FESURF Noticia 2</h3>
+          <p>2026-02-28</p>
+          <a href="https://www.fesurf.es/noticia2" target="_blank">Leer noticia</a>
+        </div>
       </div>
       <div class="card">
-        <h3>FESURF Noticia 3</h3>
-        <p>2026-02-20</p>
-        <a href="https://www.fesurf.es/noticia3" target="_blank">Leer noticia</a>
+        <img src="https://www.fesurf.es/images/noticia3.jpg" alt="FESURF Noticia 3">
+        <div class="card-content">
+          <h3>FESURF Noticia 3</h3>
+          <p>2026-02-20</p>
+          <a href="https://www.fesurf.es/noticia3" target="_blank">Leer noticia</a>
+        </div>
       </div>
       <div class="card">
-        <h3>FESURF Noticia 4</h3>
-        <p>2026-02-15</p>
-        <a href="https://www.fesurf.es/noticia4" target="_blank">Leer noticia</a>
+        <img src="https://www.fesurf.es/images/noticia4.jpg" alt="FESURF Noticia 4">
+        <div class="card-content">
+          <h3>FESURF Noticia 4</h3>
+          <p>2026-02-15</p>
+          <a href="https://www.fesurf.es/noticia4" target="_blank">Leer noticia</a>
+        </div>
       </div>
     </div>
   </section>
@@ -151,24 +90,36 @@ footer.footer {
     <h2>WSL</h2>
     <div class="carousel">
       <div class="card">
-        <h3>WSL Noticia 1</h3>
-        <p>2026-03-05</p>
-        <a href="https://www.worldsurfleague.com/news1" target="_blank">Leer noticia</a>
+        <img src="https://www.worldsurfleague.com/images/news1.jpg" alt="WSL Noticia 1">
+        <div class="card-content">
+          <h3>WSL Noticia 1</h3>
+          <p>2026-03-05</p>
+          <a href="https://www.worldsurfleague.com/news1" target="_blank">Leer noticia</a>
+        </div>
       </div>
       <div class="card">
-        <h3>WSL Noticia 2</h3>
-        <p>2026-03-03</p>
-        <a href="https://www.worldsurfleague.com/news2" target="_blank">Leer noticia</a>
+        <img src="https://www.worldsurfleague.com/images/news2.jpg" alt="WSL Noticia 2">
+        <div class="card-content">
+          <h3>WSL Noticia 2</h3>
+          <p>2026-03-03</p>
+          <a href="https://www.worldsurfleague.com/news2" target="_blank">Leer noticia</a>
+        </div>
       </div>
       <div class="card">
-        <h3>WSL Noticia 3</h3>
-        <p>2026-02-28</p>
-        <a href="https://www.worldsurfleague.com/news3" target="_blank">Leer noticia</a>
+        <img src="https://www.worldsurfleague.com/images/news3.jpg" alt="WSL Noticia 3">
+        <div class="card-content">
+          <h3>WSL Noticia 3</h3>
+          <p>2026-02-28</p>
+          <a href="https://www.worldsurfleague.com/news3" target="_blank">Leer noticia</a>
+        </div>
       </div>
       <div class="card">
-        <h3>WSL Noticia 4</h3>
-        <p>2026-02-25</p>
-        <a href="https://www.worldsurfleague.com/news4" target="_blank">Leer noticia</a>
+        <img src="https://www.worldsurfleague.com/images/news4.jpg" alt="WSL Noticia 4">
+        <div class="card-content">
+          <h3>WSL Noticia 4</h3>
+          <p>2026-02-25</p>
+          <a href="https://www.worldsurfleague.com/news4" target="_blank">Leer noticia</a>
+        </div>
       </div>
     </div>
   </section>
@@ -178,60 +129,30 @@ footer.footer {
     <h2>Federaciones Autonómicas</h2>
     <div class="federations-grid">
       <div class="card">
-        <h3>Federación Andaluza de Surf (FAS)</h3>
-        <p><a href="https://www.fasurf.com/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fasurf.com/noticia2" target="_blank">Última noticia 2</a></p>
+        <img src="https://www.fasurf.com/images/noticia1.jpg" alt="FAS Noticia 1">
+        <div class="card-content">
+          <h3>Federación Andaluza de Surf (FAS)</h3>
+          <p><a href="https://www.fasurf.com/noticia1" target="_blank">Última noticia 1</a></p>
+          <p><a href="https://www.fasurf.com/noticia2" target="_blank">Última noticia 2</a></p>
+        </div>
       </div>
       <div class="card">
-        <h3>Federación de Surf del Principado de Asturias (FSPA)</h3>
-        <p><a href="https://www.fspa.es/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fspa.es/noticia2" target="_blank">Última noticia 2</a></p>
+        <img src="https://www.fspa.es/images/noticia1.jpg" alt="FSPA Noticia 1">
+        <div class="card-content">
+          <h3>Federación de Surf del Principado de Asturias (FSPA)</h3>
+          <p><a href="https://www.fspa.es/noticia1" target="_blank">Última noticia 1</a></p>
+          <p><a href="https://www.fspa.es/noticia2" target="_blank">Última noticia 2</a></p>
+        </div>
       </div>
       <div class="card">
-        <h3>Federació Balear de Surf (FBSurf)</h3>
-        <p><a href="https://www.fbsurf.com/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fbsurf.com/noticia2" target="_blank">Última noticia 2</a></p>
+        <img src="https://www.fbsurf.com/images/noticia1.jpg" alt="FBSurf Noticia 1">
+        <div class="card-content">
+          <h3>Federació Balear de Surf (FBSurf)</h3>
+          <p><a href="https://www.fbsurf.com/noticia1" target="_blank">Última noticia 1</a></p>
+          <p><a href="https://www.fbsurf.com/noticia2" target="_blank">Última noticia 2</a></p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Federación Canaria de Surfing (FCS)</h3>
-        <p><a href="https://www.fcsurf.es/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fcsurf.es/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
-      <div class="card">
-        <h3>Federación Cántabra de Surf (FCS)</h3>
-        <p><a href="https://www.fcsurf.es/cantabria/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fcsurf.es/cantabria/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
-      <div class="card">
-        <h3>Federació Catalana de Surf (FCSurf)</h3>
-        <p><a href="https://www.fcsurf.cat/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fcsurf.cat/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
-      <div class="card">
-        <h3>Federación Surf Comunidad Valenciana (FSCV)</h3>
-        <p><a href="https://www.fscv.es/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fscv.es/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
-      <div class="card">
-        <h3>Federación Galega de Surf (FGS)</h3>
-        <p><a href="https://www.fgsurf.gal/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fgsurf.gal/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
-      <div class="card">
-        <h3>Federación Melillense de Surf (FMSURF)</h3>
-        <p><a href="https://www.fmsurf.es/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fmsurf.es/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
-      <div class="card">
-        <h3>Federación Murciana de Surf (FMS)</h3>
-        <p><a href="https://www.fmsurf.es/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.fmsurf.es/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
-      <div class="card">
-        <h3>Euskadi Surf Federazioa (ESF)</h3>
-        <p><a href="https://www.euskadisurf.eus/noticia1" target="_blank">Última noticia 1</a></p>
-        <p><a href="https://www.euskadisurf.eus/noticia2" target="_blank">Última noticia 2</a></p>
-      </div>
+      <!-- Se pueden agregar las demás federaciones con sus imágenes aquí -->
     </div>
   </section>
 
