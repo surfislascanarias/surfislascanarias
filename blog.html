@@ -1,248 +1,222 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Noticias | Surf Islas Canarias</title>
-
-<link rel="stylesheet" href="assets/css/style.css">
+<title>Noticias - Surf Islas Canarias</title>
 
 <style>
+/* ========================== Estilos Generales ========================== */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fdfdfd;
+  color: #0f172a;
+  margin: 0;
+}
+a { color:#046994; text-decoration:none; }
+a:hover { text-decoration:underline; }
 
-.news-section{
-margin:60px 0;
+.header {
+  background:#046994;
+  color:white;
+  padding:32px 16px;
+  text-align:center;
+}
+.header h1 { margin:0; font-size:2rem; }
+.header p { margin-top:8px; }
+
+.nav { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px; }
+.nav a { padding:8px 12px; background:rgba(255,255,255,0.08); color:white; border-radius:6px; font-weight:500; }
+
+.container { max-width:1200px; margin:28px auto; padding:0 16px; }
+
+/* ========================== Secciones ========================== */
+
+.news-section { margin-bottom:60px; }
+.news-section h2 {
+  font-size:1.6rem;
+  margin-bottom:18px;
+  border-left:5px solid #FF6B35;
+  padding-left:12px;
 }
 
-.news-section h2{
-font-size:28px;
-margin-bottom:20px;
-border-left:5px solid #ff6b35;
-padding-left:10px;
+/* ========================== Carousel ========================== */
+
+.carousel {
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:8px;
 }
 
-/* GRID */
+.carousel::-webkit-scrollbar { height:8px; }
+.carousel::-webkit-scrollbar-thumb { background:#FF6B35; border-radius:4px; }
+.carousel::-webkit-scrollbar-track { background:#eee; }
 
-.federaciones-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+.news-card {
+  background:white;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  min-width:280px;
+  flex:0 0 auto;
+  overflow:hidden;
 }
-
-/* CARD */
-
-.news-card{
-
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
+.news-card img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
 }
-
-.news-card img{
-width:100%;
-height:180px;
-object-fit:cover;
+.news-content {
+  padding:12px 14px;
 }
-
-.news-content{
-padding:15px;
+.news-source {
+  font-size:12px;
+  font-weight:700;
+  color:#FF6B35;
+  margin-bottom:6px;
 }
-
-.news-source{
-font-size:12px;
-font-weight:bold;
-color:#ff6b35;
-margin-bottom:5px;
+.news-title {
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:6px;
 }
-
-.news-title{
-font-size:16px;
-font-weight:700;
-margin-bottom:10px;
+.news-link {
+  font-size:0.9rem;
+  font-weight:600;
+  color:#046994;
 }
-
-.news-link{
-text-decoration:none;
-color:#046994;
-font-weight:600;
-}
-
 </style>
-
 </head>
-
 <body>
 
 <header class="header">
-
-<h1>Surf Islas Canarias</h1>
-
-<nav class="nav">
-<a href="index.html">Inicio</a>
-<a href="noticias.html">Noticias</a>
-<a href="spots.html">Islas</a>
-<a href="eventos.html">Eventos & Calendario</a>
-<a href="modalidades.html">Modalidades</a>
-</nav>
-
+  <h1>Surf Islas Canarias</h1>
+  <p>Noticias del surf en Canarias, España y el circuito internacional</p>
+  <nav class="nav">
+    <a href="index.html">Inicio</a>
+    <a href="noticias.html" class="active">Noticias</a>
+    <a href="spots.html">Islas</a>
+    <a href="eventos.html">Eventos & Calendario</a>
+    <a href="modalidades.html">Modalidades</a>
+  </nav>
 </header>
-
 
 <main class="container">
 
+  <section class="news-section">
+    <h2>Federación Española de Surfing (FESURF)</h2>
+    <div class="carousel" id="carousel-fesurf"></div>
+  </section>
 
-<!-- FESURF -->
+  <section class="news-section">
+    <h2>World Surf League (WSL)</h2>
+    <div class="carousel" id="carousel-wsl"></div>
+  </section>
 
-<section class="news-section">
-
-<h2>FESURF</h2>
-
-<div class="news-card" id="fesurf-card"></div>
-
-</section>
-
-
-<!-- WSL -->
-
-<section class="news-section">
-
-<h2>World Surf League</h2>
-
-<div class="news-card" id="wsl-card"></div>
-
-</section>
-
-
-<!-- FEDERACIONES -->
-
-<section class="news-section">
-
-<h2>Federaciones Autonómicas</h2>
-
-<div class="federaciones-grid">
-
-<div class="news-card" id="fcs-card"></div>
-
-<div class="news-card" id="fgs-card"></div>
-
-<div class="news-card" id="fms-card"></div>
-
-<div class="news-card" id="ectc-card"></div>
-
-</div>
-
-</section>
+  <section class="news-section">
+    <h2>Federaciones Autonómicas</h2>
+    <div class="carousel" id="carousel-federations"></div>
+  </section>
 
 </main>
 
-
-<footer class="footer">
-© 2026 Surf Islas Canarias
+<footer class="footer" style="text-align:center;padding:20px 16px;background:#046994;color:white;">
+  © 2026 Surf Islas Canarias
 </footer>
 
-
-
 <script>
+/* ======================== Helpers ======================== */
 
-/* CREAR CARD */
-
-function renderNews(container,news,source){
-
-container.innerHTML=`
-
-<img src="${news.thumbnail || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e'}">
-
-<div class="news-content">
-
-<div class="news-source">${source}</div>
-
-<div class="news-title">${news.title}</div>
-
-<a href="${news.link}" target="_blank" class="news-link">
-Leer noticia →
-</a>
-
-</div>
-
-`
-
+async function fetchRSS(feedUrl) {
+  try {
+    const proxy = "https://api.allorigins.win/raw?url=";
+    const res = await fetch(proxy + encodeURIComponent(feedUrl));
+    const text = await res.text();
+    return new window.DOMParser().parseFromString(text, "text/xml");
+  } catch (err) {
+    console.error("Error al cargar RSS:", err);
+    return null;
+  }
 }
 
-
-/* CARGAR RSS */
-
-async function loadNews(rss,containerId,source){
-
-const url=`https://api.rss2json.com/v1/api.json?rss_url=${rss}`
-
-const res=await fetch(url)
-
-const data=await res.json()
-
-const container=document.getElementById(containerId)
-
-const articles=data.items.slice(0,4)
-
-let index=0
-
-renderNews(container,articles[index],source)
-
-setInterval(()=>{
-
-index++
-
-if(index>=articles.length){
-index=0
+function getValue(node, tag) {
+  const el = node.querySelector(tag);
+  return el ? el.textContent : "";
 }
 
-renderNews(container,articles[index],source)
-
-},4000)
-
+function getImageFromItem(item) {
+  // Intenta <media:content>, <media:thumbnail>
+  const media = item.querySelector("media\\:content, content, media\\:thumbnail, thumbnail");
+  if (media && media.getAttribute("url")) return media.getAttribute("url");
+  // Open Graph
+  const desc = getValue(item, "description");
+  const match = desc.match(/<img.*?src=["'](.*?)["']/);
+  return match ? match[1] : "";
 }
 
+function renderCarousel(xml, elementId, sourceName) {
+  if (!xml) return;
+  const items = xml.querySelectorAll("item");
+  const container = document.getElementById(elementId);
 
-/* FUENTES */
+  for (let i = 0; i < Math.min(4, items.length); i++) {
+    const item = items[i];
+    const title = getValue(item, "title");
+    const link = getValue(item, "link");
+    const imgSrc = getImageFromItem(item) || "https://via.placeholder.com/400x250?text=Noticia";
 
-loadNews(
-"https://www.fesurf.es/feed",
-"fesurf-card",
-"FESURF"
-)
+    const card = document.createElement("div");
+    card.className = "news-card";
+    card.innerHTML = `
+      <img src="${imgSrc}" alt="${title}">
+      <div class="news-content">
+        <div class="news-source">${sourceName}</div>
+        <div class="news-title">${title}</div>
+        <a class="news-link" href="${link}" target="_blank">Leer noticia →</a>
+      </div>
+    `;
+    container.appendChild(card);
+  }
+}
 
-loadNews(
-"https://www.worldsurfleague.com/rss/news",
-"wsl-card",
-"WSL"
-)
+/* ======================== Fuentes ======================== */
 
-loadNews(
-"https://www.fcsurf.es/feed",
-"fcs-card",
-"FCS"
-)
+// FESURF
+fetchRSS("https://www.fesurf.es/feed/")
+  .then(xml => renderCarousel(xml, "carousel-fesurf", "FESURF"));
 
-loadNews(
-"https://federaciongallegasurf.gal/feed",
-"fgs-card",
-"FGS"
-)
+// WSL
+fetchRSS("https://www.worldsurfleague.com/rss/news")
+  .then(xml => renderCarousel(xml, "carousel-wsl", "WSL"));
 
-loadNews(
-"https://fmsurf.org/feed",
-"fms-card",
-"FMS"
-)
-
-loadNews(
-"https://federacioncantabrasurf.com/feed",
-"ectc-card",
-"ECTC"
-)
-
+// Federaciones Autonómicas (todas en uno)
+Promise.all([
+  fetchRSS("https://www.fcsurf.es/feed/"),       // FCS (Canarias)
+  fetchRSS("https://fgsurf.gal/feed/"),          // FGS (Galicia)
+  fetchRSS("https://fspa.es/feed/"),             // FSPA (Asturias)
+  fetchRSS("https://www.fscv.es/feed/"),         // FSCV (Valenciana)
+  fetchRSS("https://www.fasurf.com/feed/"),      // FAS (Andalucía)
+  fetchRSS("https://www.fmsurf.es/feed/"),       // FMS (Murcia/Melilla)
+  fetchRSS("https://www.euskadisurf.eus/feed/")  // ESF (País Vasco)
+]).then(results => {
+  results.forEach((xml, idx) => {
+    if (xml) {
+      // etiqueta de cada feed
+      let name = "Federación";
+      switch (idx) {
+        case 0: name = "FCS"; break;
+        case 1: name = "FGS"; break;
+        case 2: name = "FSPA"; break;
+        case 3: name = "FSCV"; break;
+        case 4: name = "FAS"; break;
+        case 5: name = "FMSURF"; break;
+        case 6: name = "ESF"; break;
+      }
+      renderCarousel(xml, "carousel-federations", name);
+    }
+  });
+});
 </script>
 
 </body>
