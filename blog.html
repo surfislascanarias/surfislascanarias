@@ -164,42 +164,42 @@
 
 <div class="fed-card">
   <a href="https://www.federacionasturianadesurf.com" target="_blank">
-    <img src="https://www.federacionasturianadesurf.com/wp-content/uploads/2020/06/logo.png">
+    <img src="/assets/img/logosfed/asturias.jpg">
     Asturias
   </a>
 </div>
 
 <div class="fed-card">
   <a href="https://www.fgsurf.org/" target="_blank">
-    <img src="https://www.fgsurf.org/wp-content/uploads/2021/05/logo-fgsurf.png">
+    <img src="/assets/img/logosfed/galicia.jpg">
     Galicia
   </a>
 </div>
 
 <div class="fed-card">
   <a href="https://www.federacioncantabradesurf.com/" target="_blank">
-    <img src="https://www.federacioncantabradesurf.com/wp-content/uploads/2019/03/logo.png">
+    <img src="/assets/img/logosfed/cantabria.jpg">
     Cantabria
   </a>
 </div>
 
 <div class="fed-card">
   <a href="https://fsrm.es/" target="_blank">
-    <img src="https://fsrm.es/wp-content/uploads/2020/05/logo.png">
+    <img src="/assets/img/logosfed/murcia.jpg">
     Murcia
   </a>
 </div>
 
 <div class="fed-card">
   <a href="https://www.facebook.com/AsociacionAndaluzaDeSurf" target="_blank">
-    <img src="https://1000marcas.net/wp-content/uploads/2020/01/Facebook-Logo.png">
+    <img src="/assets/img/logosfed/andalucia.jpg">
     Andalucía
   </a>
 </div>
 
 <div class="fed-card">
   <a href="https://fsurf.cat/" target="_blank">
-    <img src="https://fsurf.cat/wp-content/uploads/2021/03/logo.png">
+    <img src="/assets/img/logosfed/cataluña.jpg">
     Cataluña
   </a>
 </div>
@@ -221,27 +221,18 @@ const feeds = {
 let store = { fesurf: [], fcsurf: [] };
 let index = { fesurf:0, fcsurf:0 };
 
-/* ================= PROXY/FIX IMAGEN ================= */
+/* ================= FUNCIONES IMÁGENES ================= */
 function fallback(){
   return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
 }
 
-function fixUrl(url, section){
-  if(!url) return fallback();
-  if(url.startsWith("/")){
-    if(section=="fesurf") url = "https://www.fesurf.es"+url;
-    if(section=="fcsurf") url = "https://fcsurf.es"+url;
-  }
-  if(!url.startsWith("http")) return fallback();
-  return "https://images.weserv.nl/?url="+encodeURIComponent(url);
-}
-
-function getImage(item, section){
-  if(item.thumbnail) return fixUrl(item.thumbnail, section);
+// ya no usamos proxy, usamos directamente imagen válida o fallback
+function getImage(item){
+  if(item.thumbnail) return item.thumbnail;
   const html = item.description || item.content;
   if(html){
     const match = html.match(/<img[^>]+src="([^">]+)"/);
-    if(match) return fixUrl(match[1], section);
+    if(match) return match[1];
   }
   return fallback();
 }
@@ -254,7 +245,7 @@ async function load(section){
     store[section] = data.items.map(item => ({
       title: item.title,
       link: item.link,
-      img: getImage(item, section)
+      img: getImage(item)
     }));
     render(section);
   }catch(e){
