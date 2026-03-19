@@ -10,7 +10,6 @@
 <style>
 :root{
   --azul:#046994;
-  --accent:#FF6B35;
 }
 
 body{
@@ -63,15 +62,11 @@ body{
   width:100%;
   height:200px;
   object-fit:cover;
-  background:#ddd;
+  background:#ccc;
 }
 
 .card-content{
   padding:15px;
-}
-
-.card h3{
-  font-size:1rem;
 }
 
 .nav-btn{
@@ -110,9 +105,8 @@ footer{
     <nav class="nav">
       <a href="/">Inicio</a>
       <a href="/blog.html">Noticias</a>
-      <a href="/islas.html">Islas</a>
-      <a href="/campeonatos.html">Eventos & Calendario</a>
-      <a href="/modalidades.html">Modalidades</a>
+      <a href="#">Islas</a>
+      <a href="#">Eventos</a>
     </nav>
   </div>
 </header>
@@ -124,7 +118,6 @@ footer{
 <!-- FESURF -->
 <section class="section">
 <h2>FESURFING</h2>
-
 <div class="card">
 <button class="nav-btn prev" onclick="prev('fesurf')"><</button>
 <button class="nav-btn next" onclick="next('fesurf')">></button>
@@ -140,7 +133,6 @@ footer{
 <!-- WSL -->
 <section class="section">
 <h2>WSL</h2>
-
 <div class="card">
 <button class="nav-btn prev" onclick="prev('wsl')"><</button>
 <button class="nav-btn next" onclick="next('wsl')">></button>
@@ -155,11 +147,10 @@ footer{
 
 <!-- FEDERACIONES -->
 <section class="section">
-<h2>Federaciones Autonómicas</h2>
-
+<h2>Federaciones</h2>
 <div class="card">
-<button class="nav-btn prev" onclick="prev('federaciones')"><</button>
-<button class="nav-btn next" onclick="next('federaciones')">></button>
+<button class="nav-btn prev" onclick="prev('fed')"><</button>
+<button class="nav-btn next" onclick="next('fed')">></button>
 
 <img id="fed-img">
 <div class="card-content">
@@ -175,111 +166,124 @@ footer{
 
 <script>
 
-/* ================= DATOS REALES ================= */
+/* ================= RSS ================= */
 
-const fesurf = [
-{
-title:"España brilla en el EuroSurf 2024",
-link:"https://www.fesurf.es/espana-brilla-en-el-eurosurf-2024/",
-img:"https://www.fesurf.es/wp-content/uploads/2024/07/Eurosurf-2024-team.jpg"
-},
-{
-title:"La FESURF impulsa el surf femenino",
-link:"https://www.fesurf.es/fesurf-impulsa-el-surf-femenino/",
-img:"https://www.fesurf.es/wp-content/uploads/2024/06/surf-femenino.jpg"
-}
-];
+const feeds = {
+  fesurf: "https://api.rss2json.com/v1/api.json?rss_url=https://www.fesurf.es/feed/",
+  wsl: "https://api.rss2json.com/v1/api.json?rss_url=https://www.worldsurfleague.com/rss/news",
+  fed: "https://api.rss2json.com/v1/api.json?rss_url=https://www.fcsurf.es/feed/"
+};
 
-const wsl = [
-{
-title:"Italo Ferreira gana en Tahití",
-link:"https://www.worldsurfleague.com/posts/531245/italo-ferreira-wins-tahiti-pro",
-img:"https://www.worldsurfleague.com/sites/default/files/styles/post_image/public/2024-08/tahiti-pro-italo.jpg"
-},
-{
-title:"Ranking WSL actualizado",
-link:"https://www.worldsurfleague.com/rankings",
-img:"https://www.worldsurfleague.com/sites/default/files/styles/large/public/2025-01/wsl-ranking.jpg"
-}
-];
+let store = {
+  fesurf: [],
+  wsl: [],
+  fed: []
+};
 
-const federaciones = [
-{
-title:"Campeonato de Canarias de Surf 2024",
-link:"https://www.fcsurf.es/campeonato-canarias-surf-2024/",
-img:"https://www.fcsurf.es/wp-content/uploads/2024/05/campeonato-canarias.jpg"
-},
-{
-title:"Galicia acoge prueba nacional de surf",
-link:"https://www.fgsurf.org/galicia-prueba-nacional-surf/",
-img:"https://www.fgsurf.org/wp-content/uploads/2024/06/prueba-galicia.jpg"
-},
-{
-title:"Cantabria impulsa cantera del surf",
-link:"https://www.federacioncantabradesurf.com/cantera-surf-cantabria/",
-img:"https://www.federacioncantabradesurf.com/wp-content/uploads/2024/04/cantera.jpg"
-},
-{
-title:"Andalucía refuerza circuito autonómico",
-link:"https://federacionandaluzadesurf.com/circuito-andaluz-surf/",
-img:"https://federacionandaluzadesurf.com/wp-content/uploads/2024/03/circuito.jpg"
+let index = {
+  fesurf:0,
+  wsl:0,
+  fed:0
+};
+
+/* ================= IMAGEN INTELIGENTE ================= */
+
+function getImage(item){
+
+  // 1. thumbnail
+  if(item.thumbnail && item.thumbnail !== "") return item.thumbnail;
+
+  // 2. contenido HTML
+  if(item.description){
+    const match = item.description.match(/<img[^>]+src="([^">]+)"/);
+    if(match) return match[1];
+  }
+
+  // 3. contenido completo
+  if(item.content){
+    const match = item.content.match(/<img[^>]+src="([^">]+)"/);
+    if(match) return match[1];
+  }
+
+  // 4. fallback SIEMPRE visible
+  return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
 }
-];
+
+/* ================= LOAD ================= */
+
+async function load(section){
+  try{
+    const res = await fetch(feeds[section]);
+    const data = await res.json();
+
+    store[section] = data.items.map(item => ({
+      title: item.title,
+      link: item.link,
+      img: getImage(item)
+    }));
+
+    update(section);
+
+  }catch(e){
+    console.error(section, e);
+  }
+}
+
+/* ================= RENDER ================= */
+
+function render(section, img, title, link){
+  const item = store[section][index[section]];
+  if(!item) return;
+
+  const image = document.getElementById(img);
+
+  image.src = item.img;
+
+  image.onerror = () => {
+    image.src = "https://via.placeholder.com/800x400/000/fff?text=Surf";
+  };
+
+  document.getElementById(title).textContent = item.title;
+  document.getElementById(link).href = item.link;
+}
 
 /* ================= CONTROL ================= */
 
-let index = {
-fesurf:0,
-wsl:0,
-federaciones:0
-};
-
-function render(section, data, img, title, link){
-const imageElement = document.getElementById(img);
-
-imageElement.src = data[index[section]].img;
-
-// fallback si falla imagen
-imageElement.onerror = () => {
-imageElement.src = "https://via.placeholder.com/800x400?text=Surf+News";
-};
-
-document.getElementById(title).textContent = data[index[section]].title;
-document.getElementById(link).href = data[index[section]].link;
-}
-
 function next(section){
-index[section]++;
-update(section);
+  index[section]++;
+  update(section);
 }
 
 function prev(section){
-index[section]--;
-update(section);
+  index[section]--;
+  update(section);
 }
 
 function update(section){
-let data = eval(section);
+  const data = store[section];
+  if(!data.length) return;
 
-if(index[section] >= data.length) index[section]=0;
-if(index[section] < 0) index[section]=data.length-1;
+  if(index[section] >= data.length) index[section]=0;
+  if(index[section] < 0) index[section]=data.length-1;
 
-if(section==="fesurf") render(section,data,"fesurf-img","fesurf-title","fesurf-link");
-if(section==="wsl") render(section,data,"wsl-img","wsl-title","wsl-link");
-if(section==="federaciones") render(section,data,"fed-img","fed-title","fed-link");
+  if(section==="fesurf") render(section,"fesurf-img","fesurf-title","fesurf-link");
+  if(section==="wsl") render(section,"wsl-img","wsl-title","wsl-link");
+  if(section==="fed") render(section,"fed-img","fed-title","fed-link");
 }
 
-/* AUTO ROTACIÓN */
+/* ================= AUTO ================= */
+
 setInterval(()=>{
-next('fesurf');
-next('wsl');
-next('federaciones');
+  next('fesurf');
+  next('wsl');
+  next('fed');
 },5000);
 
-/* INIT */
-update('fesurf');
-update('wsl');
-update('federaciones');
+/* ================= INIT ================= */
+
+load('fesurf');
+load('wsl');
+load('fed');
 
 </script>
 
