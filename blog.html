@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 
 <style>
-
-/* ===== GRID NOTICIAS ===== */
+/* =================== GRID NOTICIAS =================== */
 .news-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
@@ -23,6 +22,7 @@
   border-radius:14px;
   overflow:hidden;
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  position:relative;
   transition:0.3s;
 }
 
@@ -34,6 +34,7 @@
   width:100%;
   height:200px;
   object-fit:cover;
+  background:#ccc;
 }
 
 .news-content{
@@ -51,6 +52,23 @@
   font-weight:600;
 }
 
+/* ===== BOTONES SLIDE ===== */
+.nav-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.6);
+  color:white;
+  border:none;
+  font-size:20px;
+  padding:10px;
+  cursor:pointer;
+  z-index:5;
+}
+
+.prev{ left:10px; }
+.next{ right:10px; }
+
 /* ===== GRID FEDERACIONES ===== */
 .fed-grid{
   display:grid;
@@ -58,7 +76,6 @@
   gap:15px;
 }
 
-/* ===== CARD FED ===== */
 .fed-card{
   background:white;
   border-radius:12px;
@@ -85,20 +102,17 @@
   font-weight:600;
   font-size:0.9rem;
 }
-
 </style>
 </head>
-
 <body>
 
-<!-- HEADER (SE QUEDA IGUAL) -->
+<!-- HEADER -->
 <header class="header">
   <div class="header-container">
     <div>
       <h1>Surf Islas Canarias</h1>
       <p>Noticias del surf en Canarias y el mundo</p>
     </div>
-
     <nav class="nav" id="navMenu">
       <a href="/">Inicio</a>
       <a href="/blog.html">Noticias</a>
@@ -111,7 +125,7 @@
   </div>
 </header>
 
-<!-- ================= NOTICIAS ================= -->
+<!-- ================== SECCIÓN 1: NOTICIAS ================== -->
 <section class="section">
 <h2>Noticias Federaciones</h2>
 
@@ -119,7 +133,9 @@
 
 <!-- FESURF -->
 <div class="news-card">
-  <img id="fesurf-img">
+  <button class="nav-btn prev" onclick="prev('fesurf')"><</button>
+  <button class="nav-btn next" onclick="next('fesurf')">></button>
+  <img id="fesurf-img" onerror="this.src='https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News'">
   <div class="news-content">
     <h3 id="fesurf-title"></h3>
     <a id="fesurf-link" target="_blank">Ver noticia</a>
@@ -128,7 +144,9 @@
 
 <!-- FCSURF -->
 <div class="news-card">
-  <img id="fcsurf-img">
+  <button class="nav-btn prev" onclick="prev('fcsurf')"><</button>
+  <button class="nav-btn next" onclick="next('fcsurf')">></button>
+  <img id="fcsurf-img" onerror="this.src='https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News'">
   <div class="news-content">
     <h3 id="fcsurf-title"></h3>
     <a id="fcsurf-link" target="_blank">Ver noticia</a>
@@ -138,100 +156,144 @@
 </div>
 </section>
 
-<!-- ================= FEDERACIONES ================= -->
+<!-- ================== SECCIÓN 2: FEDERACIONES REGIONALES ================== -->
 <section class="section">
 <h2>Federaciones Regionales</h2>
 
 <div class="fed-grid">
 
 <div class="fed-card">
-<a href="https://www.federacionasturianadesurf.com" target="_blank">
-<img src="https://www.federacionasturianadesurf.com/wp-content/uploads/2020/06/logo.png">
-Asturias
-</a>
+  <a href="https://www.federacionasturianadesurf.com" target="_blank">
+    <img src="https://www.federacionasturianadesurf.com/wp-content/uploads/2020/06/logo.png">
+    Asturias
+  </a>
 </div>
 
 <div class="fed-card">
-<a href="https://www.fgsurf.org/" target="_blank">
-<img src="https://www.fgsurf.org/wp-content/uploads/2021/05/logo-fgsurf.png">
-Galicia
-</a>
+  <a href="https://www.fgsurf.org/" target="_blank">
+    <img src="https://www.fgsurf.org/wp-content/uploads/2021/05/logo-fgsurf.png">
+    Galicia
+  </a>
 </div>
 
 <div class="fed-card">
-<a href="https://www.federacioncantabradesurf.com/" target="_blank">
-<img src="https://www.federacioncantabradesurf.com/wp-content/uploads/2019/03/logo.png">
-Cantabria
-</a>
+  <a href="https://www.federacioncantabradesurf.com/" target="_blank">
+    <img src="https://www.federacioncantabradesurf.com/wp-content/uploads/2019/03/logo.png">
+    Cantabria
+  </a>
 </div>
 
 <div class="fed-card">
-<a href="https://fsrm.es/" target="_blank">
-<img src="https://fsrm.es/wp-content/uploads/2020/05/logo.png">
-Murcia
-</a>
+  <a href="https://fsrm.es/" target="_blank">
+    <img src="https://fsrm.es/wp-content/uploads/2020/05/logo.png">
+    Murcia
+  </a>
 </div>
 
 <div class="fed-card">
-<a href="https://fsurf.cat/" target="_blank">
-<img src="https://fsurf.cat/wp-content/uploads/2021/03/logo.png">
-Cataluña
-</a>
+  <a href="https://www.facebook.com/AsociacionAndaluzaDeSurf" target="_blank">
+    <img src="https://1000marcas.net/wp-content/uploads/2020/01/Facebook-Logo.png">
+    Andalucía
+  </a>
+</div>
+
+<div class="fed-card">
+  <a href="https://fsurf.cat/" target="_blank">
+    <img src="https://fsurf.cat/wp-content/uploads/2021/03/logo.png">
+    Cataluña
+  </a>
 </div>
 
 </div>
 </section>
 
-<!-- FOOTER (SE QUEDA IGUAL) -->
 <footer>
 © 2026 Surf Islas Canarias
 </footer>
-<!--JS -->
+
 <script>
+/* ================= RSS ================= */
 const feeds = {
   fesurf: "https://api.rss2json.com/v1/api.json?rss_url=https://www.fesurf.es/feed/",
   fcsurf: "https://api.rss2json.com/v1/api.json?rss_url=https://fcsurf.es/feed/"
 };
 
+let store = { fesurf: [], fcsurf: [] };
+let index = { fesurf:0, fcsurf:0 };
+
+/* ================= PROXY/FIX IMAGEN ================= */
 function fallback(){
   return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
 }
 
-function proxyImage(url){
+function fixUrl(url, section){
   if(!url) return fallback();
+  if(url.startsWith("/")){
+    if(section=="fesurf") url = "https://www.fesurf.es"+url;
+    if(section=="fcsurf") url = "https://fcsurf.es"+url;
+  }
+  if(!url.startsWith("http")) return fallback();
   return "https://images.weserv.nl/?url="+encodeURIComponent(url);
 }
 
-function getImage(item){
-  if(item.thumbnail) return proxyImage(item.thumbnail);
-
+function getImage(item, section){
+  if(item.thumbnail) return fixUrl(item.thumbnail, section);
   const html = item.description || item.content;
   if(html){
     const match = html.match(/<img[^>]+src="([^">]+)"/);
-    if(match) return proxyImage(match[1]);
+    if(match) return fixUrl(match[1], section);
   }
-
   return fallback();
 }
 
+/* ================= LOAD ================= */
 async function load(section){
   try{
     const res = await fetch(feeds[section]);
     const data = await res.json();
-    const item = data.items[0];
-
-    document.getElementById(section+"-img").src = getImage(item);
-    document.getElementById(section+"-title").textContent = item.title;
-    document.getElementById(section+"-link").href = item.link;
-
+    store[section] = data.items.map(item => ({
+      title: item.title,
+      link: item.link,
+      img: getImage(item, section)
+    }));
+    render(section);
   }catch(e){
     console.error(section,e);
   }
 }
 
+/* ================= RENDER ================= */
+function render(section){
+  const item = store[section][index[section]];
+  if(!item) return;
+  const image = document.getElementById(section+"-img");
+  image.src = item.img;
+  image.onerror = ()=>{image.src=fallback()};
+  document.getElementById(section+"-title").textContent = item.title;
+  document.getElementById(section+"-link").href = item.link;
+}
+
+/* ================= CONTROL ================= */
+function next(section){ index[section]++; update(section); }
+function prev(section){ index[section]--; update(section); }
+
+function update(section){
+  const data = store[section];
+  if(!data.length) return;
+  if(index[section]>=data.length) index[section]=0;
+  if(index[section]<0) index[section]=data.length-1;
+  render(section);
+}
+
+/* ================= AUTO ROTACIÓN ================= */
+setInterval(()=>{
+  next('fesurf');
+  next('fcsurf');
+},5000);
+
+/* ================= INIT ================= */
 load('fesurf');
 load('fcsurf');
 </script>
-
 </body>
 </html>
