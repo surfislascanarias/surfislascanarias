@@ -95,6 +95,7 @@ footer{
 
 <body>
 
+<!-- HEADER (html1) -->
 <header class="header">
   <div class="header-container">
     <div>
@@ -111,9 +112,12 @@ footer{
   </div>
 </header>
 
+<!-- HERO (html1) -->
 <section class="hero">
   <h2>Actualidad del Surf 🌊</h2>
 </section>
+
+<!-- ================== CONTENIDO CENTRAL (html2 SIN TOCAR) ================== -->
 
 <!-- FESURF -->
 <section class="section">
@@ -160,6 +164,7 @@ footer{
 </div>
 </section>
 
+<!-- FOOTER (html1) -->
 <footer>
 © 2026 Surf Islas Canarias
 </footer>
@@ -186,26 +191,21 @@ let index = {
   fed:0
 };
 
-/* ================= IMAGEN INTELIGENTE ================= */
+/* ================= IMAGEN ================= */
 
 function getImage(item){
-
-  // 1. thumbnail
   if(item.thumbnail && item.thumbnail !== "") return item.thumbnail;
 
-  // 2. contenido HTML
   if(item.description){
     const match = item.description.match(/<img[^>]+src="([^">]+)"/);
     if(match) return match[1];
   }
 
-  // 3. contenido completo
   if(item.content){
     const match = item.content.match(/<img[^>]+src="([^">]+)"/);
     if(match) return match[1];
   }
 
-  // 4. fallback SIEMPRE visible
   return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
 }
 
