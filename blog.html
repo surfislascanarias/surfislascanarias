@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 
 <style>
-/* =================== GRID NOTICIAS =================== */
+/* ===== GRID NOTICIAS ===== */
 .news-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
@@ -17,7 +17,6 @@
   margin-bottom:40px;
 }
 
-/* ===== CARD NOTICIAS ===== */
 .news-card{
   background:white;
   border-radius:14px;
@@ -111,29 +110,15 @@
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-  .news-card img{
-    height:180px;
-  }
-  .news-content h3{
-    font-size:0.95rem;
-  }
-  .nav-btn{
-    font-size:18px;
-    padding:8px;
-  }
+  .news-card img{ height:180px; }
+  .news-content h3{ font-size:0.95rem; }
+  .nav-btn{ font-size:18px; padding:8px; }
 }
 
 @media(max-width:480px){
-  .news-card img{
-    height:150px;
-  }
-  .news-content h3{
-    font-size:0.9rem;
-  }
-  .nav-btn{
-    font-size:16px;
-    padding:6px;
-  }
+  .news-card img{ height:150px; }
+  .news-content h3{ font-size:0.9rem; }
+  .nav-btn{ font-size:16px; padding:6px; }
 }
 </style>
 </head>
@@ -157,12 +142,11 @@
   </div>
 </header>
 
-<!-- ================== SECCIÓN 1: NOTICIAS ================== -->
+<!-- ================== SECCIÓN 1: FESURF + FCSURF ================== -->
 <section class="section">
 <h2>Noticias Federaciones</h2>
 <div class="news-grid">
 
-<!-- FESURF -->
 <div class="news-card">
   <button class="nav-btn prev" onclick="prev('fesurf')"><</button>
   <button class="nav-btn next" onclick="next('fesurf')">></button>
@@ -173,7 +157,6 @@
   </div>
 </div>
 
-<!-- FCSURF -->
 <div class="news-card">
   <button class="nav-btn prev" onclick="prev('fcsurf')"><</button>
   <button class="nav-btn next" onclick="next('fcsurf')">></button>
@@ -242,6 +225,7 @@
 </footer>
 
 <script>
+// ================== FEEDS ==================
 const feeds = {
   fesurf: "https://api.rss2json.com/v1/api.json?rss_url=https://www.fesurf.es/feed/",
   fcsurf: "https://api.rss2json.com/v1/api.json?rss_url=https://fcsurf.es/feed/"
@@ -250,12 +234,15 @@ const feeds = {
 let store = { fesurf: [], fcsurf: [] };
 let index = { fesurf:0, fcsurf:0 };
 
+// fallback si no hay imagen
 function fallback(){
   return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
 }
 
+// función definitiva: proxy images.weserv.nl
 function getImage(item){
   let url = null;
+
   if(item.thumbnail) url = item.thumbnail;
   else {
     const html = item.description || item.content;
@@ -264,14 +251,19 @@ function getImage(item){
       if(match) url = match[1];
     }
   }
+
   if(!url) return fallback();
+
+  // URL relativa → absoluta
   if(url.startsWith("/")){
     if(item.link.includes("fesurf.es")) url = "https://www.fesurf.es" + url;
     if(item.link.includes("fcsurf.es")) url = "https://fcsurf.es" + url;
   }
+
   return "https://images.weserv.nl/?url=" + encodeURIComponent(url);
 }
 
+// ================== LOAD ==================
 async function load(section){
   try{
     const res = await fetch(feeds[section]);
@@ -288,6 +280,7 @@ async function load(section){
   }
 }
 
+// ================== RENDER ==================
 function render(section){
   const item = store[section][index[section]];
   if(!item) return;
@@ -298,6 +291,7 @@ function render(section){
   document.getElementById(section+"-link").href = item.link;
 }
 
+// ================== CONTROL ==================
 function next(section){
   index[section]++;
   if(index[section]>=store[section].length) index[section]=0;
@@ -310,19 +304,19 @@ function prev(section){
   render(section);
 }
 
-// slide automático cada 5s
+// ================== ROTACIÓN AUTOMÁTICA ==================
 setInterval(()=>{
   next('fesurf');
   next('fcsurf');
 },5000);
 
-// recarga feeds cada 5min
+// ================== RECARGA AUTOMÁTICA CADA 5 MIN ==================
 setInterval(()=>{
   load('fesurf');
   load('fcsurf');
 },300000);
 
-// iniciar
+// ================== INIT ==================
 load('fesurf');
 load('fcsurf');
 </script>
