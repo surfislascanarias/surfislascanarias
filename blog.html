@@ -19,7 +19,6 @@ body{
   background:#f5f5f5;
 }
 
-/* HEADER ORIGINAL */
 .header{
   background:linear-gradient(180deg,#046994,#023f5c);
   color:white;
@@ -42,7 +41,6 @@ body{
   text-decoration:none;
 }
 
-/* HERO */
 .hero{
   text-align:center;
   padding:40px;
@@ -53,7 +51,6 @@ body{
   margin:40px auto;
 }
 
-/* CARD */
 .card{
   background:white;
   border-radius:12px;
@@ -66,6 +63,7 @@ body{
   width:100%;
   height:200px;
   object-fit:cover;
+  background:#ddd;
 }
 
 .card-content{
@@ -76,7 +74,6 @@ body{
   font-size:1rem;
 }
 
-/* BOTONES < > */
 .nav-btn{
   position:absolute;
   top:50%;
@@ -124,7 +121,7 @@ footer{
   <h2>Actualidad del Surf 🌊</h2>
 </section>
 
-<!-- ================= FESURF ================= -->
+<!-- FESURF -->
 <section class="section">
 <h2>FESURFING</h2>
 
@@ -132,7 +129,7 @@ footer{
 <button class="nav-btn prev" onclick="prev('fesurf')"><</button>
 <button class="nav-btn next" onclick="next('fesurf')">></button>
 
-<img id="fesurf-img" src="">
+<img id="fesurf-img">
 <div class="card-content">
 <h3 id="fesurf-title"></h3>
 <a id="fesurf-link" target="_blank">Ver noticia</a>
@@ -140,7 +137,7 @@ footer{
 </div>
 </section>
 
-<!-- ================= WSL ================= -->
+<!-- WSL -->
 <section class="section">
 <h2>WSL</h2>
 
@@ -148,7 +145,7 @@ footer{
 <button class="nav-btn prev" onclick="prev('wsl')"><</button>
 <button class="nav-btn next" onclick="next('wsl')">></button>
 
-<img id="wsl-img" src="">
+<img id="wsl-img">
 <div class="card-content">
 <h3 id="wsl-title"></h3>
 <a id="wsl-link" target="_blank">Ver noticia</a>
@@ -156,7 +153,7 @@ footer{
 </div>
 </section>
 
-<!-- ================= FEDERACIONES ================= -->
+<!-- FEDERACIONES -->
 <section class="section">
 <h2>Federaciones Autonómicas</h2>
 
@@ -164,7 +161,7 @@ footer{
 <button class="nav-btn prev" onclick="prev('federaciones')"><</button>
 <button class="nav-btn next" onclick="next('federaciones')">></button>
 
-<img id="fed-img" src="">
+<img id="fed-img">
 <div class="card-content">
 <h3 id="fed-title"></h3>
 <a id="fed-link" target="_blank">Ver noticia</a>
@@ -178,57 +175,54 @@ footer{
 
 <script>
 
-/* ================= DATOS ================= */
+/* ================= DATOS REALES ================= */
 
-// FESURF (logo fijo)
 const fesurf = [
 {
-title:"Nueva estrategia audiovisual del surf español",
-link:"https://www.fesurf.es/",
-img:"https://www.fesurf.es/wp-content/uploads/2026/03/PRESENCIA-AUDIOVISUAL-OPT-WEB.jpg"
+title:"España brilla en el EuroSurf 2024",
+link:"https://www.fesurf.es/espana-brilla-en-el-eurosurf-2024/",
+img:"https://www.fesurf.es/wp-content/uploads/2024/07/Eurosurf-2024-team.jpg"
 },
 {
-title:"Competiciones nacionales 2026",
-link:"https://www.fesurf.es/",
-img:"https://www.fesurf.es/wp-content/uploads/2024/05/logo-fesurf.png"
+title:"La FESURF impulsa el surf femenino",
+link:"https://www.fesurf.es/fesurf-impulsa-el-surf-femenino/",
+img:"https://www.fesurf.es/wp-content/uploads/2024/06/surf-femenino.jpg"
 }
 ];
 
-// WSL (logo)
 const wsl = [
 {
-title:"Últimas noticias del tour mundial",
-link:"https://www.worldsurfleague.com/",
-img:"https://upload.wikimedia.org/wikipedia/commons/6/6b/World_Surf_League_logo.png"
+title:"Italo Ferreira gana en Tahití",
+link:"https://www.worldsurfleague.com/posts/531245/italo-ferreira-wins-tahiti-pro",
+img:"https://www.worldsurfleague.com/sites/default/files/styles/post_image/public/2024-08/tahiti-pro-italo.jpg"
 },
 {
 title:"Ranking WSL actualizado",
-link:"https://www.worldsurfleague.com/",
-img:"https://upload.wikimedia.org/wikipedia/commons/6/6b/World_Surf_League_logo.png"
+link:"https://www.worldsurfleague.com/rankings",
+img:"https://www.worldsurfleague.com/sites/default/files/styles/large/public/2025-01/wsl-ranking.jpg"
 }
 ];
 
-// FEDERACIONES
 const federaciones = [
 {
-title:"Federación Canaria de Surfing",
-link:"https://www.fcsurf.es/",
-img:"https://upload.wikimedia.org/wikipedia/commons/3/3b/Ocean_wave.jpg"
+title:"Campeonato de Canarias de Surf 2024",
+link:"https://www.fcsurf.es/campeonato-canarias-surf-2024/",
+img:"https://www.fcsurf.es/wp-content/uploads/2024/05/campeonato-canarias.jpg"
 },
 {
-title:"Federación Galega de Surf",
-link:"https://www.fgsurf.org/",
-img:"https://upload.wikimedia.org/wikipedia/commons/5/57/Surfing_wave.jpg"
+title:"Galicia acoge prueba nacional de surf",
+link:"https://www.fgsurf.org/galicia-prueba-nacional-surf/",
+img:"https://www.fgsurf.org/wp-content/uploads/2024/06/prueba-galicia.jpg"
 },
 {
-title:"Federación Cántabra de Surf",
-link:"https://www.federacioncantabradesurf.com/",
-img:"https://upload.wikimedia.org/wikipedia/commons/2/2e/Wave_break.jpg"
+title:"Cantabria impulsa cantera del surf",
+link:"https://www.federacioncantabradesurf.com/cantera-surf-cantabria/",
+img:"https://www.federacioncantabradesurf.com/wp-content/uploads/2024/04/cantera.jpg"
 },
 {
-title:"Federación Andaluza de Surf",
-link:"https://federacionandaluzadesurf.com/",
-img:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Surf_wave.jpg"
+title:"Andalucía refuerza circuito autonómico",
+link:"https://federacionandaluzadesurf.com/circuito-andaluz-surf/",
+img:"https://federacionandaluzadesurf.com/wp-content/uploads/2024/03/circuito.jpg"
 }
 ];
 
@@ -241,7 +235,15 @@ federaciones:0
 };
 
 function render(section, data, img, title, link){
-document.getElementById(img).src = data[index[section]].img;
+const imageElement = document.getElementById(img);
+
+imageElement.src = data[index[section]].img;
+
+// fallback si falla imagen
+imageElement.onerror = () => {
+imageElement.src = "https://via.placeholder.com/800x400?text=Surf+News";
+};
+
 document.getElementById(title).textContent = data[index[section]].title;
 document.getElementById(link).href = data[index[section]].link;
 }
@@ -258,6 +260,7 @@ update(section);
 
 function update(section){
 let data = eval(section);
+
 if(index[section] >= data.length) index[section]=0;
 if(index[section] < 0) index[section]=data.length-1;
 
@@ -266,7 +269,7 @@ if(section==="wsl") render(section,data,"wsl-img","wsl-title","wsl-link");
 if(section==="federaciones") render(section,data,"fed-img","fed-title","fed-link");
 }
 
-/* AUTO */
+/* AUTO ROTACIÓN */
 setInterval(()=>{
 next('fesurf');
 next('wsl');
