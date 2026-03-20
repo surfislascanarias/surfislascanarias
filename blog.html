@@ -138,29 +138,12 @@
 
 <div class="fed-grid">
 
-<div class="fed-card">
-<a href="https://www.federacionasturianadesurf.com" target="_blank">
-<img src="/assets/img/logosfed/asturias.jpg">Asturias</a></div>
-
-<div class="fed-card">
-<a href="https://www.fgsurf.org/" target="_blank">
-<img src="/assets/img/logosfed/galicia.jpg">Galicia</a></div>
-
-<div class="fed-card">
-<a href="https://www.federacioncantabradesurf.com/" target="_blank">
-<img src="/assets/img/logosfed/cantabria.jpg">Cantabria</a></div>
-
-<div class="fed-card">
-<a href="https://fsrm.es/" target="_blank">
-<img src="/assets/img/logosfed/murcia.jpg">Murcia</a></div>
-
-<div class="fed-card">
-<a href="https://www.facebook.com/AsociacionAndaluzaDeSurf" target="_blank">
-<img src="/assets/img/logosfed/andalucia.jpg">Andalucía</a></div>
-
-<div class="fed-card">
-<a href="https://fsurf.cat/" target="_blank">
-<img src="/assets/img/logosfed/cataluña.jpg">Cataluña</a></div>
+<div class="fed-card"><a href="https://www.federacionasturianadesurf.com" target="_blank"><img src="/assets/img/logosfed/asturias.jpg">Asturias</a></div>
+<div class="fed-card"><a href="https://www.fgsurf.org/" target="_blank"><img src="/assets/img/logosfed/galicia.jpg">Galicia</a></div>
+<div class="fed-card"><a href="https://www.federacioncantabradesurf.com/" target="_blank"><img src="/assets/img/logosfed/cantabria.jpg">Cantabria</a></div>
+<div class="fed-card"><a href="https://fsrm.es/" target="_blank"><img src="/assets/img/logosfed/murcia.jpg">Murcia</a></div>
+<div class="fed-card"><a href="https://www.facebook.com/AsociacionAndaluzaDeSurf" target="_blank"><img src="/assets/img/logosfed/andalucia.jpg">Andalucía</a></div>
+<div class="fed-card"><a href="https://fsurf.cat/" target="_blank"><img src="/assets/img/logosfed/cataluña.jpg">Cataluña</a></div>
 
 </div>
 </section>
@@ -182,12 +165,16 @@ function fallback(){
   return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
 }
 
-// 🔥 FUNCIÓN FINAL DEFINITIVA
+// 🔥 FUNCIÓN DEFINITIVA FESURF FIX
 function getImage(item){
   let url = null;
 
-  // 1️⃣ FESURF usa enclosure
-  if(item.enclosure && item.enclosure.link){
+  function isImage(u){
+    return u && (u.match(/\.(jpg|jpeg|png|webp)$/i));
+  }
+
+  // 1️⃣ enclosure válido
+  if(item.enclosure && isImage(item.enclosure.link)){
     url = item.enclosure.link;
   }
 
@@ -196,18 +183,20 @@ function getImage(item){
     const html = item.content || item.description;
     if(html){
       const match = html.match(/<img[^>]+src="([^">]+)"/);
-      if(match) url = match[1];
+      if(match && isImage(match[1])){
+        url = match[1];
+      }
     }
   }
 
-  // 3️⃣ thumbnail
-  if(!url && item.thumbnail){
+  // 3️⃣ thumbnail válido
+  if(!url && isImage(item.thumbnail)){
     url = item.thumbnail;
   }
 
   if(!url) return fallback();
 
-  // arreglar rutas relativas
+  // arreglar relativas
   if(url.startsWith("/")){
     if(item.link.includes("fesurf.es")){
       url = "https://www.fesurf.es" + url;
@@ -217,10 +206,9 @@ function getImage(item){
     }
   }
 
-  // forzar https
+  url = url.split("?")[0];
   url = url.replace("http://","https://");
 
-  // proxy
   return "https://images.weserv.nl/?url=" + encodeURIComponent(url);
 }
 
@@ -248,7 +236,6 @@ function render(section){
   if(!item) return;
 
   const img = document.getElementById(section+"-img");
-
   img.src = item.img;
   img.onerror = ()=> img.src = fallback();
 
@@ -274,7 +261,7 @@ setInterval(()=>{
   next('fcsurf');
 },5000);
 
-// refresco cada 5 min
+// refresh cada 5 min
 setInterval(()=>{
   load('fesurf');
   load('fcsurf');
