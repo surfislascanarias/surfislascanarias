@@ -18,22 +18,54 @@
 
 .news-card{
   background:white;
-  border-radius:14px;
+  border-radius:16px;
   overflow:hidden;
-  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
   position:relative;
+  transition:0.3s;
+}
+
+.news-card:hover{
+  transform:translateY(-5px);
 }
 
 .news-card img{
   width:100%;
-  height:200px;
-  object-fit:cover;
+  height:160px;
+  object-fit:contain;
+  background:#f5f5f5;
+  padding:20px;
 }
 
 .news-content{
-  padding:15px;
+  padding:18px;
 }
 
+.news-content h3{
+  font-size:1rem;
+  margin-bottom:15px;
+  min-height:60px;
+}
+
+/* 🔥 BOTÓN PRO */
+.news-btn{
+  display:inline-block;
+  padding:10px 18px;
+  background:linear-gradient(135deg,#046994,#0b1c2c);
+  color:white;
+  border-radius:25px;
+  font-size:0.85rem;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.news-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* botones slider */
 .nav-btn{
   position:absolute;
   top:50%;
@@ -41,15 +73,17 @@
   background:rgba(0,0,0,0.6);
   color:white;
   border:none;
-  font-size:20px;
-  padding:10px;
+  font-size:18px;
+  padding:8px;
   cursor:pointer;
   border-radius:50%;
+  z-index:5;
 }
 
 .prev{ left:10px; }
 .next{ right:10px; }
 
+/* federaciones */
 .fed-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
@@ -63,6 +97,11 @@
   padding:15px;
   text-align:center;
   box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  transition:0.2s;
+}
+
+.fed-card:hover{
+  transform:scale(1.05);
 }
 
 .fed-card img{
@@ -103,6 +142,7 @@
   </div>
 </header>
 
+<!-- ================== NOTICIAS ================== -->
 <section class="section">
 <h2>Noticias Federaciones</h2>
 
@@ -112,10 +152,13 @@
 <div class="news-card">
   <button class="nav-btn prev" onclick="prev('fesurf')"><</button>
   <button class="nav-btn next" onclick="next('fesurf')">></button>
-  <img id="fesurf-img" onerror="this.src='https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News'">
+
+  <!-- 🔥 LOGO LOCAL -->
+  <img src="/assets/img/logosfed/fesurf.jpg">
+
   <div class="news-content">
     <h3 id="fesurf-title"></h3>
-    <a id="fesurf-link" target="_blank">Ver noticia</a>
+    <a id="fesurf-link" class="news-btn" target="_blank">Leer noticia</a>
   </div>
 </div>
 
@@ -123,16 +166,20 @@
 <div class="news-card">
   <button class="nav-btn prev" onclick="prev('fcsurf')"><</button>
   <button class="nav-btn next" onclick="next('fcsurf')">></button>
-  <img id="fcsurf-img" onerror="this.src='https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News'">
+
+  <!-- 🔥 LOGO LOCAL -->
+  <img src="/assets/img/logosfed/canarias.jpg">
+
   <div class="news-content">
     <h3 id="fcsurf-title"></h3>
-    <a id="fcsurf-link" target="_blank">Ver noticia</a>
+    <a id="fcsurf-link" class="news-btn" target="_blank">Leer noticia</a>
   </div>
 </div>
 
 </div>
 </section>
 
+<!-- ================== FEDERACIONES ================== -->
 <section class="section">
 <h2>Federaciones Regionales</h2>
 
@@ -161,83 +208,21 @@ const feeds = {
 let store = { fesurf: [], fcsurf: [] };
 let index = { fesurf:0, fcsurf:0 };
 
-function fallback(){
-  return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
-}
-
-// 🔥 FUNCIÓN DEFINITIVA FESURF FIX
-function getImage(item){
-  let url = null;
-
-  function isImage(u){
-    return u && (u.match(/\.(jpg|jpeg|png|webp)$/i));
-  }
-
-  // 1️⃣ enclosure válido
-  if(item.enclosure && isImage(item.enclosure.link)){
-    url = item.enclosure.link;
-  }
-
-  // 2️⃣ buscar en content
-  if(!url){
-    const html = item.content || item.description;
-    if(html){
-      const match = html.match(/<img[^>]+src="([^">]+)"/);
-      if(match && isImage(match[1])){
-        url = match[1];
-      }
-    }
-  }
-
-  // 3️⃣ thumbnail válido
-  if(!url && isImage(item.thumbnail)){
-    url = item.thumbnail;
-  }
-
-  if(!url) return fallback();
-
-  // arreglar relativas
-  if(url.startsWith("/")){
-    if(item.link.includes("fesurf.es")){
-      url = "https://www.fesurf.es" + url;
-    }
-    if(item.link.includes("fcsurf.es")){
-      url = "https://fcsurf.es" + url;
-    }
-  }
-
-  url = url.split("?")[0];
-  url = url.replace("http://","https://");
-
-  return "https://images.weserv.nl/?url=" + encodeURIComponent(url);
-}
-
 async function load(section){
-  try{
-    const res = await fetch(feeds[section]);
-    const data = await res.json();
+  const res = await fetch(feeds[section]);
+  const data = await res.json();
 
-    store[section] = data.items.slice(0,5).map(item => ({
-      title: item.title,
-      link: item.link,
-      img: getImage(item)
-    }));
+  store[section] = data.items.slice(0,5).map(item => ({
+    title: item.title,
+    link: item.link
+  }));
 
-    index[section]=0;
-    render(section);
-
-  }catch(e){
-    console.error(e);
-  }
+  render(section);
 }
 
 function render(section){
   const item = store[section][index[section]];
   if(!item) return;
-
-  const img = document.getElementById(section+"-img");
-  img.src = item.img;
-  img.onerror = ()=> img.src = fallback();
 
   document.getElementById(section+"-title").textContent = item.title;
   document.getElementById(section+"-link").href = item.link;
@@ -261,7 +246,7 @@ setInterval(()=>{
   next('fcsurf');
 },5000);
 
-// refresh cada 5 min
+// refresco noticias
 setInterval(()=>{
   load('fesurf');
   load('fcsurf');
