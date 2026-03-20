@@ -112,7 +112,7 @@
 <div class="news-card">
   <button class="nav-btn prev" onclick="prev('fesurf')"><</button>
   <button class="nav-btn next" onclick="next('fesurf')">></button>
-  <img id="fesurf-img">
+  <img id="fesurf-img" onerror="this.src='https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News'">
   <div class="news-content">
     <h3 id="fesurf-title"></h3>
     <a id="fesurf-link" target="_blank">Ver noticia</a>
@@ -123,7 +123,7 @@
 <div class="news-card">
   <button class="nav-btn prev" onclick="prev('fcsurf')"><</button>
   <button class="nav-btn next" onclick="next('fcsurf')">></button>
-  <img id="fcsurf-img">
+  <img id="fcsurf-img" onerror="this.src='https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News'">
   <div class="news-content">
     <h3 id="fcsurf-title"></h3>
     <a id="fcsurf-link" target="_blank">Ver noticia</a>
@@ -182,23 +182,32 @@ function fallback(){
   return "https://via.placeholder.com/800x400/046994/ffffff?text=Surf+News";
 }
 
-// 🔥 FUNCIÓN CORREGIDA TOTAL
+// 🔥 FUNCIÓN FINAL DEFINITIVA
 function getImage(item){
   let url = null;
 
-  const html = item.content || item.description;
-
-  if(html){
-    const match = html.match(/<img[^>]+src="([^">]+)"/);
-    if(match) url = match[1];
+  // 1️⃣ FESURF usa enclosure
+  if(item.enclosure && item.enclosure.link){
+    url = item.enclosure.link;
   }
 
+  // 2️⃣ buscar en content
+  if(!url){
+    const html = item.content || item.description;
+    if(html){
+      const match = html.match(/<img[^>]+src="([^">]+)"/);
+      if(match) url = match[1];
+    }
+  }
+
+  // 3️⃣ thumbnail
   if(!url && item.thumbnail){
     url = item.thumbnail;
   }
 
   if(!url) return fallback();
 
+  // arreglar rutas relativas
   if(url.startsWith("/")){
     if(item.link.includes("fesurf.es")){
       url = "https://www.fesurf.es" + url;
@@ -208,8 +217,10 @@ function getImage(item){
     }
   }
 
-  url = url.replace("http://", "https://");
+  // forzar https
+  url = url.replace("http://","https://");
 
+  // proxy
   return "https://images.weserv.nl/?url=" + encodeURIComponent(url);
 }
 
@@ -263,7 +274,7 @@ setInterval(()=>{
   next('fcsurf');
 },5000);
 
-// refresco noticias
+// refresco cada 5 min
 setInterval(()=>{
   load('fesurf');
   load('fcsurf');
