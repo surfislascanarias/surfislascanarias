@@ -22,7 +22,6 @@
   border-radius:18px;
   overflow:hidden;
   box-shadow:0 12px 25px rgba(0,0,0,0.08);
-  position:relative;
   transition:0.3s;
   display:flex;
   flex-direction:column;
@@ -37,9 +36,9 @@
   width:80%;
   height:180px;
   object-fit:contain;
-  background:#f5f5f5;
   padding:15px;
   margin-top:10px;
+  background:none;
 }
 
 /* ===== CONTENIDO ===== */
@@ -53,7 +52,7 @@
 
 .news-content h3{
   font-size:1rem;
-  margin-bottom:20px;
+  margin-bottom:15px;
   min-height:60px;
 }
 
@@ -70,6 +69,7 @@
   text-align:center;
   transition:0.3s;
   min-width:120px;
+  margin-bottom:10px;
 }
 
 .news-btn:hover{
@@ -77,28 +77,33 @@
   box-shadow:0 6px 18px rgba(0,0,0,0.2);
 }
 
-/* ===== BOTONES SLIDE ===== */
-.nav-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
+/* ===== BOTONES SLIDE ABAJO ===== */
+.slide-controls{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:10px;
+}
+
+.slide-controls button{
   background:rgba(0,0,0,0.6);
   color:white;
   border:none;
   font-size:18px;
-  padding:10px;
+  padding:8px 14px;
   cursor:pointer;
   border-radius:50%;
-  z-index:5;
+  transition:0.3s;
 }
 
-.prev{ left:10px; }
-.next{ right:10px; }
+.slide-controls button:hover{
+  background:rgba(0,0,0,0.8);
+}
 
 /* ===== FEDERACIONES ===== */
 .fed-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
   gap:25px;
   margin-top:50px;
 }
@@ -137,8 +142,8 @@
 }
 
 #murcia-logo{
-  width:130px;   /* más ancho */
-  height:130px;  /* más alto */
+  width:130px;   
+  height:130px;  
 }
 
 /* ===== RESPONSIVE ===== */
@@ -157,7 +162,6 @@
 }
 </style>
 </head>
-
 <body>
 
 <header class="header">
@@ -181,45 +185,78 @@
 <!-- ================== NOTICIAS ================== -->
 <section class="section">
 <h2>Noticias Federaciones</h2>
-
 <div class="news-grid">
 
 <!-- FESURF -->
 <div class="news-card">
-  <button class="nav-btn prev" onclick="prev('fesurf')"><</button>
-  <button class="nav-btn next" onclick="next('fesurf')">></button>
   <img src="assets/img/logosfed/fesurf.jpg.png">
   <div class="news-content">
     <h3 id="fesurf-title"></h3>
     <a id="fesurf-link" class="news-btn" target="_blank">Leer noticia</a>
+    <div class="slide-controls">
+      <button onclick="prev('fesurf')"><</button>
+      <button onclick="next('fesurf')">></button>
+    </div>
   </div>
 </div>
 
-<!-- FCSURF -->
+<!-- FEDECAN -->
 <div class="news-card">
-  <button class="nav-btn prev" onclick="prev('fcsurf')"><</button>
-  <button class="nav-btn next" onclick="next('fcsurf')">></button>
   <img src="assets/img/logosfed/fcs_logo.png">
   <div class="news-content">
     <h3 id="fcsurf-title"></h3>
     <a id="fcsurf-link" class="news-btn" target="_blank">Leer noticia</a>
+    <div class="slide-controls">
+      <button onclick="prev('fcsurf')"><</button>
+      <button onclick="next('fcsurf')">></button>
+    </div>
   </div>
 </div>
 
 </div>
 </section>
 
-<!-- ================== FEDERACIONES ================== -->
+<!-- ================== FEDERACIONES REGIONALES ================== -->
 <section class="section">
 <h2>Federaciones Regionales</h2>
-
 <div class="fed-grid">
-<div class="fed-card"><a href="https://www.federacionasturianadesurf.com" target="_blank"><img src="assets/img/logosfed/logos-fspa.png">FSPA</a></div>
-<div class="fed-card"><a href="https://www.fgsurf.org/" target="_blank"><img src="assets/img/logosfed/logo-fgsurf.png">FGS</a></div>
-<div class="fed-card"><a href="https://www.federacioncantabradesurf.com/" target="_blank"><img src="assets/img/logosfed/fcssnegro.PNG">FCS</a></div>
-<div class="fed-card"><a href="https://fsrm.es/" target="_blank"><img id="murcia-logo" src="assets/img/logosfed/fsmazul.PNG">FSRM </a><a href="https://fsrm.es/" target="_blank"><img src="assets/img/logosfed/fsmazul.PNG">FSRM</a></div>
-<div class="fed-card"><a href="https://www.facebook.com/AsociacionAndaluzaDeSurf" target="_blank"><img src="assets/img/logosfed/fedeanda.png">FEDEANDALSURF</a></div>
-<div class="fed-card"><a href="https://fsurf.cat/" target="_blank"><img src="assets/img/logosfed/FSURFcat.png">FSURFCAT</a></div>
+
+<div class="fed-card">
+  <a href="https://www.federacionasturianadesurf.com" target="_blank">
+    <img src="assets/img/logosfed/logos-fspa.png">FSPA
+  </a>
+</div>
+
+<div class="fed-card">
+  <a href="https://www.fgsurf.org/" target="_blank">
+    <img src="assets/img/logosfed/logo-fgsurf.png">FGS
+  </a>
+</div>
+
+<div class="fed-card">
+  <a href="https://www.federacioncantabradesurf.com/" target="_blank">
+    <img src="assets/img/logosfed/fcssnegro.PNG">FCS
+  </a>
+</div>
+
+<div class="fed-card">
+  <a href="https://fsrm.es/" target="_blank">
+    <img id="murcia-logo" src="assets/img/logosfed/fsmazul.PNG">FSRM
+  </a>
+</div>
+
+<div class="fed-card">
+  <a href="https://www.facebook.com/AsociacionAndaluzaDeSurf" target="_blank">
+    <img src="assets/img/logosfed/fedeanda.png">FEDEANDALSURF
+  </a>
+</div>
+
+<div class="fed-card">
+  <a href="https://fsurf.cat/" target="_blank">
+    <img src="assets/img/logosfed/FSURFcat.png">FSURFCAT
+  </a>
+</div>
+
 </div>
 </section>
 
