@@ -69,7 +69,6 @@
   text-align:center;
   transition:0.3s;
   min-width:120px;
-  margin-bottom:10px;
 }
 
 .news-btn:hover{
@@ -77,11 +76,12 @@
   box-shadow:0 6px 18px rgba(0,0,0,0.2);
 }
 
-/* ===== BOTONES SLIDE ABAJO ===== */
+/* ===== BOTONES SLIDE AL LADO ===== */
 .slide-controls{
   display:flex;
   justify-content:center;
-  gap:15px;
+  align-items:center;
+  gap:10px;
   margin-top:10px;
 }
 
@@ -192,8 +192,8 @@
   <img src="assets/img/logosfed/fesurf.jpg.png">
   <div class="news-content">
     <h3 id="fesurf-title"></h3>
-    <a id="fesurf-link" class="news-btn" target="_blank">Leer noticia</a>
     <div class="slide-controls">
+      <a id="fesurf-link" class="news-btn" target="_blank">Leer noticia</a>
       <button onclick="prev('fesurf')"><</button>
       <button onclick="next('fesurf')">></button>
     </div>
@@ -205,8 +205,8 @@
   <img src="assets/img/logosfed/fcs_logo.png">
   <div class="news-content">
     <h3 id="fcsurf-title"></h3>
-    <a id="fcsurf-link" class="news-btn" target="_blank">Leer noticia</a>
     <div class="slide-controls">
+      <a id="fcsurf-link" class="news-btn" target="_blank">Leer noticia</a>
       <button onclick="prev('fcsurf')"><</button>
       <button onclick="next('fcsurf')">></button>
     </div>
