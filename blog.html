@@ -22,7 +22,6 @@
   border-radius:18px;
   overflow:hidden;
   box-shadow:0 12px 25px rgba(0,0,0,0.08);
-  position:relative;
   transition:0.3s;
   display:flex;
   flex-direction:column;
@@ -34,12 +33,12 @@
 }
 
 .news-card img{
-  width:85%;
+  width:80%;
   height:180px;
   object-fit:contain;
-  background:none; /* quitamos fondo gris */
   padding:15px;
   margin-top:10px;
+  background:none;
 }
 
 /* ===== CONTENIDO ===== */
@@ -53,7 +52,7 @@
 
 .news-content h3{
   font-size:1rem;
-  margin-bottom:20px;
+  margin-bottom:15px;
   min-height:60px;
 }
 
@@ -70,6 +69,7 @@
   text-align:center;
   transition:0.3s;
   min-width:120px;
+  margin-bottom:10px;
 }
 
 .news-btn:hover{
@@ -77,29 +77,27 @@
   box-shadow:0 6px 18px rgba(0,0,0,0.2);
 }
 
-/* ===== BOTONES ABAJO ===== */
-.news-buttons{
+/* ===== BOTONES SLIDE ABAJO ===== */
+.slide-controls{
   display:flex;
   justify-content:center;
-  align-items:center;
-  gap:10px;  /* espacio entre botones y "Leer noticia" */
-  margin-top:15px;
+  gap:15px;
+  margin-top:10px;
 }
 
-.nav-btn-inline{
+.slide-controls button{
   background:rgba(0,0,0,0.6);
   color:white;
   border:none;
   font-size:18px;
-  padding:8px 12px;
+  padding:8px 14px;
   cursor:pointer;
   border-radius:50%;
   transition:0.3s;
 }
 
-.nav-btn-inline:hover{
-  transform:scale(1.05);
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+.slide-controls button:hover{
+  background:rgba(0,0,0,0.8);
 }
 
 /* ===== FEDERACIONES ===== */
@@ -144,8 +142,8 @@
 }
 
 #murcia-logo{
-  width:130px;
-  height:130px;
+  width:130px;   
+  height:130px;  
 }
 
 /* ===== RESPONSIVE ===== */
@@ -164,7 +162,6 @@
 }
 </style>
 </head>
-
 <body>
 
 <header class="header">
@@ -188,7 +185,6 @@
 <!-- ================== NOTICIAS ================== -->
 <section class="section">
 <h2>Noticias Federaciones</h2>
-
 <div class="news-grid">
 
 <!-- FESURF -->
@@ -196,23 +192,23 @@
   <img src="assets/img/logosfed/fesurf.jpg.png">
   <div class="news-content">
     <h3 id="fesurf-title"></h3>
-    <div class="news-buttons">
-      <button class="nav-btn-inline prev" onclick="prev('fesurf')"><</button>
-      <a id="fesurf-link" class="news-btn" target="_blank">Leer noticia</a>
-      <button class="nav-btn-inline next" onclick="next('fesurf')">></button>
+    <a id="fesurf-link" class="news-btn" target="_blank">Leer noticia</a>
+    <div class="slide-controls">
+      <button onclick="prev('fesurf')"><</button>
+      <button onclick="next('fesurf')">></button>
     </div>
   </div>
 </div>
 
-<!-- FCSURF -->
+<!-- FEDECAN -->
 <div class="news-card">
   <img src="assets/img/logosfed/fcs_logo.png">
   <div class="news-content">
     <h3 id="fcsurf-title"></h3>
-    <div class="news-buttons">
-      <button class="nav-btn-inline prev" onclick="prev('fcsurf')"><</button>
-      <a id="fcsurf-link" class="news-btn" target="_blank">Leer noticia</a>
-      <button class="nav-btn-inline next" onclick="next('fcsurf')">></button>
+    <a id="fcsurf-link" class="news-btn" target="_blank">Leer noticia</a>
+    <div class="slide-controls">
+      <button onclick="prev('fcsurf')"><</button>
+      <button onclick="next('fcsurf')">></button>
     </div>
   </div>
 </div>
@@ -223,7 +219,6 @@
 <!-- ================== FEDERACIONES REGIONALES ================== -->
 <section class="section">
 <h2>Federaciones Regionales</h2>
-
 <div class="fed-grid">
 
 <div class="fed-card">
@@ -281,16 +276,19 @@ let index = { fesurf:0, fcsurf:0 };
 async function load(section){
   const res = await fetch(feeds[section]);
   const data = await res.json();
+
   store[section] = data.items.slice(0,5).map(item => ({
     title: item.title,
     link: item.link
   }));
+
   render(section);
 }
 
 function render(section){
   const item = store[section][index[section]];
   if(!item) return;
+
   document.getElementById(section+"-title").textContent = item.title;
   document.getElementById(section+"-link").href = item.link;
 }
@@ -320,4 +318,8 @@ setInterval(()=>{
 },300000);
 
 load('fesurf');
-load('fcsurf'
+load('fcsurf');
+</script>
+
+</body>
+</html>
