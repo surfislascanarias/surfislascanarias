@@ -8,7 +8,7 @@
 
 <title>Surf Islas Canarias</title>
 
-<link rel="icon" type="image/png" href="assets/img/logosfed/EST. 2018.png">
+<link rel="icon" type="image/png" href="/assets/img/sic-logo.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -18,42 +18,57 @@
 body {
   margin:0;
   font-family:'Inter', sans-serif;
-  background:#000;
 }
 
 /* ===== HEADER ===== */
 .header {
-  position:absolute;
-  width:100%;
-  top:0;
-  z-index:10;
+  background:#000;
+  color:#fff;
   padding:10px 20px;
+}
+
+.header-container {
   display:flex;
   justify-content:space-between;
   align-items:center;
+  max-width:1400px;
+  margin:auto;
 }
 
-/* ===== REDES ===== */
+/* LOGO */
+.logo {
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo img {
+  height:90px;
+}
+
+/* NAV */
+.nav a {
+  color:white;
+  margin-left:15px;
+  text-decoration:none;
+}
+
+/* REDES */
 .socials {
   display:flex;
-  gap:12px;
+  gap:10px;
 }
 
 .socials a {
   color:white;
-  font-size:20px;
-  text-decoration:none;
-}
-
-/* ===== LOGO ===== */
-.logo img {
-  height:100px;
+  font-size:18px;
 }
 
 /* ===== CAROUSEL ===== */
 .carousel {
   position:relative;
-  height:100vh;
+  width:100%;
+  height:70vh;
   overflow:hidden;
 }
 
@@ -81,22 +96,6 @@ body {
   background:rgba(0,0,0,0.4);
 }
 
-/* ===== TEXTO CENTRAL ===== */
-.hero-center {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  text-align:center;
-  z-index:2;
-}
-
-.hero-center h1 {
-  font-size:3rem;
-  margin:0;
-}
-
-/* ===== CONTENIDO SLIDE ===== */
 .slide-content {
   position:relative;
   z-index:2;
@@ -107,7 +106,7 @@ body {
   font-size:2rem;
 }
 
-/* ===== FLECHAS ===== */
+/* FLECHAS */
 .carousel-btn {
   position:absolute;
   top:50%;
@@ -123,10 +122,10 @@ body {
 .prev { left:10px; }
 .next { right:10px; }
 
-/* ===== DOTS ===== */
+/* DOTS */
 .carousel-dots {
   position:absolute;
-  bottom:20px;
+  bottom:15px;
   width:100%;
   text-align:center;
 }
@@ -145,15 +144,9 @@ body {
   opacity:1;
 }
 
-/* ===== WINDY SECTION ===== */
+/* ===== WINDY ===== */
 .home-forecast {
   padding:40px 20px;
-  background:#fff;
-}
-
-.home-forecast h2 {
-  text-align:center;
-  margin-bottom:30px;
 }
 
 .grid {
@@ -164,47 +157,40 @@ body {
   margin:auto;
 }
 
-.card {
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
 .card iframe {
   width:100%;
   height:420px;
   border:none;
 }
 
+.card {
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
 .pad {
-  padding:15px;
   text-align:center;
+  padding:15px;
 }
 
 .btn {
-  display:inline-block;
-  padding:10px 20px;
   background:black;
   color:white;
+  padding:10px 20px;
   text-decoration:none;
-  border-radius:6px;
+  border-radius:5px;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:768px){
-
-  .logo img {
-    height:70px;
-  }
-
-  .hero-center h1 {
-    font-size:2rem;
-  }
-
   .grid {
     grid-template-columns:1fr;
   }
 
+  .logo img {
+    height:70px;
+  }
 }
 
 </style>
@@ -214,51 +200,54 @@ body {
 <body>
 
 <header class="header">
+  <div class="header-container">
 
-  <div class="socials">
-    <a href="https://instagram.com/" target="_blank">📸</a>
-    <a href="https://tiktok.com/" target="_blank">🎵</a>
-    <a href="https://youtube.com/" target="_blank">▶️</a>
+    <!-- IZQUIERDA -->
+    <div class="socials">
+      <a href="#">📸</a>
+      <a href="#">🎵</a>
+      <a href="#">▶️</a>
+    </div>
+
+    <!-- CENTRO LOGO -->
+    <div class="logo">
+      <img src="/assets/img/sic-logo.png">
+      <div>
+        <h1>Surf Islas Canarias</h1>
+      </div>
+    </div>
+
+    <!-- DERECHA NAV -->
+    <nav class="nav">
+      <a href="/">Inicio</a>
+      <a href="/blog.html">Noticias</a>
+      <a href="/islas.html">Islas</a>
+      <a href="/campeonatos.html">Eventos</a>
+    </nav>
+
   </div>
-
-  <div class="logo">
-    <img src="assets/img/logosfed/EST. 2018.png" alt="SIC Logo">
-  </div>
-
 </header>
 
 
 <!-- CAROUSEL -->
 <section class="carousel">
 
-  <div class="hero-center">
-    <h1>Surf Islas Canarias</h1>
-  </div>
-
   <div class="carousel-track" id="track">
 
     <a href="/islas.html" class="carousel-slide" style="background:url('/assets/img/spots.jpg') center/cover;">
-      <div class="slide-content">
-        <h3>Spots por Islas</h3>
-      </div>
+      <div class="slide-content"><h3>Spots por Islas</h3></div>
     </a>
 
     <a href="/modalidades.html" class="carousel-slide" style="background:url('/assets/img/modalidades.jpg') center/cover;">
-      <div class="slide-content">
-        <h3>Modalidades</h3>
-      </div>
+      <div class="slide-content"><h3>Modalidades</h3></div>
     </a>
 
     <a href="/blog.html" class="carousel-slide" style="background:url('/assets/img/noticias.jpg') center/cover;">
-      <div class="slide-content">
-        <h3>Noticias & Cultura</h3>
-      </div>
+      <div class="slide-content"><h3>Noticias</h3></div>
     </a>
 
     <a href="/campeonatos.html" class="carousel-slide" style="background:url('/assets/img/eventos.jpg') center/cover;">
-      <div class="slide-content">
-        <h3>Eventos & Campeonatos</h3>
-      </div>
+      <div class="slide-content"><h3>Eventos</h3></div>
     </a>
 
   </div>
@@ -273,25 +262,23 @@ body {
 
 <!-- WINDY -->
 <section class="home-forecast">
-  <h2>Previsión del tiempo</h2>
+
+  <h2 style="text-align:center;">Previsión del tiempo</h2>
 
   <div class="grid">
 
     <div class="card">
       <iframe src="https://embed.windy.com/embed2.html?lat=28.345&lon=-15.903&zoom=7&overlay=waves"></iframe>
-      <div class="pad">
-        <a href="https://www.windy.com/" target="_blank" class="btn">Ver más</a>
-      </div>
+      <div class="pad"><a href="https://www.windy.com/" class="btn">Ver más</a></div>
     </div>
 
     <div class="card">
       <iframe src="https://embed.windy.com/embed2.html?lat=28.345&lon=-15.903&zoom=7&overlay=wind"></iframe>
-      <div class="pad">
-        <a href="https://www.windy.com/" target="_blank" class="btn">Ver más</a>
-      </div>
+      <div class="pad"><a href="https://www.windy.com/" class="btn">Ver más</a></div>
     </div>
 
   </div>
+
 </section>
 
 
