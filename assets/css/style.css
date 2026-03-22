@@ -121,6 +121,26 @@ body {
 }
 
 /* =================================
+   LOGO
+================================= */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo img {
+  height: 100px; /* tamaño grande */
+  margin-right: 15px;
+}
+
+.logo h1,
+.logo p {
+  margin: 0;
+}
+
+
+/* =================================
    CONTENEDORES
 ================================= */
 .container {
