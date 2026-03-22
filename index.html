@@ -3,251 +3,198 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Surf Islas Canarias</title>
+  <title>Surf Islas Canarias</title>
 
-<link rel="icon" type="image/png" href="/assets/img/sic-logo.png">
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="/assets/img/sic-logo.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
+  <link rel="stylesheet" href="/assets/css/style.css">
 
-/* ===== RESET ===== */
-body {
-  margin:0;
-  font-family:'Inter', sans-serif;
-}
-
-/* ===== HEADER ===== */
-.header {
-  background:#000;
-  color:#fff;
-  padding:10px 20px;
-}
-
-.header-container {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  max-width:1400px;
-  margin:auto;
-}
-
-/* LOGO */
-.logo {
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-
-.logo img {
-  height:90px;
-}
-
-/* NAV */
-.nav a {
-  color:white;
-  margin-left:15px;
-  text-decoration:none;
-}
-
-/* REDES */
-.socials {
-  display:flex;
-  gap:10px;
-}
-
-.socials a {
-  color:white;
-  font-size:18px;
-}
-
-/* ===== CAROUSEL ===== */
-.carousel {
-  position:relative;
-  width:100%;
-  height:70vh;
-  overflow:hidden;
-}
-
-.carousel-track {
-  display:flex;
-  height:100%;
-  transition:transform 0.6s ease;
-}
-
-.carousel-slide {
-  min-width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  text-decoration:none;
-  position:relative;
-}
-
-.carousel-slide::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.4);
-}
-
-.slide-content {
-  position:relative;
-  z-index:2;
-  text-align:center;
-}
-
-.slide-content h3 {
-  font-size:2rem;
-}
-
-/* FLECHAS */
-.carousel-btn {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(0,0,0,0.5);
-  border:none;
-  color:white;
-  font-size:2rem;
-  padding:10px;
-  cursor:pointer;
-}
-
-.prev { left:10px; }
-.next { right:10px; }
-
-/* DOTS */
-.carousel-dots {
-  position:absolute;
-  bottom:15px;
-  width:100%;
-  text-align:center;
-}
-
-.dot {
-  display:inline-block;
-  width:12px;
-  height:12px;
-  margin:6px;
-  background:white;
-  border-radius:50%;
-  opacity:0.5;
-}
-
-.dot.active {
-  opacity:1;
-}
-
-/* ===== WINDY ===== */
-.home-forecast {
-  padding:40px 20px;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  max-width:1400px;
-  margin:auto;
-}
-
-.card iframe {
-  width:100%;
-  height:420px;
-  border:none;
-}
-
-.card {
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 10px 20px rgba(0,0,0,0.2);
-}
-
-.pad {
-  text-align:center;
-  padding:15px;
-}
-
-.btn {
-  background:black;
-  color:white;
-  padding:10px 20px;
-  text-decoration:none;
-  border-radius:5px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width:768px){
-  .grid {
-    grid-template-columns:1fr;
-  }
+  <style>
+  /* SOLO añadidos, no rompe tu CSS */
 
   .logo img {
-    height:70px;
+    height:80px;
   }
-}
 
-</style>
+  .socials {
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index:1000;
+  }
+
+  .socials a {
+    margin-right:10px;
+    font-size:18px;
+    text-decoration:none;
+  }
+
+  /* CAROUSEL */
+  .carousel {
+    position:relative;
+    width:100%;
+    height:60vh;
+    overflow:hidden;
+  }
+
+  .carousel-track {
+    display:flex;
+    transition:transform 0.5s ease;
+    height:100%;
+  }
+
+  .carousel-slide {
+    min-width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-decoration:none;
+    position:relative;
+  }
+
+  .carousel-slide::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+  }
+
+  .slide-content {
+    position:relative;
+    z-index:2;
+    text-align:center;
+  }
+
+  .carousel-btn {
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.5);
+    border:none;
+    color:white;
+    font-size:2rem;
+    padding:10px;
+    cursor:pointer;
+  }
+
+  .prev { left:10px; }
+  .next { right:10px; }
+
+  .carousel-dots {
+    position:absolute;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+  }
+
+  .dot {
+    display:inline-block;
+    width:10px;
+    height:10px;
+    margin:5px;
+    background:white;
+    border-radius:50%;
+    opacity:0.5;
+  }
+
+  .dot.active {
+    opacity:1;
+  }
+
+  /* WINDY MÁS GRANDE */
+  .home-forecast .grid {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .home-forecast iframe {
+    height:420px !important;
+  }
+
+  @media(max-width:768px){
+    .home-forecast .grid {
+      grid-template-columns:1fr;
+    }
+  }
+
+  </style>
 
 </head>
 
 <body>
 
+<!-- REDES -->
+<div class="socials">
+  <a href="#">📸</a>
+  <a href="#">🎵</a>
+  <a href="#">▶️</a>
+</div>
+
 <header class="header">
+
   <div class="header-container">
 
-    <!-- IZQUIERDA -->
-    <div class="socials">
-      <a href="#">📸</a>
-      <a href="#">🎵</a>
-      <a href="#">▶️</a>
-    </div>
-
-    <!-- CENTRO LOGO -->
     <div class="logo">
       <img src="/assets/img/sic-logo.png">
       <div>
         <h1>Surf Islas Canarias</h1>
+        <p>La comunidad del surf canario, desde dentro</p>
       </div>
     </div>
 
-    <!-- DERECHA NAV -->
-    <nav class="nav">
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <nav class="nav" id="navMenu">
       <a href="/">Inicio</a>
       <a href="/blog.html">Noticias</a>
       <a href="/islas.html">Islas</a>
-      <a href="/campeonatos.html">Eventos</a>
+      <a href="/campeonatos.html">Campeonatos</a>
+      <a href="/modalidades.html">Modalidades</a>
+      <a href="/about.html">Sobre nosotros</a>
+      <a href="/contact.html">Contacto</a>
     </nav>
 
   </div>
+
 </header>
 
 
-<!-- CAROUSEL -->
+<main>
+
+<!-- 🔥 REEMPLAZA TUS CARDS POR ESTO -->
 <section class="carousel">
 
   <div class="carousel-track" id="track">
 
     <a href="/islas.html" class="carousel-slide" style="background:url('/assets/img/spots.jpg') center/cover;">
-      <div class="slide-content"><h3>Spots por Islas</h3></div>
+      <div class="slide-content">
+        <h3>Spots por Islas</h3>
+      </div>
     </a>
 
     <a href="/modalidades.html" class="carousel-slide" style="background:url('/assets/img/modalidades.jpg') center/cover;">
-      <div class="slide-content"><h3>Modalidades</h3></div>
+      <div class="slide-content">
+        <h3>Modalidades</h3>
+      </div>
     </a>
 
     <a href="/blog.html" class="carousel-slide" style="background:url('/assets/img/noticias.jpg') center/cover;">
-      <div class="slide-content"><h3>Noticias</h3></div>
+      <div class="slide-content">
+        <h3>Noticias & Cultura</h3>
+      </div>
     </a>
 
     <a href="/campeonatos.html" class="carousel-slide" style="background:url('/assets/img/eventos.jpg') center/cover;">
-      <div class="slide-content"><h3>Eventos</h3></div>
+      <div class="slide-content">
+        <h3>Eventos & Campeonatos</h3>
+      </div>
     </a>
 
   </div>
@@ -260,27 +207,23 @@ body {
 </section>
 
 
-<!-- WINDY -->
-<section class="home-forecast">
-
-  <h2 style="text-align:center;">Previsión del tiempo</h2>
-
+<!-- TU WINDY ORIGINAL (solo más grande) -->
+<section class="home-forecast container">
+  <h2>Previsión del tiempo</h2>
   <div class="grid">
 
     <div class="card">
       <iframe src="https://embed.windy.com/embed2.html?lat=28.345&lon=-15.903&zoom=7&overlay=waves"></iframe>
-      <div class="pad"><a href="https://www.windy.com/" class="btn">Ver más</a></div>
     </div>
 
     <div class="card">
       <iframe src="https://embed.windy.com/embed2.html?lat=28.345&lon=-15.903&zoom=7&overlay=wind"></iframe>
-      <div class="pad"><a href="https://www.windy.com/" class="btn">Ver más</a></div>
     </div>
 
   </div>
-
 </section>
 
+</main>
 
 <script>
 
@@ -332,6 +275,14 @@ track.addEventListener('touchend', e => {
 
   if (startX - endX > 50) moveSlide(1);
   if (endX - startX > 50) moveSlide(-1);
+});
+
+// MENU
+const toggle = document.getElementById("menuToggle");
+const nav = document.getElementById("navMenu");
+
+toggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
 });
 
 </script>
