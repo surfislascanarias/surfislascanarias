@@ -66,19 +66,19 @@
     </nav>
 
   </div>
-<!-- ICONOS DE REDES SOCIALES EN ESQUINA SUPERIOR DERECHA -->
+
 <style>
 .social-top-right {
   position: absolute;
   top: 10px;
   right: 10px;
   display: flex;
-  gap: 10px;  /* separación entre los iconos */
+  gap: 10px;
   z-index: 1000;
 }
 
 .social-top-right img {
-  height: 30px;  /* tamaño de los iconos */
+  height: 30px;
   width: auto;
   display: block;
 }
@@ -96,7 +96,6 @@
     </a>
   </div>
 </header>
-
 
 
 <main>
@@ -164,7 +163,6 @@
 </section>
 
 <style>
-/* Slider general */
 .slider-container {
   position: relative;
   width: 100%;
@@ -173,25 +171,50 @@
   overflow: hidden;
 }
 
-/* Cada card */
 .slider-card {
   display: none;
   height: 300px;
   color: #fff;
-  text-align: center;
-  background-size: cover;
+  position: relative;
+  background-size: contain; /* 🔹 menos zoom */
+  background-repeat: no-repeat;
   background-position: center;
-  padding: 50px 20px;
-  box-sizing: border-box;
   border-radius: 10px;
+  overflow: hidden;
 }
 
-/* Hacer visible la primera */
+.slider-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+}
+
+.slider-card a {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: #fff;
+  text-decoration: none;
+  z-index: 2;
+  text-align: left;
+}
+
+.slider-card h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.slider-card p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
 .slider-card.active {
   display: block;
 }
 
-/* Flechas */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -209,7 +232,6 @@
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* Indicadores */
 .slider-dots {
   text-align: center;
   position: absolute;
@@ -250,7 +272,6 @@ function showSlide(n) {
   dots[slideIndex].classList.add('active');
 }
 
-// Flechas
 document.querySelector('.next').addEventListener('click', () => {
   slideIndex++;
   showSlide(slideIndex);
@@ -261,7 +282,6 @@ document.querySelector('.prev').addEventListener('click', () => {
   showSlide(slideIndex);
 });
 
-// Dots
 dots.forEach((dot, i) => {
   dot.addEventListener('click', () => {
     slideIndex = i;
@@ -269,43 +289,9 @@ dots.forEach((dot, i) => {
   });
 });
 
-// Inicializar
 showSlide(slideIndex);
 </script>
 
- <!-- ================== PREVISIÓN AL FINAL ================== -->
-<section class="home-forecast container">
-  <h2>Previsión del tiempo</h2>
-  <div class="grid">
-
-    <!-- Card Predicción de olas -->
-    <div class="card">
-      <iframe
-        src="https://embed.windy.com/embed2.html?lat=28.345&lon=-15.903&zoom=7&level=surface&overlay=waves"
-        loading="lazy"
-        style="width:100%; height:280px; border:none;">
-      </iframe>
-      <div class="pad">
-     
-        <a href="https://www.windy.com/?28.345,-15.903,7,p:tide" class="btn" target="_blank">Ver más</a>
-      </div>
-    </div>
-
-    <!-- Card Predicción de viento -->
-    <div class="card">
-      <iframe
-        src="https://embed.windy.com/embed2.html?lat=28.345&lon=-15.903&zoom=7&level=surface&overlay=wind"
-        loading="lazy"
-        style="width:100%; height:280px; border:none;">
-      </iframe>
-      <div class="pad">
-       
-        <a href="https://www.windy.com/?28.345,-15.903,7,p:wind" class="btn" target="_blank">Ver más</a>
-      </div>
-    </div>
-
-  </div>
-</section>
 </main>
 
 <footer class="footer">
@@ -313,16 +299,12 @@ showSlide(slideIndex);
 </footer>
 
 <script>
-
 const toggle = document.getElementById("menuToggle");
 const nav = document.getElementById("navMenu");
 
 toggle.addEventListener("click", () => {
-
   nav.classList.toggle("active");
-
 });
-
 </script>
 
 </body>
