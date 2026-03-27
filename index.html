@@ -119,33 +119,45 @@
   <div class="slider-container">
 
     <!-- Slides -->
-    <div class="slider-card active" style="background-image:url('assets/img/spots.png');">
-      <a href="/islas.html">
-        <h3>Spots por Islas</h3>
-        <p>Guías locales de surf en todas las islas.</p>
-      </a>
-    </div>
+<div class="slider-card active">
+  
+  <div class="slide-img" style="background-image:url('assets/img/spots.png');"></div>
 
-    <div class="slider-card" style="background-image:url('assets/img/slider/modalidades.jpg');">
-      <a href="/modalidades.html">
-        <h3>Modalidades</h3>
-        <p>Surf, bodyboard, longboard, SUP y más.</p>
-      </a>
-    </div>
+  <div class="slide-text">
+    <a href="/islas.html">
+      <h3>Spots por Islas</h3>
+      <p>Guías locales de surf en todas las islas.</p>
+    </a>
+  </div>
 
-    <div class="slider-card" style="background-image:url('assets/img/slider/noticias.jpg');">
-      <a href="/blog.html">
-        <h3>Noticias & Cultura</h3>
-        <p>Actualidad, riders y cultura surf canaria.</p>
-      </a>
-    </div>
+</div>
 
-    <div class="slider-card" style="background-image:url('assets/img/slider/eventos.jpg');">
-      <a href="/campeonatos.html">
-        <h3>Eventos & Campeonatos</h3>
-        <p>Competiciones oficiales y eventos locales.</p>
-      </a>
-    </div>
+  <div class="slider-card active">
+  
+  <div class="slide-img" style="background-image:url('assets/img/slider/modalidades.jpg');"></div>
+
+  <div class="slide-text">
+    <a href="/islas.html">
+      <h3>Modalidades</h3>
+      <p>Surf, bodyboard, longboard, SUP y más.</p>
+    </a>
+  </div>
+
+</div>
+
+    <div class="slider-card active">
+  
+  <div class="slide-img" style="background-image:url('assets/img/slider/noticias.jpg');"></div>
+
+  <div class="slide-text">
+    <a href="/islas.html">
+      <h3>Eventos & Campeonatos</h3>
+      <p>Competiciones oficiales y eventos locales.</p>
+    </a>
+  </div>
+
+</div>
+      
 
     <!-- Flechas -->
     <button class="prev">&#10094;</button>
@@ -172,18 +184,44 @@
   margin: 0 auto;
   overflow: hidden;
 }
-
-/* Cada card */
+  /* CARD MÁS CUADRADA */
 .slider-card {
   display: none;
-  height: 300px;
-  color: #fff;
+  width: 100%;
+  max-width: 400px;   /* 🔹 más cuadrado */
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
   text-align: center;
+}
+
+/* IMAGEN MÁS ALEJADA */
+.slide-img {
+  height: 220px;
   background-size: cover;
   background-position: center;
-  padding: 50px 20px;
-  box-sizing: border-box;
-  border-radius: 10px;
+  transform: scale(0.9); /* 🔹 aleja la imagen */
+}
+
+/* TEXTO ABAJO CENTRADO */
+.slide-text {
+  padding: 15px;
+}
+
+.slide-text a {
+  text-decoration: none;
+  color: black;
+}
+
+.slide-text h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.slide-text p {
+  margin: 5px 0 0;
+  font-size: 14px;
 }
 
 /* Hacer visible la primera */
