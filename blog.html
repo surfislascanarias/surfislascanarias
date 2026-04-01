@@ -246,32 +246,34 @@
   display: block;
 }
 /* ===== INSTAGRAM CARD (INDEPENDIENTE) ===== */
+/* CARD */
 .instagram-card {
   background: white;
   border-radius: 18px;
   box-shadow: 0 12px 25px rgba(0,0,0,0.08);
   transition: 0.3s;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+
   padding: 25px;
 }
 
-.instagram-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Imagen grande estilo federaciones */
+/* IMAGEN */
 .instagram-card img {
-  width: 350px;
-  height: 350px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
- /* TEXTO abajo */
+
+/* TEXTO ABAJO PERO CENTRADO */
 .instagram-text {
-  margin-top: auto; /* 🔥 lo manda abajo del todo */
+  margin-top: 15px; /* separación normal, no forzada */
   text-align: center;
+  font-size: 1rem;
+  color: #0b1c2c;
 }
 <head>
   <meta charset="UTF-8">
