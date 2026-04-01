@@ -245,15 +245,28 @@
   width: auto;
   display: block;
 }
-/* Imagen Surf Islas Canarias más grande, igual que las federaciones */
-.sic-logo {
-  width: 130px;   /* igual que FSRM */
-  height: 130px;  /* igual que FSRM */
+/* ===== INSTAGRAM CARD (INDEPENDIENTE) ===== */
+.instagram-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.instagram-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Imagen grande estilo federaciones */
+.instagram-card img {
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-  margin-bottom: 15px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 <head>
   <meta charset="UTF-8">
@@ -287,15 +300,11 @@
 
 <div class="news-grid">
 
-<!-- ================== INSTAGRAM CARD SIMPLE ================== -->
-  <img id="sic-logo" src="assets/img/logosfed/EST. 2018.png" alt="Surf Islas Canarias">
-  <div class="news-content">
-    <div class="slide-controls">
-      <a class="news-btn" href="https://www.instagram.com/stories/surfislascanarias/" target="_blank">
-        Ver publicación
-      </a>
-    </div>
-  </div>
+<!-- ================== INSTAGRAM CARD ================== -->
+<div class="instagram-card">
+  <a href="https://www.instagram.com/stories/surfislascanarias/" target="_blank">
+    <img src="assets/img/logosfed/EST. 2018.png" alt="Surf Islas Canarias">
+  </a>
 </div>
 <!-- FESURF -->
 <div class="news-card">
