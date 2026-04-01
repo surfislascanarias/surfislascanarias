@@ -221,28 +221,31 @@
   display: block;
 }
 /* TEXTO ABAJO CENTRADO */
+/* Texto encima de la imagen */
+.slider-card {
+  position: relative; /* Necesario para posicionar el texto encima */
+}
+
 .slide-text {
-  padding: 35px;
-  
-}
-.home-forecast h2 {
+  position: absolute;
+  top: 20px;       /* Ajusta la distancia desde arriba */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;    /* Para que contraste con la imagen */
   text-align: center;
-  font-size: 32px;     /* 🔴 más grande */
-  margin-bottom: 40px; /* 🔴 separa de lo de abajo */
-}
-.slide-text a {
-  text-decoration: none;
-  color: black;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.4); /* Fondo semitransparente opcional */
+  border-radius: 10px;
 }
 
 .slide-text h3 {
+  font-size: 40px;
   margin: 0;
-  font-size: 50px;
 }
 
 .slide-text p {
+  font-size: 18px;
   margin: 5px 0 0;
-  font-size: 20px;
 }
 
 /* Hacer visible la primera */
