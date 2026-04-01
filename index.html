@@ -257,8 +257,25 @@
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
-  min-height: 500px; /* Ajusta según la altura máxima de tus slides */
+  height: 500px; /* Ajusta según la altura máxima de tus slides */
 }
+
+  .slider-card {
+  height: 500px; /* 🔴 AJUSTA este valor */
+}
+  .slide-img {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-img img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; /* 🔴 NO deforma */
+}
+  
 
 /* Flechas */
 .prev, .next {
