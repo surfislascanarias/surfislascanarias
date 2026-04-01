@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title> Surf Islas Canarias</title>
-
+<link rel="icon" type="image/png" href="assets/img/logosfed/EST. 2018.png">
 <meta name="description" content="Descubre todas las modalidades de surf en Canarias: surf, bodyboard, kitesurf, windsurf, SUP, skimboard y foil surf. La comunidad del surf canario.">
 
 <meta name="keywords" content="surf canarias, bodyboard canarias, kitesurf canarias, windsurf canarias, sup canarias, skimboard canarias, foil surf canarias, surf islas canarias">
@@ -23,7 +23,11 @@
   flex-direction:column;
   justify-content:space-between;
 }
-
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 🔴 2 columnas */
+  gap: 20px;
+}
 /* =================================
    IMÁGENES CORREGIDAS
 ================================= */
