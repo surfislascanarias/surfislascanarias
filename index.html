@@ -251,10 +251,20 @@
 }
 
 /* Flechas */
+.slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 500px; /* Ajusta según la altura máxima de tus slides */
+}
+
+/* Flechas */
 .prev, .next {
   cursor: pointer;
-  position: absolute;           /* respecto a slider-container */
-  top: 50%;
+  position: absolute; /* relativo a slider-container */
+  top: 50%; 
   transform: translateY(-50%);
   font-size: 30px;
   color: #fff;
@@ -265,9 +275,6 @@
   z-index: 10;
 }
 
-.slider-container {
-  position: relative;  /* necesario para que las flechas se posicionen bien */
-}
 .prev { left: 10px; }
 .next { right: 10px; }
 </style>
