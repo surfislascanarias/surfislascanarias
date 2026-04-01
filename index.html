@@ -195,10 +195,10 @@
 
 .slide-img img {
   width: 100%;
-  height: auto;
+  height: 400px;      /* 🔴 aquí haces la imagen más grande */
+  object-fit: cover;  /* 🔴 rellena sin deformar */
   display: block;
 }
-
 /* TEXTO ABAJO CENTRADO */
 .slide-text {
   padding: 35px;
