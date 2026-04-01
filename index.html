@@ -121,14 +121,14 @@
     <!-- Slides -->
 <div class="slider-card active">
   <div class="slide-text">
-        <div class="slide-img">
+       
     <a href="/islas.html">
       <h3>Descubre las Islas Canarias</h3>
-      <p>Guías locales de todas las islas.</p>
-  
+      <p>Guías locales de todas las islas.</p>   </a>
+   <div class="slide-img">
   <img src="assets/img/spots.png" alt="Spots">
 </div>
-    </a>
+ 
   </div>
 
 </div>
@@ -136,43 +136,35 @@
   <div class="slider-card">
 
   <div class="slide-text">
-      <div class="slide-img">
+      
     <a href="/islas.html">
       <h3>Modalidades</h3>
-      <p>Surf, bodyboard, longboard, SUP y más.</p>
-     
+      <p>Surf, bodyboard, longboard, SUP y más.</p>    </a>
+     <div class="slide-img">
   <img src="assets/img/modalidades.png" alt="Spots">
 </div>
-    </a>
   </div>
-
 </div>
 
     <div class="slider-card">
-
-
   <div class="slide-text">
-    <div class="slide-img">
+    
 
     <a href="/islas.html">
       <h3>Eventos & Campeonatos</h3>
-      <p>Competiciones oficiales y eventos locales.</p>
-        
+      <p>Competiciones oficiales y eventos locales.</p>  </a>
+        <div class="slide-img">
   <img src="assets/img/campeonatos.png" alt="Spots">
 </div>
-    </a>
   </div>
-
 </div>
 
 <div class="slider-card">
     <div class="slide-text">
-        <div class="slide-img">
     <a href="https://www.instagram.com/surfislascanarias/" target="_blank">
         <h3>Noticias</h3>
-      <p>Últimas noticias de @surfislascanarias</p>
-    </a>
-
+      <p>Últimas noticias de @surfislascanarias</p>    </a>
+   <div class="slide-img">
     <!-- Instagram widget -->
     <iframe src="//lightwidget.com/widgets/8392e071eb1657e28cb85e8463c7183a.html" 
             scrolling="no" 
@@ -221,10 +213,15 @@
   height: auto;     /* 🔴 mantiene la imagen completa */
   display: block;
 }
-/* TEXTO ABAJO CENTRADO */
+
 /* Texto encima de la imagen */
 .slider-card {
   position: relative; /* Necesario para posicionar el texto encima */
+}
+.slide-text a {
+  text-decoration: none;  /* quitar subrayado */
+  color: black;           /* texto negro */
+  display: inline;        /* forzar inline */
 }
 
 .slide-text {
@@ -238,7 +235,7 @@
 
 .slide-text h3 {
   font-size: 40px;
-  margin: 0 0 10px;
+  margin: 0 0 10px 0;
     color: black;          /* Texto negro */
 }
 
@@ -256,7 +253,7 @@
 /* Flechas */
 .prev, .next {
   cursor: pointer;
-  position: absolute;
+  position: absolute;           /* respecto a slider-container */
   top: 50%;
   transform: translateY(-50%);
   font-size: 30px;
@@ -268,6 +265,9 @@
   z-index: 10;
 }
 
+.slider-container {
+  position: relative;  /* necesario para que las flechas se posicionen bien */
+}
 .prev { left: 10px; }
 .next { right: 10px; }
 </style>
