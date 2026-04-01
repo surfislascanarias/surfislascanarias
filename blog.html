@@ -254,13 +254,6 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 
   <style>
-    /* Ajuste tamaño y centrado del logo de Instagram */
-  #instagram-logo {
-  width: 150px !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
   </style>
 </head>
  
@@ -285,7 +278,6 @@
 
 <div class="news-grid">
 
-
 <!-- ================== INSTAGRAM NEWS CARD ================== -->
 <div class="news-card">
 
@@ -295,48 +287,22 @@
   <div class="news-content">
     <h3 id="insta-title">Instagram @surfislascanarias</h3>
     <div class="slide-controls">
-      <button onclick="prev('insta')"><</button>
-      <a id="insta-link" class="news-btn" target="_blank">Ver publicación</a>
-      <button onclick="next('insta')">></button>
+      <a id="insta-link" class="news-btn" href="https://www.instagram.com/stories/surfislascanarias/" target="_blank">
+        Ver publicación
+      </a>
     </div>
   </div>
 </div>
 
-<script>
-const instaPosts = [
-  {  link: "https://www.instagram.com/stories/surfislascanarias/" },
-];
-
-let instaIndex = 0;
-
-function renderInsta(){
-  const post = instaPosts[instaIndex];
-  document.getElementById("insta-title").textContent = post.title;
-  document.getElementById("insta-link").href = post.link;
-}
-
-function next(section){
-  if(section === 'insta'){
-    instaIndex++;
-    if(instaIndex >= instaPosts.length) instaIndex = 0;
-    renderInsta();
+<style>
+  /* Ajuste tamaño y centrado del logo de Instagram */
+  #instagram-logo {
+    width: 150px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
   }
-}
-
-function prev(section){
-  if(section === 'insta'){
-    instaIndex--;
-    if(instaIndex < 0) instaIndex = instaPosts.length - 1;
-    renderInsta();
-  }
-}
-
-// Inicializar
-renderInsta();
-
-// Auto slide cada 5 segundos
-setInterval(()=>{ next('insta'); },5000);
-</script>
+</style>
 <!-- FESURF -->
 <div class="news-card">
 
