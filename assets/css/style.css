@@ -24,32 +24,17 @@
   padding: 0;
 }
 
-/*BODY 1
+/*BODY 1*/
 body {
   font-family: 'Inter', sans-serif;
   background: var(--fondo);
   color: var(--texto);
   line-height: 1.6;
-}*/
-/*BODYPRUEBA*/
-body {
-  font-family: 'Inter', sans-serif;
-  color: #111;
-  background: #f8f9fb;
 }
 
-h1 {
-  font-size: 48px;
-  font-weight: 700;
-  letter-spacing: -1px;
-}
-
-h3 {
-  font-weight: 600;
-}
 /* =================================
    HEADER 1
-================================= 
+================================= */
 .header {
   background: linear-gradient(
     180deg,
@@ -71,28 +56,11 @@ h3 {
   font-size: 1rem;
   margin-bottom: 20px;
   color: #f4f4f4;
-} */
-/* =================================
-   HEADER PRUEBA1
-================================= */
-.header {
-  background: white;
-  border-bottom: 1px solid #eee;
-}
+} 
 
-.header-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.header p {
-  color: #666;
-  margin-top: 5px;
-}
 /* =================================
    NAV
-================================= 
+=================================*/ 
 .nav {
   display: flex;
   justify-content: center;
@@ -116,18 +84,6 @@ h3 {
   color: var(--accent);
 }*/
 
-/*NAVPRUEBA*/
-.nav a {
-  background: transparent;
-  color: #333;
-  font-weight: 500;
-  border-bottom: 2px solid transparent;
-}
-
-.nav a:hover {
-  color: #0077b6;
-  border-bottom: 2px solid #0077b6;
-}
 
 /* =================================
    MENÚ HAMBURGUESA
@@ -354,7 +310,7 @@ h3 {
 /* =================================
    RESPONSIVE
 ================================= */
-/*@media (max-width: 768px) {
+@media (max-width: 768px) {
 
   .menu-toggle {
     display: flex;
@@ -402,7 +358,7 @@ h3 {
   font-size: 1rem;
   margin-bottom: 20px;
   color: #f4f4f4;
-}*/
+}
 
 /* =================================
    ANIMACIÓN
